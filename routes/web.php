@@ -48,7 +48,6 @@ Route::get('virtual/editar/{id}', ['middleware' => 'auth', 'uses' => 'VirtualCon
 Route::post('virtual/{id}', ['middleware' => 'auth', 'uses' => 'VirtualController@update']);
 Route::get('virtual/apagar/{id}', ['middleware' => 'auth', 'uses' => 'VirtualController@destroy']);
 
-
 //Storage
 Route::get('/armazenamento', ['middleware' => 'auth', 'uses' => 'StorageController@index']);
 Route::post('/armazenamento', ['middleware' => 'auth', 'uses' => 'StorageController@store']);
