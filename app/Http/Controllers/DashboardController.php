@@ -12,22 +12,6 @@ class DashboardController extends Controller
         return view('/pages/dashboard', ['pageConfigs' => $pageConfigs]);
     }
 
-    public function usuariovisualizar()
-    {
-        // navbar large
-        $pageConfigs = ['navbarLarge' => false];
-
-        return view('/pages/user-view', ['pageConfigs' => $pageConfigs]);
-    }
-
-    public function usuarioeditar()
-    {
-        // navbar large
-        $pageConfigs = ['navbarLarge' => false];
-
-        return view('/pages/usuarioeditar', ['pageConfigs' => $pageConfigs]);
-    }
-
     public function minhaconta()
     {
         // navbar large
