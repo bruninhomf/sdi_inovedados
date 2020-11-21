@@ -30,9 +30,7 @@
                 <h4 h4 class="card-title indigo-text pb-5"><strong>Proposta - Servidor de Armazenamento</strong></h4>
             </div>
             <div class="col s12" id="account">
-                
-                <!-- users edit media object ends -->
-                <!-- users edit account form start -->
+              
                 <form action="/armazenamento/{{$storageProposal->id}}" method="POST">
                     @csrf
                   <div class="row">

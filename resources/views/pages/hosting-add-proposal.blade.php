@@ -33,7 +33,7 @@
                 
                 <!-- users edit media object ends -->
                 <!-- users edit account form start -->
-                <form action="hospedagem" method="POST">
+                <form action="/hospedagem" method="POST">
                     @csrf
                   <div class="row">
                     <div class="col s12 m6">

@@ -15,7 +15,7 @@ use App\Http\Controllers\LanguageController;
 Route::get('/user-forgot-password', 'AuthenticationController@forgotPassword');
 Route::get('logout','AuthController@logout');
 
-
+Route::get('teste','DashboardController@teste');
 
 Route::get('verify','RequirementsController@verify');
 

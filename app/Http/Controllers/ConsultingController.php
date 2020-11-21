@@ -49,7 +49,9 @@ class ConsultingController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('/pages/consulting-view-proposal', [
+            'consultingproposal' => ConsultingProposal::find($id),
+        ]);
     }
 
     /**

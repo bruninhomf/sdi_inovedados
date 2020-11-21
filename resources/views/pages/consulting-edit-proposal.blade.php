@@ -156,7 +156,7 @@
             </div>
             <div class="col s12 display-flex justify-content-end mt-1">
                 <button type="submit" class="btn indigo mr-1">Salvar</button>
-                <a href="{{asset('desenvolvimento')}}" type="button" class="btn btn-light">Cancel</a>
+                <a href="/consultoria" type="button" class="btn btn-light">Cancel</a>
             </div>
           </form>
         </div>

@@ -15,7 +15,7 @@ class VirtualController extends Controller
     public function index()
     {
         return view('/pages/virtual-proposal', [
-            'vproposals' => virtualProposal::all(),
+            'virtualProposals' => virtualProposal::all(),
         ]);
     }
 
@@ -38,7 +38,7 @@ class VirtualController extends Controller
     public function store(Request $request)
     {
         $virtualProposal = virtualProposal::create($request->all());
-        return redirect('virtual/' . $virtualProposal->id);
+        return redirect('virtual');
     }
 
     /**
@@ -50,7 +50,7 @@ class VirtualController extends Controller
     public function show($id)
     {
         return view('/pages/virtual-view-proposal', [
-           'virtual/visualizar/' => virtualProposal::find($id),
+           'virtualproposal' => virtualProposal::find($id),
         ]);
     }
 

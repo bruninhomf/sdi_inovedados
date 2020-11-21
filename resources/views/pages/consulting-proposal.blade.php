@@ -37,45 +37,29 @@
           <table id="users-list-datatable" class="table">
             <thead>
               <tr>
-                <th></th>
-                <th>Name</th>
-                <th>CPF</th>
-                <th>Cargo</th>
-                <th>Situação</th>
+                <th>ID</th>
+                <th>Name do pojeto</th>
+                <th>Empresa</th>
+                <th>CNPJ</th>
+                <th>Telefone</th>
                 <th>Ações</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td></td>
-                <td>Dean Stanley</td>
-                <td>554.835.280-69</td>
-                <td>Tester</td>
-                <td><span class="chip green lighten-5">
-                    <span class="green-text">Active</span>
-                  </span>
-                </td>
-                <td>
-                    <a href="{{asset('usuariovisualizar')}}"><i class="material-icons">remove_red_eye</i></a>
-                    <a href="{{asset('usuarioeditar')}}"><i class="material-icons">edit</i></a>
-                    <a href="#"><i class="material-icons">delete_forever</i></a>
-                </td>
-              </tr>
-              <tr>
-                <td></td>
-                <td>Zena Buckley</td>
-                <td>452.030.490-33</td>
-                <td>Analista</td>
-                <td><span class="chip green lighten-5">
-                    <span class="green-text">Active</span>
-                  </span>
-                </td>
-                <td>
-                    <a href="{{asset('usuariovisualizar')}}"><i class="material-icons">remove_red_eye</i></a>
-                    <a href="{{asset('usuarioeditar')}}"><i class="material-icons">edit</i></a>
-                    <a href="#"><i class="material-icons">delete_forever</i></a>
-                </td>
-              </tr>
+              @foreach($consultingproposals as $key => $consultingproposal)
+                <tr>
+                  <td>{{ $consultingproposal->id }}</td>
+                  <td>{{ $consultingproposal->project }}</td>
+                  <td>{{ $consultingproposal->client }}</td>
+                  <td>{{ $consultingproposal->cnpj }}</td>
+                  <td>{{ $consultingproposal->phone }}</td>
+                  <td>
+                      <a href="consultoria/visualizar/{{ $consultingproposal->id }}"><i class="material-icons">remove_red_eye</i></a>
+                      <a href="consultoria/editar/{{ $consultingproposal->id }}"><i class="material-icons">edit</i></a>
+                      <a href="consultoria/apagar/{{ $consultingproposal->id }}"><i class="material-icons">delete_forever</i></a>
+                  </td>
+                </tr>
+              @endforeach
             </tbody>
           </table>
         </div>

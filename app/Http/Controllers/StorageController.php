@@ -49,8 +49,8 @@ class StorageController extends Controller
      */
     public function show($id)
     {
-        return view('/pages/armazenamento-view-proposal', [
-            'armazenamento/visualizar/' => StorageProposal::find($id),
+        return view('/pages/storage-view-proposal', [
+            'storageproposal' => StorageProposal::find($id),
          ]);
     }
 

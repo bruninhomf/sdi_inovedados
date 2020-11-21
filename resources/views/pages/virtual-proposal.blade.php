@@ -46,17 +46,17 @@
               </tr>
             </thead>
             <tbody>
-              @foreach($vproposals as $key => $vproposal)
+              @foreach($virtualProposals as $key => $virtualProposal)
                 <tr>
-                  <td>{{ $vproposal->id }}</td>
-                  <td>{{ $vproposal->cpu }}</td>
-                  <td>{{ $vproposal->memory }}</td>
-                  <td>{{ $vproposal->system }}</td>
-                  <td>{{ $vproposal->value }}</td>
+                  <td>{{ $virtualProposal->id }}</td>
+                  <td>{{ $virtualProposal->cpu }}</td>
+                  <td>{{ $virtualProposal->memory }}</td>
+                  <td>{{ $virtualProposal->system }}</td>
+                  <td>{{ $virtualProposal->value }}</td>
                   <td>
-                      <a href="virtual/visualizar/{{ $vproposal->id }}' . $vproposal->id)}}"><i class="material-icons">remove_red_eye</i></a>
-                      <a href="virtual/editar/{{ $vproposal->id }}"><i class="material-icons">edit</i></a>
-                      <a href="virtual/apagar/{{ $vproposal->id }}"><i class="material-icons">delete_forever</i></a>
+                      <a href="virtual/visualizar/{{ $virtualProposal->id }}"><i class="material-icons">remove_red_eye</i></a>
+                      <a href="virtual/editar/{{ $virtualProposal->id }}"><i class="material-icons">edit</i></a>
+                      <a href="virtual/apagar/{{ $virtualProposal->id }}"><i class="material-icons">delete_forever</i></a>
                   </td>
                 </tr>
               @endforeach              

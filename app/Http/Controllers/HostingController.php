@@ -49,7 +49,9 @@ class HostingController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('/pages/hosting-view-proposal', [
+            'hostingproposal' => HostingProposal::find($id),
+        ]);
     }
 
     /**

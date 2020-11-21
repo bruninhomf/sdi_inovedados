@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\DevelopmentProposal;
 use Illuminate\Http\Request;
+use App\DevelopmentProposal;
 
 class DevelopmentController extends Controller
 {
@@ -14,7 +14,9 @@ class DevelopmentController extends Controller
      */
     public function index()
     {
-        return view('/pages/development-proposal');
+        return view('/pages/development-proposal', [
+            'developmentproposals' => DevelopmentProposal::all(),
+        ]);
     }
 
     /**
@@ -36,7 +38,7 @@ class DevelopmentController extends Controller
     public function store(Request $request)
     {
         DevelopmentProposal::create($request->all());
-        return view('/pages/development-proposal');
+        return redirect('desenvolvimento');
     }
 
     /**
@@ -47,7 +49,9 @@ class DevelopmentController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('/pages/development-view-proposal', [
+            'developmentproposal' => DevelopmentProposal::find($id),
+        ]);
     }
 
     /**
@@ -58,7 +62,10 @@ class DevelopmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('/pages/development-edit-proposal', [
+            'developmentproposal' => DevelopmentProposal::find($id),
+        ]);
+        return redirect('desenvolvimento');
     }
 
     /**
@@ -70,7 +77,33 @@ class DevelopmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $developmentproposal = DevelopmentProposal::find($id);
+        if(isset($developmentproposal)) {
+            $developmentproposal -> project                 = $request->input('project');
+            $developmentproposal -> version                 = $request->input('version');
+            $developmentproposal -> date                    = $request->input('date');
+            $developmentproposal -> business_solution_one   = $request->input('business_solution_one');
+            $developmentproposal -> business_solution_two   = $request->input('business_solution_two');
+            $developmentproposal -> business_solution_three = $request->input('business_solution_three');
+            $developmentproposal -> requirements            = $request->input('requirements');
+            $developmentproposal -> start_development       = $request->input('start_development');
+            $developmentproposal -> texting_release         = $request->input('texting_release');
+            $developmentproposal -> start_test              = $request->input('start_test');
+            $developmentproposal -> homologation            = $request->input('homologation');
+            $developmentproposal -> contact_name            = $request->input('contact_name');
+            $developmentproposal -> client                  = $request->input('client');
+            $developmentproposal -> address                 = $request->input('address');
+            $developmentproposal -> phone                   = $request->input('phone');
+            $developmentproposal -> cnpj                    = $request->input('cnpj');
+            $developmentproposal -> amount                  = $request->input('amount');
+            $developmentproposal -> first_payment           = $request->input('first_payment');
+            $developmentproposal -> first_payment_date      = $request->input('first_payment_date');
+            $developmentproposal -> second_payment          = $request->input('second_payment');
+            $developmentproposal -> second_payment_date     = $request->input('second_payment_date');
+            $developmentproposal -> proposal_validity       = $request->input('proposal_validity');
+            $developmentproposal -> save();
+        }
+        return redirect('desenvolvimento');
     }
 
     /**
@@ -81,6 +114,10 @@ class DevelopmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $developmentproposal = DevelopmentProposal::find($id);
+        if (isset($developmentproposal)) {
+            $developmentproposal->delete();
+        }
+        return redirect('desenvolvimento');
     }
 }

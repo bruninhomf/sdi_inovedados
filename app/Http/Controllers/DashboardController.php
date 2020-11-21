@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\StorageProposal;
+use \PDF;
+
 class DashboardController extends Controller
 {
     public function dashboard()
@@ -26,5 +29,11 @@ class DashboardController extends Controller
         $pageConfigs = ['navbarLarge' => false];
 
         return view('/pages/historico', ['pageConfigs' => $pageConfigs]);
+    }
+
+    public function teste()
+    {
+        $pdf = PDF::loadView('pdf.report');
+return $pdf->stream('report.pdf', array('Attachment' => 0));
     }
 }

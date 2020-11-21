@@ -11,7 +11,6 @@
 
 {{-- page content  --}}
 @section('content')
-<!-- users view start -->
 <div class="section users-view">
   <!-- users view media object start -->
   <div class="card-panel">
@@ -20,21 +19,21 @@
         <div class="display-flex media">
           <div class="media-body pl-2">
             <h5 class="media-heading pt-1">
-              <span class="users-view-">Servidor Virtual</span>
+              <span class="users-view-">PDF</span>
             </h5>
           </div>
         </div>
       </div>
       <div class="col s12 m5 quick-action-btns display-flex justify-content-end align-items-center pt-2" width="500">
-        <a href="/virtual" class="btn-small btn-light-indigo">
+        <a href="/armazenamento" class="btn-small btn-light-indigo">
           <i class="material-icons mb-5">arrow_back</i>
           Voltar
         </a>
-        <a href="/virtual/imprimir" class="btn-small btn-waves-light">
+        <a href="/armazenamento/imprimir" class="btn-small btn-waves-light">
           <i class="material-icons mb-3">print</i>
           Imprimir
         </a>
-        <a href="/virtual/editar/{{ $virtualproposal->id }}" class="btn-small indigo">
+        <a href="/armazenamento/editar/" class="btn-small indigo">
           <i class="material-icons mb-5">edit</i>
           Editar
         </a>
@@ -48,36 +47,34 @@
           <table class="striped text-nowrap">
             <tbody>
               <tr>
-                <td>CPU:</td>
-                <td>{{ $virtualproposal->cpu }}</td>
+                <td>Espaço em disco:</td>
+                <td></td>
               </tr>
               <tr>
-                <td>Memoria:</td>
-                <td>{{ $virtualproposal->memory }}</td>
+                <td>Tráfego de dados:</td>
+                <td></td>
               </tr>
               <tr>
-                <td>Rede:</td>
-                <td>{{ $virtualproposal->network }}</td>
+                <td>Conexões simultâneas:</td>
+                <td></td>
               </tr>
               <tr>
-                <td>Sistema Operacional:</td>
-                <td>{{ $virtualproposal->system }}</td>
-              </tr>
-              <tr>
-                <td>IP:</td>
-                <td>{{ $virtualproposal->ip }}</td>
+                <td>Contas de FTP:</td>
+                <td></td>
               </tr>
               <tr>
                 <td>Valor:</td>
-                <td>{{ $virtualproposal->value }}</td>
+                <td></td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
+      <!-- </div> -->
     </div>
   </div>
 </div>
+<!-- users view ends -->
 @endsection
 
 {{-- page script --}}
