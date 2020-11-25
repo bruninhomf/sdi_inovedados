@@ -18,7 +18,6 @@ Route::get('logout','AuthController@logout');
 Route::get('teste/{proposal}','DashboardController@teste');
 Route::get('excel','DashboardController@excel');
 
-Route::get('verify','RequirementsController@verify');
 
 // Routes Protected
 Route::get('/', ['middleware' => 'auth', 'uses' => 'DashboardController@dashboard']);
@@ -36,7 +35,42 @@ Route::get('usuario/apagar/{id}', ['middleware' => 'auth', 'uses' => 'UserContro
 
 
 
+//REQUIREMENTS
 //Requirements
+Route::get('requisitos', ['middleware' => 'auth', 'uses' => 'RequirementsController@index']);
+Route::post('requisitos', ['middleware' => 'auth', 'uses' => 'RequirementsController@store']);
+Route::get('requisitos/novo', ['middleware' => 'auth', 'uses' => 'RequirementsController@create']);
+Route::get('requisitos/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementsController@show']);
+Route::get('requisitos/editar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementsController@edit']);
+Route::post('requisitos/{id}', ['middleware' => 'auth', 'uses' => 'RequirementsController@update']);
+Route::get('requisitos/apagar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementsController@destroy']);
+
+//Crudes - requirement
+Route::get('crudes', ['middleware' => 'auth', 'uses' => 'CrudsRequirementController@index']);
+Route::post('crudes', ['middleware' => 'auth', 'uses' => 'CrudsRequirementController@store']);
+Route::get('crudes/novo', ['middleware' => 'auth', 'uses' => 'CrudsRequirementController@create']);
+Route::get('crudes/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'CrudsRequirementController@show']);
+Route::get('crudes/editar/{id}', ['middleware' => 'auth', 'uses' => 'CrudsRequirementController@edit']);
+Route::post('crudes/{id}', ['middleware' => 'auth', 'uses' => 'CrudsRequirementController@update']);
+Route::get('crudes/apagar/{id}', ['middleware' => 'auth', 'uses' => 'CrudsRequirementController@destroy']);
+
+//Use case - requirement
+Route::get('cado-de-uso', ['middleware' => 'auth', 'uses' => 'RequirementUsecaseController@index']);
+Route::post('cado-de-uso', ['middleware' => 'auth', 'uses' => 'RequirementUsecaseController@store']);
+Route::get('cado-de-uso/novo', ['middleware' => 'auth', 'uses' => 'RequirementUsecaseController@create']);
+Route::get('cado-de-uso/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementUsecaseController@show']);
+Route::get('cado-de-uso/editar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementUsecaseController@edit']);
+Route::post('cado-de-uso/{id}', ['middleware' => 'auth', 'uses' => 'RequirementUsecaseController@update']);
+Route::get('cado-de-uso/apagar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementUsecaseController@destroy']);
+
+//Functionalit - requirement
+Route::get('requisitos-funcionais', ['middleware' => 'auth', 'uses' => 'FuncionalitRequirementController@index']);
+Route::post('requisitos-funcionais', ['middleware' => 'auth', 'uses' => 'FuncionalitRequirementController@store']);
+Route::get('requisitos-funcionais/novo', ['middleware' => 'auth', 'uses' => 'FuncionalitRequirementController@create']);
+Route::get('requisitos-funcionais/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'FuncionalitRequirementController@show']);
+Route::get('requisitos-funcionais/editar/{id}', ['middleware' => 'auth', 'uses' => 'FuncionalitRequirementController@edit']);
+Route::post('requisitos-funcionais/{id}', ['middleware' => 'auth', 'uses' => 'FuncionalitRequirementController@update']);
+Route::get('requisitos-funcionais/apagar/{id}', ['middleware' => 'auth', 'uses' => 'FuncionalitRequirementController@destroy']);
 
 
 // PROPOSAL
@@ -87,13 +121,43 @@ Route::post('/consultoria/{id}', ['middleware' => 'auth', 'uses' => 'ConsultingC
 Route::get('/consultoria/apagar/{id}', ['middleware' => 'auth', 'uses' => 'ConsultingController@destroy']);
 
 // TEST
+//Requirements - test
+Route::get('teste-requisitos', ['middleware' => 'auth', 'uses' => 'RequirementTestController@index']);
+Route::post('teste-requisitos', ['middleware' => 'auth', 'uses' => 'RequirementTestController@store']);
+Route::get('teste-requisitos/novo', ['middleware' => 'auth', 'uses' => 'RequirementTestController@create']);
+Route::get('teste-requisitos/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementTestController@show']);
+Route::get('teste-requisitos/editar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementTestController@edit']);
+Route::post('teste-requisitos/{id}', ['middleware' => 'auth', 'uses' => 'RequirementTestController@update']);
+Route::get('teste-requisitos/apagar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementTestController@destroy']);
+
+//Crudes - test
+Route::get('teste-crudes', ['middleware' => 'auth', 'uses' => 'CrudsTestController@index']);
+Route::post('teste-crudes', ['middleware' => 'auth', 'uses' => 'CrudsTestController@store']);
+Route::get('teste-crudes/novo', ['middleware' => 'auth', 'uses' => 'CrudsTestController@create']);
+Route::get('teste-crudes/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'CrudsTestController@show']);
+Route::get('teste-crudes/editar/{id}', ['middleware' => 'auth', 'uses' => 'CrudsTestController@edit']);
+Route::post('teste-crudes/{id}', ['middleware' => 'auth', 'uses' => 'CrudsTestController@update']);
+Route::get('teste-crudes/apagar/{id}', ['middleware' => 'auth', 'uses' => 'CrudsTestController@destroy']);
+
+//Use case - test
+Route::get('teste-cado-de-uso', ['middleware' => 'auth', 'uses' => 'UsecaseTestController@index']);
+Route::post('teste-cado-de-uso', ['middleware' => 'auth', 'uses' => 'UsecaseTestController@store']);
+Route::get('teste-cado-de-uso/novo', ['middleware' => 'auth', 'uses' => 'UsecaseTestController@create']);
+Route::get('teste-cado-de-uso/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'UsecaseTestController@show']);
+Route::get('teste-cado-de-uso/editar/{id}', ['middleware' => 'auth', 'uses' => 'UsecaseTestController@edit']);
+Route::post('teste-cado-de-uso/{id}', ['middleware' => 'auth', 'uses' => 'UsecaseTestController@update']);
+Route::get('teste-cado-de-uso/apagar/{id}', ['middleware' => 'auth', 'uses' => 'UsecaseTestController@destroy']);
+
+//Functional - test
+Route::get('testes-funcionais', ['middleware' => 'auth', 'uses' => 'FuncionalitTestController@index']);
+Route::post('testes-funcionais', ['middleware' => 'auth', 'uses' => 'FuncionalitTestController@store']);
+Route::get('testes-funcionais/novo', ['middleware' => 'auth', 'uses' => 'FuncionalitTestController@create']);
+Route::get('testes-funcionais/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'FuncionalitTestController@show']);
+Route::get('testes-funcionais/editar/{id}', ['middleware' => 'auth', 'uses' => 'FuncionalitTestController@edit']);
+Route::post('testes-funcionais/{id}', ['middleware' => 'auth', 'uses' => 'FuncionalitTestController@update']);
+Route::get('testes-funcionais/apagar/{id}', ['middleware' => 'auth', 'uses' => 'FuncionalitTestController@destroy']);
 
 
-
-// User Route
-// Route::get('/page-users-list', 'UserController@usersList');
-// Route::get('/page-users-view', 'UserController@usersView');
-// Route::get('/page-users-edit', 'UserController@usersEdit');
 
 // Authentication Route
 Route::get('/user-login', 'AuthenticationController@userLogin');
