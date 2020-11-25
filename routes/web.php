@@ -15,7 +15,8 @@ use App\Http\Controllers\LanguageController;
 Route::get('/user-forgot-password', 'AuthenticationController@forgotPassword');
 Route::get('logout','AuthController@logout');
 
-Route::get('teste','DashboardController@teste');
+Route::get('teste/{proposal}','DashboardController@teste');
+Route::get('excel','DashboardController@excel');
 
 Route::get('verify','RequirementsController@verify');
 
@@ -53,6 +54,7 @@ Route::get('/armazenamento', ['middleware' => 'auth', 'uses' => 'StorageControll
 Route::post('/armazenamento', ['middleware' => 'auth', 'uses' => 'StorageController@store']);
 Route::get('/armazenamento/novo', ['middleware' => 'auth', 'uses' => 'StorageController@create']);
 Route::get('/armazenamento/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'StorageController@show']);
+Route::get('/armazenamento/imprimir/{proposal}', ['middleware' => 'auth', 'uses' => 'StorageController@imprimir']);
 Route::get('/armazenamento/editar/{id}', ['middleware' => 'auth', 'uses' => 'StorageController@edit']);
 Route::post('/armazenamento/{id}', ['middleware' => 'auth', 'uses' => 'StorageController@update']);
 Route::get('/armazenamento/apagar/{id}', ['middleware' => 'auth', 'uses' => 'StorageController@destroy']);
