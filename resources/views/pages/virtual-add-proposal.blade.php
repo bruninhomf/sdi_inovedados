@@ -30,6 +30,7 @@
               <h4 h4 class="card-title indigo-text pb-5"><strong>Proposta - Servidor Virtual</strong></h4>
           </div>
           <div class="col s12" id="account">
+              
             <form action="{{ url('virtual') }}" method="POST">
                 @csrf
                 <div class="row">
@@ -38,7 +39,9 @@
                       <div class="col s12 input-field">
                         <input id="cpu" name="cpu" type="text" class="validate" data-error=".errorTxt2">
                         <label for="cpu">CPU</label>
-                        <small class="errorTxt2"></small>
+                        @error('cpu')
+                        <small class="errorTxt2">{{ $message }}</small>
+                        @enderror
                       </div>
                       <div class="col s12 input-field">
                         <input id="memory" name="memory" type="text" class="validate" data-error=".errorTxt1">
