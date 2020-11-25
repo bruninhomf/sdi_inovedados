@@ -103,4 +103,11 @@ class StorageController extends Controller
         }
         return redirect('armazenamento');
     }
+
+    public function imprimir(StorageProposal $proposal)
+    {
+        return view('/pages/storage-pdf-proposal', [
+            'storageproposal' => $proposal,
+         ]);
+    }
 }
