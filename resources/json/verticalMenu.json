@@ -22,28 +22,28 @@
       "tagcustom": "badge pill orange float-right mr-10",
       "submenu": [
         {
-          "url": "req1",
-          "name": "Req1",
-          "i18n": "Req1",
-          "slug": "req1"
+          "url": "requisitos",
+          "name": "Requisitos",
+          "i18n": "Requisitos",
+          "slug": "requisitos"
         },
         {
-          "url": "req2",
-          "name": "Req2",
-          "i18n": "Req2",
-          "slug": "req2"
+          "url": "crudes",
+          "name": "Crudes",
+          "i18n": "Crudes",
+          "slug": "crudes"
         },
         {
-          "url": "req3",
-          "name": "Req3",
-          "i18n": "Req3",
-          "slug": "req3"
+          "url": "cado-de-uso",
+          "name": "Caso de uso",
+          "i18n": "Caso de uso",
+          "slug": "cado-de-uso"
         },
         {
-          "url": "req4",
-          "name": "Req4",
-          "i18n": "Req4",
-          "slug": "req4"
+          "url": "testes-funcionais",
+          "name": "Testes Funcionais",
+          "i18n": "Testes Funcionais",
+          "slug": "testes-funcionais"
         }
       ]
     },
@@ -98,28 +98,28 @@
       "tagcustom": "badge pill orange float-right mr-10",
       "submenu": [
         {
-          "url": "testes1",
-          "name": "Testes1",
-          "i18n": "Testes1",
-          "slug": "testes1"
+          "url": "requisitos",
+          "name": "Requisitos",
+          "i18n": "Requisitos",
+          "slug": "requisitos"
         },
         {
-          "url": "testes2",
-          "name": "Testes2",
-          "i18n": "Testes2",
-          "slug": "testes2"
+          "url": "crudes",
+          "name": "Crudes",
+          "i18n": "Crudes",
+          "slug": "crudes"
         },
         {
-          "url": "testes3",
-          "name": "Testes3",
-          "i18n": "Testes3",
-          "slug": "testes3"
+          "url": "cado-de-uso",
+          "name": "Caso de uso",
+          "i18n": "Caso de uso",
+          "slug": "cado-de-uso"
         },
         {
-          "url": "testes4",
-          "name": "Testes4",
-          "i18n": "Testes4",
-          "slug": "testes4"
+          "url": "testes-funcionais",
+          "name": "Testes Funcionais",
+          "i18n": "Testes Funcionais",
+          "slug": "testes-funcionais"
         }
       ]
     },
