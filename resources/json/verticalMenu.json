@@ -40,10 +40,10 @@
           "slug": "cado-de-uso"
         },
         {
-          "url": "testes-funcionais",
-          "name": "Testes Funcionais",
-          "i18n": "Testes Funcionais",
-          "slug": "testes-funcionais"
+          "url": "requisitos-funcionais",
+          "name": "Requisitos Funcionais",
+          "i18n": "Requisitos Funcionais",
+          "slug": "requisitos-funcionais"
         }
       ]
     },
@@ -98,22 +98,22 @@
       "tagcustom": "badge pill orange float-right mr-10",
       "submenu": [
         {
-          "url": "requisitos",
+          "url": "teste-requisitos",
           "name": "Requisitos",
           "i18n": "Requisitos",
-          "slug": "requisitos"
+          "slug": "teste-requisitos"
         },
         {
-          "url": "crudes",
+          "url": "teste-crudes",
           "name": "Crudes",
           "i18n": "Crudes",
-          "slug": "crudes"
+          "slug": "teste-crudes"
         },
         {
-          "url": "cado-de-uso",
+          "url": "teste-cado-de-uso",
           "name": "Caso de uso",
           "i18n": "Caso de uso",
-          "slug": "cado-de-uso"
+          "slug": "teste-cado-de-uso"
         },
         {
           "url": "testes-funcionais",

@@ -5,7 +5,7 @@ return[
         "Requisitos"=> "Requisitos",
         "Crudes"=> "Crudes",
         "Caso de uso"=> "Caso de uso",
-        "Testes Funcionais"=> "Testes Funcionais",
+        "Requisitos Funcionais"=> "Requisitos Funcionais",
     "Propostas"=> "Propostas",
         "Servidorvirtual"=> "Servidor Virtual",
         "Armazenamento"=> "Serv. de Armazenamento",
