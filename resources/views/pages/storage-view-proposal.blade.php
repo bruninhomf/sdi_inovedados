@@ -29,7 +29,7 @@
           <i class="material-icons mb-5">arrow_back</i>
           Voltar
         </a>
-        <a href="/armazenamento/imprimir" class="btn-small btn-waves-light">
+        <a href="/armazenamento/imprimir/{{ $storageproposal->id }}" class="btn-small btn-waves-light">
           <i class="material-icons mb-3">print</i>
           Imprimir
         </a>
