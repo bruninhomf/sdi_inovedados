@@ -37,6 +37,8 @@ class VirtualController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate(['cpu' => 'required']);
+
         $virtualProposal = virtualProposal::create($request->all());
         return redirect('virtual');
     }
