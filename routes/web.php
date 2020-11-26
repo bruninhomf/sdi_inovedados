@@ -122,13 +122,13 @@ Route::get('/consultoria/apagar/{id}', ['middleware' => 'auth', 'uses' => 'Consu
 
 // TEST
 //Requirements - test
-Route::get('teste-requisitos', ['middleware' => 'auth', 'uses' => 'RequirementTestController@index']);
-Route::post('teste-requisitos', ['middleware' => 'auth', 'uses' => 'RequirementTestController@store']);
-Route::get('teste-requisitos/novo', ['middleware' => 'auth', 'uses' => 'RequirementTestController@create']);
-Route::get('teste-requisitos/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementTestController@show']);
-Route::get('teste-requisitos/editar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementTestController@edit']);
-Route::post('teste-requisitos/{id}', ['middleware' => 'auth', 'uses' => 'RequirementTestController@update']);
-Route::get('teste-requisitos/apagar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementTestController@destroy']);
+Route::get('teste-requisitos', ['middleware' => 'auth', 'uses' => 'RequirementTestSystemController@index']);
+Route::post('teste-requisitos', ['middleware' => 'auth', 'uses' => 'RequirementTestSystemController@store']);
+Route::get('teste-requisitos/novo', ['middleware' => 'auth', 'uses' => 'RequirementTestSystemController@create']);
+Route::get('teste-requisitos/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementTestSystemController@show']);
+Route::get('teste-requisitos/editar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementTestSystemController@edit']);
+Route::post('teste-requisitos/{id}', ['middleware' => 'auth', 'uses' => 'RequirementTestSystemController@update']);
+Route::get('teste-requisitos/apagar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementTestSystemController@destroy']);
 
 //Crudes - test
 Route::get('teste-crudes', ['middleware' => 'auth', 'uses' => 'CrudsTestController@index']);
