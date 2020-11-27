@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\virtualProposal;
+use Mpdf\Mpdf;
 
 class VirtualController extends Controller
 {
@@ -26,7 +27,7 @@ class VirtualController extends Controller
      */
     public function create()
     {
-        return view('/pages/virtual-add-proposal');
+        return view('/pages/virtual-proposal-add');
     }
 
     /**
@@ -51,9 +52,21 @@ class VirtualController extends Controller
      */
     public function show($id)
     {
-        return view('/pages/virtual-view-proposal', [
+        return view('/pages/virtual-proposal-view', [
            'virtualproposal' => virtualProposal::find($id),
         ]);
+    }
+
+    public function pdf(virtualProposal $virtual)
+    {
+        // $css = asset('css/pages/pdf.css');
+        $html = view('pages/virtual-proposal-pdf', [
+            'virtualproposal' => $virtual
+        ])->render();
+        $mpdf = new Mpdf();
+        // $mpdf->WriteHTML($css, 1);
+        $mpdf->WriteHTML($html);
+        $mpdf->Output();
     }
 
     /**
@@ -64,7 +77,7 @@ class VirtualController extends Controller
      */
     public function edit($id)
     {
-        return view('/pages/virtual-edit-proposal', [
+        return view('/pages/virtual-proposal-edit', [
             'virtualProposal' => virtualProposal::find($id),
         ]);
         return redirect('virtual');
