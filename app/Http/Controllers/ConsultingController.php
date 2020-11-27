@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ConsultingProposal;
 use Illuminate\Http\Request;
+use Mpdf\Mpdf;
 
 class ConsultingController extends Controller
 {
@@ -26,7 +27,7 @@ class ConsultingController extends Controller
      */
     public function create()
     {
-        return view('pages/consulting-add-proposal');
+        return view('pages/consulting-proposal-add');
     }
 
     /**
@@ -49,9 +50,21 @@ class ConsultingController extends Controller
      */
     public function show($id)
     {
-        return view('/pages/consulting-view-proposal', [
+        return view('/pages/consulting-proposal-view', [
             'consultingproposal' => ConsultingProposal::find($id),
         ]);
+    }
+
+    public function pdf(ConsultingProposal $consultoria)
+    {
+        // $css = asset('css/pages/pdf.css');
+        $html = view('pages/consulting-proposal-pdf', [
+            'consultingproposal' => $consultoria
+        ])->render();
+        $mpdf = new Mpdf();
+        // $mpdf->WriteHTML($css, 1);
+        $mpdf->WriteHTML($html);
+        $mpdf->Output();
     }
 
     /**
@@ -62,7 +75,7 @@ class ConsultingController extends Controller
      */
     public function edit($id)
     {
-        return view('/pages/consulting-edit-proposal', [
+        return view('/pages/consulting-proposal-edit', [
             'consultingproposal' => ConsultingProposal::find($id),
         ]);
         return redirect('consultoria');
