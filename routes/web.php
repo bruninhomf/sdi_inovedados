@@ -15,7 +15,6 @@ use App\Http\Controllers\LanguageController;
 Route::get('/user-forgot-password', 'AuthenticationController@forgotPassword');
 Route::get('logout','AuthController@logout');
 
-Route::get('teste/{proposal}','DashboardController@teste');
 Route::get('excel','DashboardController@excel');
 
 
@@ -79,6 +78,7 @@ Route::get('virtual', ['middleware' => 'auth', 'uses' => 'VirtualController@inde
 Route::post('virtual', ['middleware' => 'auth', 'uses' => 'VirtualController@store']);
 Route::get('virtual/novo', ['middleware' => 'auth', 'uses' => 'VirtualController@create']);
 Route::get('virtual/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'VirtualController@show']);
+Route::get('virtual/pdf/{virtual}', ['middleware' => 'auth', 'uses' => 'VirtualController@pdf']);
 Route::get('virtual/editar/{id}', ['middleware' => 'auth', 'uses' => 'VirtualController@edit']);
 Route::post('virtual/{id}', ['middleware' => 'auth', 'uses' => 'VirtualController@update']);
 Route::get('virtual/apagar/{id}', ['middleware' => 'auth', 'uses' => 'VirtualController@destroy']);
@@ -88,6 +88,7 @@ Route::get('/armazenamento', ['middleware' => 'auth', 'uses' => 'StorageControll
 Route::post('/armazenamento', ['middleware' => 'auth', 'uses' => 'StorageController@store']);
 Route::get('/armazenamento/novo', ['middleware' => 'auth', 'uses' => 'StorageController@create']);
 Route::get('/armazenamento/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'StorageController@show']);
+Route::get('armazenamento/pdf/{armazenamento}', ['middleware' => 'auth', 'uses' => 'StorageController@pdf']);
 Route::get('/armazenamento/imprimir/{proposal}', ['middleware' => 'auth', 'uses' => 'StorageController@imprimir']);
 Route::get('/armazenamento/editar/{id}', ['middleware' => 'auth', 'uses' => 'StorageController@edit']);
 Route::post('/armazenamento/{id}', ['middleware' => 'auth', 'uses' => 'StorageController@update']);
@@ -98,6 +99,7 @@ Route::get('/hospedagem', ['middleware' => 'auth', 'uses' => 'HostingController@
 Route::post('/hospedagem', ['middleware' => 'auth', 'uses' => 'HostingController@store']);
 Route::get('/hospedagem/novo', ['middleware' => 'auth', 'uses' => 'HostingController@create']);
 Route::get('/hospedagem/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'HostingController@show']);
+Route::get('hospedagem/pdf/{hospedagem}', ['middleware' => 'auth', 'uses' => 'HostingController@pdf']);
 Route::get('/hospedagem/editar/{id}', ['middleware' => 'auth', 'uses' => 'HostingController@edit']);
 Route::post('/hospedagem/{id}', ['middleware' => 'auth', 'uses' => 'HostingController@update']);
 Route::get('/hospedagem/apagar/{id}', ['middleware' => 'auth', 'uses' => 'HostingController@destroy']);
@@ -107,6 +109,7 @@ Route::get('/desenvolvimento', ['middleware' => 'auth', 'uses' => 'DevelopmentCo
 Route::post('/desenvolvimento', ['middleware' => 'auth', 'uses' => 'DevelopmentController@store']);
 Route::get('/desenvolvimento/novo', ['middleware' => 'auth', 'uses' => 'DevelopmentController@create']);
 Route::get('/desenvolvimento/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'DevelopmentController@show']);
+Route::get('desenvolvimento/pdf/{desenvolvimento}', ['middleware' => 'auth', 'uses' => 'DevelopmentController@pdf']);
 Route::get('/desenvolvimento/editar/{id}', ['middleware' => 'auth', 'uses' => 'DevelopmentController@edit']);
 Route::post('/desenvolvimento/{id}', ['middleware' => 'auth', 'uses' => 'DevelopmentController@update']);
 Route::get('/desenvolvimento/apagar/{id}', ['middleware' => 'auth', 'uses' => 'DevelopmentController@destroy']);
@@ -116,6 +119,7 @@ Route::get('/consultoria', ['middleware' => 'auth', 'uses' => 'ConsultingControl
 Route::post('/consultoria', ['middleware' => 'auth', 'uses' => 'ConsultingController@store']);
 Route::get('/consultoria/novo', ['middleware' => 'auth', 'uses' => 'ConsultingController@create']);
 Route::get('/consultoria/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'ConsultingController@show']);
+Route::get('consultoria/pdf/{consultoria}', ['middleware' => 'auth', 'uses' => 'ConsultingController@pdf']);
 Route::get('/consultoria/editar/{id}', ['middleware' => 'auth', 'uses' => 'ConsultingController@edit']);
 Route::post('/consultoria/{id}', ['middleware' => 'auth', 'uses' => 'ConsultingController@update']);
 Route::get('/consultoria/apagar/{id}', ['middleware' => 'auth', 'uses' => 'ConsultingController@destroy']);
