@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\HostingProposal;
+use Mpdf\Mpdf;
 
 class HostingController extends Controller
 {
@@ -26,7 +27,7 @@ class HostingController extends Controller
      */
     public function create()
     {
-        return view('/pages/hosting-add-proposal');
+        return view('/pages/hosting-proposal-add');
     }
 
     /**
@@ -49,9 +50,21 @@ class HostingController extends Controller
      */
     public function show($id)
     {
-        return view('/pages/hosting-view-proposal', [
+        return view('/pages/hosting-proposal-view', [
             'hostingproposal' => HostingProposal::find($id),
         ]);
+    }
+
+    public function pdf(HostingProposal $hospedagem)
+    {
+        // $css = asset('css/pages/pdf.css');
+        $html = view('pages/hosting-proposal-pdf', [
+            'hostingproposal' => $hospedagem
+        ])->render();
+        $mpdf = new Mpdf();
+        // $mpdf->WriteHTML($css, 1);
+        $mpdf->WriteHTML($html);
+        $mpdf->Output();
     }
 
     /**
@@ -62,7 +75,7 @@ class HostingController extends Controller
      */
     public function edit($id)
     {
-        return view('/pages/hosting-edit-proposal', [
+        return view('/pages/hosting-proposal-edit', [
             'hostingproposal' => HostingProposal::find($id),
         ]);
         return redirect('hospedagem');
