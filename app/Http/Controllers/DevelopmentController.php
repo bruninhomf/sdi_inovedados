@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\DevelopmentProposal;
+use Mpdf\Mpdf;
 
 class DevelopmentController extends Controller
 {
@@ -26,7 +27,7 @@ class DevelopmentController extends Controller
      */
     public function create()
     {
-        return view('/pages/development-add-proposal');
+        return view('/pages/development-proposal-add');
     }
 
     /**
@@ -49,9 +50,21 @@ class DevelopmentController extends Controller
      */
     public function show($id)
     {
-        return view('/pages/development-view-proposal', [
+        return view('/pages/development-proposal-view', [
             'developmentproposal' => DevelopmentProposal::find($id),
         ]);
+    }
+
+    public function pdf(DevelopmentProposal $desenvolvimento)
+    {
+        // $css = asset('css/pages/pdf.css');
+        $html = view('pages/development-proposal-pdf', [
+            'developmentproposal' => $desenvolvimento
+        ])->render();
+        $mpdf = new Mpdf();
+        // $mpdf->WriteHTML($css, 1);
+        $mpdf->WriteHTML($html);
+        $mpdf->Output();
     }
 
     /**
@@ -62,7 +75,7 @@ class DevelopmentController extends Controller
      */
     public function edit($id)
     {
-        return view('/pages/development-edit-proposal', [
+        return view('/pages/development-proposal-edit', [
             'developmentproposal' => DevelopmentProposal::find($id),
         ]);
         return redirect('desenvolvimento');
