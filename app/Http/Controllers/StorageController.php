@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\StorageProposal;
+use Mpdf\Mpdf;
 
 class StorageController extends Controller
 {
@@ -26,7 +27,7 @@ class StorageController extends Controller
      */
     public function create()
     {
-        return view('/pages/storage-add-proposal');
+        return view('/pages/storage-proposal-add');
     }
 
     /**
@@ -49,9 +50,21 @@ class StorageController extends Controller
      */
     public function show($id)
     {
-        return view('/pages/storage-view-proposal', [
+        return view('/pages/storage-proposal-view', [
             'storageproposal' => StorageProposal::find($id),
          ]);
+    }
+
+    public function pdf(StorageProposal $armazenamento)
+    {
+        // $css = asset('css/pages/pdf.css');
+        $html = view('pages/storage-proposal-pdf', [
+            'storageproposal' => $armazenamento
+        ])->render();
+        $mpdf = new Mpdf();
+        // $mpdf->WriteHTML($css, 1);
+        $mpdf->WriteHTML($html);
+        $mpdf->Output();
     }
 
     /**
@@ -62,7 +75,7 @@ class StorageController extends Controller
      */
     public function edit($id)
     {
-        return view('/pages/storage-edit-proposal', [
+        return view('/pages/storage-proposal-edit', [
             'storageProposal' => StorageProposal::find($id),
         ]);
         return redirect('armazenamento');
@@ -106,7 +119,7 @@ class StorageController extends Controller
 
     public function imprimir(StorageProposal $proposal)
     {
-        return view('/pages/storage-pdf-proposal', [
+        return view('/pages/storage-proposal-pdf', [
             'storageproposal' => $proposal,
          ]);
     }
