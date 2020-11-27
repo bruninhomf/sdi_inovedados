@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\StorageProposal;
-use Mpdf\Mpdf;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -50,18 +49,6 @@ class DashboardController extends Controller
         $pageConfigs = ['navbarLarge' => false];
 
         return view('/pages/historico', ['pageConfigs' => $pageConfigs]);
-    }
-
-    public function teste(StorageProposal $proposal)
-    {
-        // $css = asset('css/pages/pdf.css');
-        $html = view('pages/storage-pdf-proposal', [
-            'storageproposal' => $proposal
-        ])->render();
-        $mpdf = new Mpdf();
-        // $mpdf->WriteHTML($css, 1);
-        $mpdf->WriteHTML($html);
-        $mpdf->Output();
     }
 
     public function excel()
