@@ -15,7 +15,7 @@ class CreateCrudsTestSystems extends Migration
     {
         Schema::create('cruds_test_systems', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nome');
+            $table->string('name');
             $table->timestamps();
         });
     }

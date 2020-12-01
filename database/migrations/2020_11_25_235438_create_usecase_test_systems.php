@@ -15,7 +15,7 @@ class CreateUsecaseTestSystems extends Migration
     {
         Schema::create('usecase_test_systems', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nome');
+            $table->string('name');
             $table->timestamps();
         });
     }
