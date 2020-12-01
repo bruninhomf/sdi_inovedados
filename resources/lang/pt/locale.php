@@ -1,11 +1,7 @@
 <?php
 return[
     "Dashboard"=> "Dashboard",
-    "Requisitos"=> "Requisitos",
-        "Requisitos"=> "Requisitos",
-        "Crudes"=> "Crudes",
-        "Caso de uso"=> "Caso de uso",
-        "Requisitos Funcionais"=> "Requisitos Funcionais",
+    "Levantamento de Requisitos"=> "Lev. de Requisitos",
     "Propostas"=> "Propostas",
         "Servidorvirtual"=> "Servidor Virtual",
         "Armazenamento"=> "Serv. de Armazenamento",

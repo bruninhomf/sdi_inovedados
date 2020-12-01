@@ -13,39 +13,12 @@
       "icon": "more_horiz"
     },
     {
-      "url": "javascript:void(0)",
-      "name": "Requisitos",
-      "i18n": "Requisitos",
-      "class": "collapsible-header waves-effect waves-cyan",
+      "url": "requisitos",
+      "name": "Levantamento de Requisitos",
+      "i18n": "Levantamento de Requisitos",
       "slug": "requisitos",
       "icon": "content_paste",
-      "tagcustom": "badge pill orange float-right mr-10",
-      "submenu": [
-        {
-          "url": "requisitos",
-          "name": "Requisitos",
-          "i18n": "Requisitos",
-          "slug": "requisitos"
-        },
-        {
-          "url": "crudes",
-          "name": "Crudes",
-          "i18n": "Crudes",
-          "slug": "crudes"
-        },
-        {
-          "url": "cado-de-uso",
-          "name": "Caso de uso",
-          "i18n": "Caso de uso",
-          "slug": "cado-de-uso"
-        },
-        {
-          "url": "requisitos-funcionais",
-          "name": "Requisitos Funcionais",
-          "i18n": "Requisitos Funcionais",
-          "slug": "requisitos-funcionais"
-        }
-      ]
+      "tagcustom": "badge pill orange float-right mr-10"
     },
     {
       "url": "javascript:void(0)",
