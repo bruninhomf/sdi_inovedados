@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\UsecaseTest;
+use App\UsecaseTestSystem;
 use Illuminate\Http\Request;
 
 class UsecaseTestController extends Controller
@@ -14,7 +14,9 @@ class UsecaseTestController extends Controller
      */
     public function index()
     {
-        //
+        return view('/pages/usecase-test', [
+            'usecasetestsystems' => UsecaseTestSystem::all(),
+        ]);
     }
 
     /**
