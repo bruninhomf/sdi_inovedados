@@ -153,7 +153,7 @@ Route::post('teste-cado-de-uso/{id}', ['middleware' => 'auth', 'uses' => 'Usecas
 Route::get('teste-cado-de-uso/apagar/{id}', ['middleware' => 'auth', 'uses' => 'UsecaseTestController@destroy']);
 
 //Functional - test
-Route::get('testes-funcionais', ['middleware' => 'auth', 'uses' => 'FuncionalitTestController@index']);
+Route::get('testes-funcionais', ['middleware' => 'auth', 'uses' => 'FunctionalitTestController@index']);
 Route::post('testes-funcionais', ['middleware' => 'auth', 'uses' => 'FuncionalitTestController@store']);
 Route::get('testes-funcionais/novo', ['middleware' => 'auth', 'uses' => 'FuncionalitTestController@create']);
 Route::get('testes-funcionais/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'FuncionalitTestController@show']);
