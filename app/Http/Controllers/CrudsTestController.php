@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\CrudsTest;
+use App\CrudsTestSystem;
 use Illuminate\Http\Request;
 
 class CrudsTestController extends Controller
@@ -14,7 +14,9 @@ class CrudsTestController extends Controller
      */
     public function index()
     {
-        //
+        return view('/pages/cruds-test', [
+            'crudstestsystems' => CrudsTestSystem::all(),
+        ]);
     }
 
     /**
