@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class RequirementTestSystem extends Model
 {
     protected $fillable = [
-        'nome', 
+        'name_system', 
     ];
 }
