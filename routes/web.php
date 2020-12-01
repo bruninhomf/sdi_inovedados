@@ -36,40 +36,13 @@ Route::get('usuario/apagar/{id}', ['middleware' => 'auth', 'uses' => 'UserContro
 
 //REQUIREMENTS
 //Requirements
-Route::get('requisitos', ['middleware' => 'auth', 'uses' => 'RequirementsController@index']);
-Route::post('requisitos', ['middleware' => 'auth', 'uses' => 'RequirementsController@store']);
-Route::get('requisitos/novo', ['middleware' => 'auth', 'uses' => 'RequirementsController@create']);
-Route::get('requisitos/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementsController@show']);
-Route::get('requisitos/editar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementsController@edit']);
-Route::post('requisitos/{id}', ['middleware' => 'auth', 'uses' => 'RequirementsController@update']);
-Route::get('requisitos/apagar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementsController@destroy']);
-
-//Crudes - requirement
-Route::get('crudes', ['middleware' => 'auth', 'uses' => 'CrudsRequirementController@index']);
-Route::post('crudes', ['middleware' => 'auth', 'uses' => 'CrudsRequirementController@store']);
-Route::get('crudes/novo', ['middleware' => 'auth', 'uses' => 'CrudsRequirementController@create']);
-Route::get('crudes/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'CrudsRequirementController@show']);
-Route::get('crudes/editar/{id}', ['middleware' => 'auth', 'uses' => 'CrudsRequirementController@edit']);
-Route::post('crudes/{id}', ['middleware' => 'auth', 'uses' => 'CrudsRequirementController@update']);
-Route::get('crudes/apagar/{id}', ['middleware' => 'auth', 'uses' => 'CrudsRequirementController@destroy']);
-
-//Use case - requirement
-Route::get('cado-de-uso', ['middleware' => 'auth', 'uses' => 'RequirementUsecaseController@index']);
-Route::post('cado-de-uso', ['middleware' => 'auth', 'uses' => 'RequirementUsecaseController@store']);
-Route::get('cado-de-uso/novo', ['middleware' => 'auth', 'uses' => 'RequirementUsecaseController@create']);
-Route::get('cado-de-uso/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementUsecaseController@show']);
-Route::get('cado-de-uso/editar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementUsecaseController@edit']);
-Route::post('cado-de-uso/{id}', ['middleware' => 'auth', 'uses' => 'RequirementUsecaseController@update']);
-Route::get('cado-de-uso/apagar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementUsecaseController@destroy']);
-
-//Functionalit - requirement
-Route::get('requisitos-funcionais', ['middleware' => 'auth', 'uses' => 'FuncionalitRequirementController@index']);
-Route::post('requisitos-funcionais', ['middleware' => 'auth', 'uses' => 'FuncionalitRequirementController@store']);
-Route::get('requisitos-funcionais/novo', ['middleware' => 'auth', 'uses' => 'FuncionalitRequirementController@create']);
-Route::get('requisitos-funcionais/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'FuncionalitRequirementController@show']);
-Route::get('requisitos-funcionais/editar/{id}', ['middleware' => 'auth', 'uses' => 'FuncionalitRequirementController@edit']);
-Route::post('requisitos-funcionais/{id}', ['middleware' => 'auth', 'uses' => 'FuncionalitRequirementController@update']);
-Route::get('requisitos-funcionais/apagar/{id}', ['middleware' => 'auth', 'uses' => 'FuncionalitRequirementController@destroy']);
+Route::get('requisitos', ['middleware' => 'auth', 'uses' => 'RequirementsGatheringsController@index']);
+Route::post('requisitos', ['middleware' => 'auth', 'uses' => 'RequirementsGatheringsController@store']);
+Route::get('requisitos/novo', ['middleware' => 'auth', 'uses' => 'RequirementsGatheringsController@create']);
+Route::get('requisitos/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementsGatheringsController@show']);
+Route::get('requisitos/editar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementsGatheringsController@edit']);
+Route::post('requisitos/{id}', ['middleware' => 'auth', 'uses' => 'RequirementsGatheringsController@update']);
+Route::get('requisitos/apagar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementsGatheringsController@destroy']);
 
 
 // PROPOSAL
