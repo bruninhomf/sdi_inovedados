@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\RequirementTestSystem;
+use App\RequirementTestModule;
+use App\RequirementTestRequirement;
 use Illuminate\Http\Request;
 
 class RequirementTestSystemController extends Controller
@@ -26,7 +28,7 @@ class RequirementTestSystemController extends Controller
      */
     public function create()
     {
-        //
+        return view('/pages/requirements-test-add');
     }
 
     /**
@@ -37,7 +39,12 @@ class RequirementTestSystemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //$request->validate(['cpu' => 'required']);
+
+        $requirementtestsystems = RequirementTestSystem::create($request->all());
+        $requirementtestmodules = RequirementTestModule::create($request->all());
+        $requirementtestrequirements = RequirementTestRequirement::create($request->all());
+        return redirect('teste-requisitos');
     }
 
     /**
@@ -46,9 +53,11 @@ class RequirementTestSystemController extends Controller
      * @param  \App\RequirementTestSystem  $requirementTestSystem
      * @return \Illuminate\Http\Response
      */
-    public function show(RequirementTestSystem $requirementTestSystem)
+    public function show($id)
     {
-        //
+        return view('/pages/requiremente-test-view', [
+           'requirementtestsystems' => RequirementTestSystem::find($id),
+        ]);
     }
 
     /**
@@ -57,9 +66,12 @@ class RequirementTestSystemController extends Controller
      * @param  \App\RequirementTestSystem  $requirementTestSystem
      * @return \Illuminate\Http\Response
      */
-    public function edit(RequirementTestSystem $requirementTestSystem)
+    public function edit($id)
     {
-        //
+        return view('/pages/requiremente-test-edit', [
+            'requirementtestsystems' => RequirementTestSystem::find($id),
+        ]);
+        return redirect('teste-requisitos');
     }
 
     /**
@@ -69,9 +81,23 @@ class RequirementTestSystemController extends Controller
      * @param  \App\RequirementTestSystem  $requirementTestSystem
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RequirementTestSystem $requirementTestSystem)
+    public function update(Request $request, $id)
     {
-        //
+        $requirementtestsystem       =  RequirementTestSystem::find($id);
+        $requirementtestmodule       =  RequirementTestModule::find($id);
+        $requirementtestrequirement  =  RequirementTestRequirement::find($id);
+        if(isset($requirementtestsystem)) {
+            $requirementtestsystem -> name_system  =  $request->input('name_system');
+        }
+        if(isset($requirementtestmodule)) {
+            $requirementtestsystem -> name         =  $request->input('name');
+        }
+        if(isset($requirementtestrequirement)) {
+            $requirementtestsystem -> description  =  $request->input('description');
+            $requirementtestsystem -> status       =  $request->input('status');
+            $requirementtestsystem -> save();
+        }
+        return redirect('teste-requisitos');
     }
 
     /**
@@ -80,8 +106,12 @@ class RequirementTestSystemController extends Controller
      * @param  \App\RequirementTestSystem  $requirementTestSystem
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RequirementTestSystem $requirementTestSystem)
+    public function destroy($id)
     {
-        //
+        $requirementtestsystem = RequirementTestSystem::find($id);
+        if (isset($requirementtestsystem)) {
+            $requirementtestsystem->delete();
+        }
+        return redirect('teste-requisitos');
     }
 }
