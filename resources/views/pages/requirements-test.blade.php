@@ -29,7 +29,7 @@
                 <h4 h4 class="card-title indigo-text pb-5"><strong>Teste de Requisitos</strong></h4>
             </div>
             <div class="col s6 right-align">
-                <a href="virtual/novo" class="waves-effect waves-light btn-small"><i class="material-icons left">receipt</i>Nova Proposta</a>
+                <a href="teste-requisitos/novo" class="waves-effect waves-light btn-small"><i class="material-icons left">receipt</i>Nova Proposta</a>
             </div>
         </div>
         <!-- datatable start -->
@@ -38,10 +38,8 @@
             <thead>
               <tr>
                 <th>ID</th>
-                <th>CPU</th>
-                <th>Memoria</th>
-                <th>Sistema Operacional</th>
-                <th>Valor</th>
+                <th>Nome</th>
+                <th>Data</th>
                 <th>Ações</th>
               </tr>
             </thead>
@@ -49,12 +47,11 @@
               @foreach($requirementtestsystems as $key => $requirementtestsystem)
                 <tr>
                   <td>{{ $requirementtestsystem->id }}</td>
-                  <td>{{ $requirementtestsystem->name }}</td>
-                  <td>{{ $requirementtestsystem->situation }}</td>
+                  <td>{{ $requirementtestsystem->name_system }}</td>
                   <td>
-                      <a href="virtual/visualizar/{{ $requirementtestsystem->id }}"><i class="material-icons">remove_red_eye</i></a>
-                      <a href="virtual/editar/{{ $requirementtestsystem->id }}"><i class="material-icons">edit</i></a>
-                      <a href="virtual/apagar/{{ $requirementtestsystem->id }}"><i class="material-icons">delete_forever</i></a>
+                      <a href="teste-requisitos/visualizar/{{ $requirementtestsystem->id }}"><i class="material-icons">remove_red_eye</i></a>
+                      <a href="teste-requisitos/editar/{{ $requirementtestsystem->id }}"><i class="material-icons">edit</i></a>
+                      <a href="teste-requisitos/apagar/{{ $requirementtestsystem->id }}"><i class="material-icons">delete_forever</i></a>
                   </td>
                 </tr>
               @endforeach              
