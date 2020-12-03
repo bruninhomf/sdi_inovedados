@@ -33,7 +33,6 @@ Route::post('usuario/{id}', ['middleware' => 'auth', 'uses' => 'UserController@u
 Route::get('usuario/apagar/{id}', ['middleware' => 'auth', 'uses' => 'UserController@destroy']);
 
 
-
 //REQUIREMENTS
 //Requirements
 Route::get('requisitos', ['middleware' => 'auth', 'uses' => 'RequirementsGatheringsController@index']);
@@ -43,7 +42,6 @@ Route::get('requisitos/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'Req
 Route::get('requisitos/editar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementsGatheringsController@edit']);
 Route::post('requisitos/{id}', ['middleware' => 'auth', 'uses' => 'RequirementsGatheringsController@update']);
 Route::get('requisitos/apagar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementsGatheringsController@destroy']);
-
 
 // PROPOSAL
 //Virtual
@@ -96,6 +94,7 @@ Route::get('consultoria/pdf/{consultoria}', ['middleware' => 'auth', 'uses' => '
 Route::get('/consultoria/editar/{id}', ['middleware' => 'auth', 'uses' => 'ConsultingController@edit']);
 Route::post('/consultoria/{id}', ['middleware' => 'auth', 'uses' => 'ConsultingController@update']);
 Route::get('/consultoria/apagar/{id}', ['middleware' => 'auth', 'uses' => 'ConsultingController@destroy']);
+
 
 // TEST
 //Requirements - test
