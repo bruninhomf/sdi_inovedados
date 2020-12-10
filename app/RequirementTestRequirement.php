@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class RequirementTestRequirement extends Model
 {
     protected $fillable = [
-        'description', 'status', 
+        'module_id', 'description', 'status', 
     ];
 }
