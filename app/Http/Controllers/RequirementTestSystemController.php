@@ -39,11 +39,8 @@ class RequirementTestSystemController extends Controller
      */
     public function store(Request $request)
     {
-        //$request->validate(['cpu' => 'required']);
-
-        $requirementtestsystems = RequirementTestSystem::create($request->all());
-        $requirementtestmodules = RequirementTestModule::create($request->all());
-        $requirementtestrequirements = RequirementTestRequirement::create($request->all());
+        $requirementTestSystem = RequirementTestSystem::create($request->except('modulos'));
+        $requirementTestSystem->insertModules($request->only('modulos'));
         return redirect('teste-requisitos');
     }
 
@@ -55,7 +52,7 @@ class RequirementTestSystemController extends Controller
      */
     public function show($id)
     {
-        return view('/pages/requiremente-test-view', [
+        return view('/pages/requirementes-test-view', [
            'requirementtestsystems' => RequirementTestSystem::find($id),
         ]);
     }
@@ -68,8 +65,10 @@ class RequirementTestSystemController extends Controller
      */
     public function edit($id)
     {
-        return view('/pages/requiremente-test-edit', [
-            'requirementtestsystems' => RequirementTestSystem::find($id),
+        return view('/pages/requirements-test-edit', [
+            'requirementtestsystems'        => RequirementTestSystem::find($id), 
+            'requirementtestmodules'        => RequirementTestModule::find($id), 
+            'requirementtestrequirements'   => RequirementTestRequirement::find($id),
         ]);
         return redirect('teste-requisitos');
     }
