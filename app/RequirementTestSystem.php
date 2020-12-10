@@ -10,15 +10,15 @@ class RequirementTestSystem extends Model
     protected $fillable = [
         'name_system', 
     ];
-    public function inserirmodulo($dados) {
+    public function insertModules($dados) {
         if($dados && isset($dados['modulos'])) {
             foreach($dados['modulos'] as $modulo) {
-                RequirementTestModule::create([
-                   'system_id' => $this->id,
-                   'name'  => $modulo['name'],
-                   'description'  => $modulo['description'],
-                   'status' => $modulo['status'],
+                $requirementTestModule = RequirementTestModule::create([
+                   'system_id'    =>  $this->id,
+                   'name'         =>  $modulo['name']
                 ]);
+
+                $requirementTestModule->insertRequeriments($modulo);
             }
         }
     }
