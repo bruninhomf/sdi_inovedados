@@ -102,6 +102,7 @@ class DevelopmentController extends Controller
             $developmentproposal -> start_development       = $request->input('start_development');
             $developmentproposal -> texting_release         = $request->input('texting_release');
             $developmentproposal -> start_test              = $request->input('start_test');
+            $developmentproposal -> delivery                = $request->input('delivery');
             $developmentproposal -> homologation            = $request->input('homologation');
             $developmentproposal -> contact_name            = $request->input('contact_name');
             $developmentproposal -> client                  = $request->input('client');
