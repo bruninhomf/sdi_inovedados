@@ -18,7 +18,7 @@ class CreateDevelopmentProposals extends Migration
             $table->string('project');
             $table->string('version');
             $table->date('date');
-            $table->char('business_solution_one')->nullable();
+            $table->char('business_solution_one');
             $table->char('business_solution_two')->nullable();
             $table->char('business_solution_three')->nullable();
             $table->string('requirements');
@@ -26,6 +26,7 @@ class CreateDevelopmentProposals extends Migration
             $table->date('texting_release');
             $table->date('start_test');
             $table->date('homologation');
+            $table->date('delivery');
             $table->string('contact_name');
             $table->string('client');
             $table->string('address');
