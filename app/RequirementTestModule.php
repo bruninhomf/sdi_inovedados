@@ -8,6 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class RequirementTestModule extends Model
 {
     protected $fillable = [
-        'name',
+        'system_id', 'name'
     ];
+
+
+    public function insertRequeriments($dados)
+    {
+        RequirementTestRequirement::create([
+            'module_id' => $this->id,
+            'description' => $dados['description'],
+            'status' => $dados['status']
+        ]);
+    }
 }
