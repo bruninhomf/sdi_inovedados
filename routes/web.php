@@ -15,8 +15,6 @@ use App\Http\Controllers\LanguageController;
 Route::get('/user-forgot-password', 'AuthenticationController@forgotPassword');
 Route::get('logout','AuthController@logout');
 
-Route::get('excel','DashboardController@excel');
-
 
 // Routes Protected
 Route::get('/', ['middleware' => 'auth', 'uses' => 'DashboardController@dashboard']);
@@ -102,6 +100,7 @@ Route::get('teste-requisitos', ['middleware' => 'auth', 'uses' => 'RequirementTe
 Route::post('teste-requisitos', ['middleware' => 'auth', 'uses' => 'RequirementTestSystemController@store']);
 Route::get('teste-requisitos/novo', ['middleware' => 'auth', 'uses' => 'RequirementTestSystemController@create']);
 Route::get('teste-requisitos/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementTestSystemController@show']);
+Route::get('teste-requisitos/excel/{id}', ['middleware' => 'auth', 'uses' => 'RequirementTestSystemController@excel']);
 Route::get('teste-requisitos/editar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementTestSystemController@edit']);
 Route::post('teste-requisitos/{id}', ['middleware' => 'auth', 'uses' => 'RequirementTestSystemController@update']);
 Route::get('teste-requisitos/apagar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementTestSystemController@destroy']);
@@ -116,22 +115,22 @@ Route::post('teste-crudes/{id}', ['middleware' => 'auth', 'uses' => 'CrudsTestCo
 Route::get('teste-crudes/apagar/{id}', ['middleware' => 'auth', 'uses' => 'CrudsTestController@destroy']);
 
 //Use case - test
-Route::get('teste-cado-de-uso', ['middleware' => 'auth', 'uses' => 'UsecaseTestController@index']);
-Route::post('teste-cado-de-uso', ['middleware' => 'auth', 'uses' => 'UsecaseTestController@store']);
-Route::get('teste-cado-de-uso/novo', ['middleware' => 'auth', 'uses' => 'UsecaseTestController@create']);
-Route::get('teste-cado-de-uso/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'UsecaseTestController@show']);
-Route::get('teste-cado-de-uso/editar/{id}', ['middleware' => 'auth', 'uses' => 'UsecaseTestController@edit']);
-Route::post('teste-cado-de-uso/{id}', ['middleware' => 'auth', 'uses' => 'UsecaseTestController@update']);
-Route::get('teste-cado-de-uso/apagar/{id}', ['middleware' => 'auth', 'uses' => 'UsecaseTestController@destroy']);
+Route::get('teste-caso-de-uso', ['middleware' => 'auth', 'uses' => 'UsecaseTestController@index']);
+Route::post('teste-caso-de-uso', ['middleware' => 'auth', 'uses' => 'UsecaseTestController@store']);
+Route::get('teste-caso-de-uso/novo', ['middleware' => 'auth', 'uses' => 'UsecaseTestController@create']);
+Route::get('teste-caso-de-uso/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'UsecaseTestController@show']);
+Route::get('teste-caso-de-uso/editar/{id}', ['middleware' => 'auth', 'uses' => 'UsecaseTestController@edit']);
+Route::post('teste-caso-de-uso/{id}', ['middleware' => 'auth', 'uses' => 'UsecaseTestController@update']);
+Route::get('teste-caso-de-uso/apagar/{id}', ['middleware' => 'auth', 'uses' => 'UsecaseTestController@destroy']);
 
 //Functional - test
 Route::get('testes-funcionais', ['middleware' => 'auth', 'uses' => 'FunctionalitTestController@index']);
-Route::post('testes-funcionais', ['middleware' => 'auth', 'uses' => 'FuncionalitTestController@store']);
-Route::get('testes-funcionais/novo', ['middleware' => 'auth', 'uses' => 'FuncionalitTestController@create']);
-Route::get('testes-funcionais/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'FuncionalitTestController@show']);
-Route::get('testes-funcionais/editar/{id}', ['middleware' => 'auth', 'uses' => 'FuncionalitTestController@edit']);
-Route::post('testes-funcionais/{id}', ['middleware' => 'auth', 'uses' => 'FuncionalitTestController@update']);
-Route::get('testes-funcionais/apagar/{id}', ['middleware' => 'auth', 'uses' => 'FuncionalitTestController@destroy']);
+Route::post('testes-funcionais', ['middleware' => 'auth', 'uses' => 'FunctionalitTestController@store']);
+Route::get('testes-funcionais/novo', ['middleware' => 'auth', 'uses' => 'FunctionalitTestController@create']);
+Route::get('testes-funcionais/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'FunctionalitTestController@show']);
+Route::get('testes-funcionais/editar/{id}', ['middleware' => 'auth', 'uses' => 'FunctionalitTestController@edit']);
+Route::post('testes-funcionais/{id}', ['middleware' => 'auth', 'uses' => 'FunctionalitTestController@update']);
+Route::get('testes-funcionais/apagar/{id}', ['middleware' => 'auth', 'uses' => 'FunctionalitTestController@destroy']);
 
 
 
