@@ -23,7 +23,7 @@ class CreateHostingProposals extends Migration
             $table->string('ftp_accounts')->nullable();
             $table->string('database')->nullable();
             $table->string('php_processes')->nullable();
-            $table->float('value');
+            $table->string('value');
             $table->timestamps();
         });
     }

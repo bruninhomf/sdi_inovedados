@@ -20,7 +20,7 @@ class CreateVirtualProposalsTable extends Migration
             $table->string('network');
             $table->string('system')->nullable();
             $table->string('ip')->nullable();
-            $table->float('value')->nullable();
+            $table->string('value')->nullable();
             $table->timestamps();
         });
     }

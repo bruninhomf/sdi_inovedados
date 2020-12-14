@@ -19,7 +19,7 @@ class CreateStorageProposalsTable extends Migration
             $table->string('traffic');
             $table->string('connections')->nullable();
             $table->string('accounts');
-            $table->float('value');
+            $table->string('value');
             $table->timestamps();
         });
     }
