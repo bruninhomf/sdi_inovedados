@@ -38,7 +38,14 @@ class VirtualController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate(['cpu' => 'required']);
+        $request->validate([
+            'cpu'     => 'required', 
+            'memory'  => 'required', 
+            'network' => 'required', 
+            'system'  => 'required', 
+            'ip'      => 'required',
+            'value'   => 'required'
+            ]);
 
         $virtualProposal = virtualProposal::create($request->all());
         return redirect('virtual');
@@ -63,8 +70,21 @@ class VirtualController extends Controller
         $html = view('pages/virtual-proposal-pdf', [
             'virtualproposal' => $virtual
         ])->render();
-        $mpdf = new Mpdf();
-        // $mpdf->WriteHTML($css, 1);
+        $mpdf = new Mpdf([
+            'mode' => 'utf-8',
+            'format' => 'A4',
+            'margin_top' => 0,
+            'margin_left' => 0,
+            'margin_right' => 0,
+            'margin-bottom' => 0,
+            'margin-footer' => 0,
+            'mirrorMargins' => true,
+        ]);
+        $mpdf->SetHTMLFooter(null,'O');
+        $mpdf->SetHTMLFooter('
+        <div>
+        {PAGENO}
+        </div>','E');
         $mpdf->WriteHTML($html);
         $mpdf->Output();
     }
@@ -94,12 +114,12 @@ class VirtualController extends Controller
     {
         $virtualProposal = virtualProposal::find($id);
         if(isset($virtualProposal)) {
-            $virtualProposal -> cpu    = $request->input('cpu');
-            $virtualProposal -> memory = $request->input('memory');
-            $virtualProposal -> system = $request->input('system');
-            $virtualProposal -> ip     = $request->input('ip');
-            $virtualProposal -> value  = $request->input('value');
-            $virtualProposal -> save();
+            $virtualProposal->cpu    = $request->input('cpu');
+            $virtualProposal->memory = $request->input('memory');
+            $virtualProposal->system = $request->input('system');
+            $virtualProposal->ip     = $request->input('ip');
+            $virtualProposal->value  = $request->input('value');
+            $virtualProposal->save();
         }
         return redirect('virtual');
     }
