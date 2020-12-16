@@ -29,7 +29,7 @@
                 <h4 h4 class="card-title indigo-text pb-5"><strong>Teste - Caso de Uso</strong></h4>
             </div>
             <div class="col s6 right-align">
-                <a href="virtual/novo" class="waves-effect waves-light btn-small"><i class="material-icons left">receipt</i>Nova Proposta</a>
+                <a href="/teste-caso-de-uso/novo" class="waves-effect waves-light btn-small"><i class="material-icons left">receipt</i>Nova Proposta</a>
             </div>
         </div>
         <!-- datatable start -->
@@ -38,10 +38,8 @@
             <thead>
               <tr>
                 <th>ID</th>
-                <th>CPU</th>
-                <th>Memoria</th>
-                <th>Sistema Operacional</th>
-                <th>Valor</th>
+                <th>Nome do Projeto</th>
+                <th>Data</th>
                 <th>Ações</th>
               </tr>
             </thead>
@@ -49,14 +47,12 @@
               @foreach($usecasetestsystems as $key => $usecasetestsystem)
                 <tr>
                   <td>{{ $usecasetestsystem->id }}</td>
-                  <td>{{ $usecasetestsystem->cpu }}</td>
-                  <td>{{ $usecasetestsystem->memory }}</td>
-                  <td>{{ $usecasetestsystem->system }}</td>
-                  <td>{{ $usecasetestsystem->value }}</td>
+                  <td>{{ $usecasetestsystem->project_name }}</td>
+                  <td>{{ $usecasetestsystem->created_at }}</td>
                   <td>
-                      <a href="virtual/visualizar/{{ $usecasetestsystem->id }}"><i class="material-icons">remove_red_eye</i></a>
-                      <a href="virtual/editar/{{ $usecasetestsystem->id }}"><i class="material-icons">edit</i></a>
-                      <a href="virtual/apagar/{{ $usecasetestsystem->id }}"><i class="material-icons">delete_forever</i></a>
+                      <a href="teste-caso-de-uso/visualizar/{{ $usecasetestsystem->id }}"><i class="material-icons">remove_red_eye</i></a>
+                      <a href="teste-caso-de-uso/editar/{{ $usecasetestsystem->id }}"><i class="material-icons">edit</i></a>
+                      <a href="teste-caso-de-uso/apagar/{{ $usecasetestsystem->id }}"><i class="material-icons">delete_forever</i></a>
                   </td>
                 </tr>
               @endforeach              
