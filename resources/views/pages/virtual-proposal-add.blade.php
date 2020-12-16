@@ -37,39 +37,50 @@
                   <div class="col s12 m6">
                     <div class="row">
                       <div class="col s12 input-field">
-                        <input id="cpu" name="cpu" type="text" class="validate" data-error=".errorTxt2">
+                        <input id="cpu" name="cpu" type="text" class="validate" required value="">
                         <label for="cpu">CPU</label>
                         @error('cpu')
-                        <small class="errorTxt2">{{ $message }}</small>
+                        <small class="red-text">{{ $message }}</small>
                         @enderror
                       </div>
                       <div class="col s12 input-field">
-                        <input id="memory" name="memory" type="text" class="validate" data-error=".errorTxt1">
+                        <input id="memory" name="memory" type="text" class="validate" required>
                         <label for="memory">Memoria</label>
-                        <small class="errorTxt1"></small>
+                        @error('memory')
+                        <small class="red-text">{{ $message }}</small>
+                        @enderror
                       </div>
                       <div class="col s12 input-field">
-                        <input id="network" name="network" type="text" class="validate" data-error=".errorTxt3">
+                        <input id="network" name="network" type="text" class="validate" required>
                         <label for="network">Rede</label>
-                        <small class="errorTxt3"></small>
+                        @error('network')
+                        <small class="red-text">{{ $message }}</small>
+                        @enderror
                       </div>
                     </div>
                   </div>
                   <div class="col s12 m6">
                     <div class="row">
                       <div class="col s12 input-field">
-                        <input id="system" name="system" type="text" class="validate">
+                        <input id="system" name="system" type="text" class="validate" required>
                         <label for="system">Sistema Operacional</label>
+                        @error('system')
+                        <small class="red-text">{{ $message }}</small>
+                        @enderror
                       </div>
                       <div class="col s12 input-field">
-                          <input id="ip" name="ip" type="text" class="validate" data-error=".errorTxt3">
+                          <input id="ip" name="ip" type="text" class="validate" required>
                           <label for="ip">IP</label>
-                          <small class="errorTxt3"></small>
+                          @error('ip')
+                          <small class="red-text">{{ $message }}</small>
+                          @enderror
                         </div>
                         <div class="col s12 input-field">
-                          <input id="value" name="value" type="text" class="validate" data-error=".errorTxt3">
+                          <input id="value" name="value" type="text" class="validate" required>
                           <label for="value">Valor</label>
-                          <small class="errorTxt3"></small>
+                          @error('value')
+                          <small class="red-text">{{ $message }}</small>
+                          @enderror
                         </div>
                     </div>
                   </div>
