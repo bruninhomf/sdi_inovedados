@@ -15,7 +15,7 @@ class CreateRequirementTestSystems extends Migration
     {
         Schema::create('requirement_test_systems', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name_system');
+            $table->string('project_name');
             $table->timestamps();
         });
     }
