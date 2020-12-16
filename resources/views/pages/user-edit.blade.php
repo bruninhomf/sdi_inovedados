@@ -82,7 +82,7 @@
             <div class="col s12 m6">
               <div class="row">
                 <div class="col s12 input-field">
-                  <input id="phone-demo" name="tel" type="text" value="{{ $user->tel }}" class="validate">
+                  <input id="phone-demo" name="tel" type="text" value="{{ $user->phone }}" class="validate">
                   <label for="phone-demo">Telefone</label>
                 </div>
                 <div class="col s12 input-field">
@@ -98,8 +98,8 @@
                 <div class="col s12 input-field">
                   <select value="{{ $user->status }}">
                     <option value=""></option>
-                    <option value="ativo" selected>Ativo</option>
-                    <option value="inativo">Inativo</option>
+                    <option value="Ativo" selected>Ativo</option>
+                    <option value="Inativo">Inativo</option>
                   </select>
                   <label>Situação</label>
                 </div>
