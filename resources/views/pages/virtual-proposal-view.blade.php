@@ -28,7 +28,6 @@
       <div class="col s12 m5 quick-action-btns display-flex justify-content-end align-items-center pt-2" width="500">
         <a href="/virtual" class="btn-small btn-light-indigo">
           <i class="material-icons mb-5">arrow_back</i>
-          Voltar
         </a>
         <a href="/virtual/pdf/{{ $virtualproposal->id }}" class="btn-small btn-waves-light">
           <i class="material-icons mb-3">print</i>
