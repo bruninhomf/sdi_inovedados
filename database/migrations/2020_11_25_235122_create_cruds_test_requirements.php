@@ -15,14 +15,14 @@ class CreateCrudsTestRequirements extends Migration
     {
         Schema::create('cruds_test_requirements', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('modules_id');
+            $table->unsignedBigInteger('module_id');
             $table->string('description');
             $table->string('register');
             $table->string('view');
             $table->string('edit');
             $table->string('delete');
             $table->timestamps();
-            $table->foreign('modules_id')->references('id')->on('cruds_test_modules')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('module_id')->references('id')->on('cruds_test_modules')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
