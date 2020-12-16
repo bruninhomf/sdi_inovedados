@@ -2,7 +2,7 @@
 @extends('layouts.contentLayoutMaster')
 
 {{-- page title --}}
-@section('title','Proposta - Servidor Virtual')
+@section('title','Testes Funcionais')
 
 {{-- vendors styles --}}
 @section('vendor-style')
@@ -26,10 +26,10 @@
       <div class="card-content">
         <div class="row">
             <div class="col s6">
-                <h4 h4 class="card-title indigo-text pb-5"><strong>Testes - Funcionais</strong></h4>
+                <h4 h4 class="card-title indigo-text pb-5"><strong>Testes Funcionais</strong></h4>
             </div>
             <div class="col s6 right-align">
-                <a href="virtual/novo" class="waves-effect waves-light btn-small"><i class="material-icons left">receipt</i>Nova Proposta</a>
+                <a href="testes-funcionais/novo" class="waves-effect waves-light btn-small"><i class="material-icons left">receipt</i>Nova Proposta</a>
             </div>
         </div>
         <!-- datatable start -->
@@ -38,10 +38,8 @@
             <thead>
               <tr>
                 <th>ID</th>
-                <th>CPU</th>
-                <th>Memoria</th>
-                <th>Sistema Operacional</th>
-                <th>Valor</th>
+                <th>Nome do Projeto</th>
+                <th>Data</th>
                 <th>Ações</th>
               </tr>
             </thead>
@@ -49,14 +47,12 @@
               @foreach($functionalittestsystems as $key => $functionalittestsystem)
                 <tr>
                   <td>{{ $functionalittestsystem->id }}</td>
-                  <td>{{ $functionalittestsystem->cpu }}</td>
-                  <td>{{ $functionalittestsystem->memory }}</td>
-                  <td>{{ $functionalittestsystem->system }}</td>
-                  <td>{{ $functionalittestsystem->value }}</td>
+                  <td>{{ $functionalittestsystem->project_name }}</td>
+                  <td>{{ $functionalittestsystem->created_at }}</td>
                   <td>
-                      <a href="virtual/visualizar/{{ $functionalittestsystem->id }}"><i class="material-icons">remove_red_eye</i></a>
-                      <a href="virtual/editar/{{ $functionalittestsystem->id }}"><i class="material-icons">edit</i></a>
-                      <a href="virtual/apagar/{{ $functionalittestsystem->id }}"><i class="material-icons">delete_forever</i></a>
+                      <a href="testes-funcionais/visualizar/{{ $functionalittestsystem->id }}"><i class="material-icons">remove_red_eye</i></a>
+                      <a href="testes-funcionais/editar/{{ $functionalittestsystem->id }}"><i class="material-icons">edit</i></a>
+                      <a href="testes-funcionais/apagar/{{ $functionalittestsystem->id }}"><i class="material-icons">delete_forever</i></a>
                   </td>
                 </tr>
               @endforeach              
