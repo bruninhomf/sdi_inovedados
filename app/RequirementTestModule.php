@@ -4,13 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-
 class RequirementTestModule extends Model
 {
     protected $fillable = [
-        'system_id', 'name'
+        'requirement_id', 'name'
     ];
-
 
     public function insertRequeriments($dados)
     {
