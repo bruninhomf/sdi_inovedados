@@ -41,16 +41,18 @@
                     <div class="col s12">
                       <div class="row">
                         <div class="col s12 input-field">
-                          <input id="name_system" name="name_system" type="text" class="validate" data-error=".errorTxt2">
-                          <label for="name_system">Nome do projeto</label>
-                          <small class="errorTxt2"></small>
+                          <input id="project_name" name="project_name" type="text" class="validate" required>
+                          <label for="project_name">Nome do projeto</label>
+                          @error('project_name')
+                          <small class="red-text">{{ $message }}</small>
+                          @enderror
                         </div>
                       </div>
                     </div>
                     <div class="col s12 pl-3">
-                        <div class="row element" id='div_0'>
+                        <div class="row element" id='rec_0'>
                           <div class="col s12 right-align pr-1">
-                            <span class='mb-6 btn waves-effect waves-light green darken-1 add'>Modulo<i class="material-icons">add</i></span>
+                            <span class='mt-2 btn waves-effect waves-light green darken-1 add'>Modulo<i class="material-icons">add</i></span>
                           </div>
                         </div>
                     </div>
