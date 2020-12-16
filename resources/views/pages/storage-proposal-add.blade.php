@@ -36,32 +36,43 @@
                 <div class="col s12 m6">
                   <div class="row">
                     <div class="col s12 input-field">
-                      <input id="diskspace" name="diskspace" type="text" class="validate" data-error=".errorTxt2">
+                      <input id="diskspace" name="diskspace" type="text" class="validate" required>
                       <label for="diskspace">Espaço em disco</label>
-                      <small class="errorTxt2"></small>
+                      @error('diskspace')
+                      <small class="red-text">{{ $message }}</small>
+                      @enderror
                     </div>
                     <div class="col s12 input-field">
-                      <input id="traffic" name="traffic" type="text" class="validate" data-error=".errorTxt1">
+                      <input id="traffic" name="traffic" type="text" class="validate" required>
                       <label for="traffic">Tráfego de dados</label>
-                      <small class="errorTxt1"></small>
+                      @error('traffic')
+                      <small class="red-text">{{ $message }}</small>
+                      @enderror
                     </div>
                   </div>
                 </div>
                 <div class="col s12 m6">
                   <div class="row">
                     <div class="col s12 input-field">
-                      <input id="connections" name="connections" type="text" class="validate">
+                      <input id="connections" name="connections" type="text" class="validate" required>
                       <label for="connections">Conexões simultâneas</label>
+                      @error('connections')
+                      <small class="red-text">{{ $message }}</small>
+                      @enderror
                     </div>
                     <div class="col s12 input-field">
-                        <input id="accounts" name="accounts" type="text" class="validate" data-error=".errorTxt3">
+                        <input id="accounts" name="accounts" type="text" class="validate" required>
                         <label for="accounts">Contas de FTP</label>
-                        <small class="errorTxt3"></small>
+                        @error('accounts')
+                        <small class="red-text">{{ $message }}</small>
+                        @enderror
                     </div>
                     <div class="col s12 input-field">
-                        <input id="value" name="value" type="text" class="validate" data-error=".errorTxt3">
+                        <input id="value" name="value" type="text" class="validate" required>
                         <label for="value">Valor</label>
-                        <small class="errorTxt3"></small>
+                        @error('value')
+                        <small class="red-text">{{ $message }}</small>
+                        @enderror
                     </div>
                   </div>
                 </div>
