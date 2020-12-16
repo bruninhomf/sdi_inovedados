@@ -32,12 +32,12 @@
         </div>
         <ul class="tabs mb-2 row">
           <li class="tab">
-            <a class="display-flex align-items-center active" id="account-tab" href="#project">
+            <a class="display-flex align-items-center active" id="account-tab" href="#account">
               <i class="material-icons mr-1">person_outline</i><span>Dados do Projeto</span>
             </a>
           </li>
           <li class="tab">
-            <a class="display-flex align-items-center" id="account-tab" href="#business-solution">
+            <a class="display-flex align-items-center" id="business-tab" href="#business">
               <i class="material-icons mr-1">person_outline</i><span>Solução de Negócio</span>
             </a>
           </li>
@@ -51,7 +51,7 @@
         <div class="row">
           <form action="/desenvolvimento/{{$developmentproposal->id}}" method="POST">
             @csrf
-            <div class="col s12" id="project">
+            <div class="col s12" id="account">
               <div class="row">
                 <div class="col s12">
                   <div class="row">
@@ -74,25 +74,29 @@
                 </div>
                 <div class="col s12">
                   <div class="row">
-                    <div class="col s4 input-field">
-                      <input id="requirements" name="requirements" type="text" value="{{ $developmentproposal->requirements }}" class="validate" value="http://">
-                      <label for="requirements">Levantamento de requisitos</label>
-                    </div>
-                    <div class="col s2 input-field">
+                    <div class="col input-field">
                       <input id="start_development" name="start_development" type="date" value="{{ $developmentproposal->start_development }}" class="validate">
                       <label for="start_development">Início do desenvolvimento</label>
                     </div>
-                    <div class="col s2 input-field">
+                    <div class="col s3 input-field">
                       <input id="texting_release" name="texting_release" type="date" value="{{ $developmentproposal->texting_release }}" class="validate">
                       <label for="texting_release">Liberação do ambiente de testes</label>
                     </div>
-                    <div class="col s2 input-field">
+                    <div class="col input-field">
                       <input id="start_test" name="start_test" type="date" value="{{ $developmentproposal->start_test }}" class="validate">
                       <label for="start_test">Início dos testes</label>
                     </div>
-                    <div class="col s2 input-field">
+                    <div class="col input-field">
                       <input id="homologation" name="homologation" type="date" value="{{ $developmentproposal->homologation }}" class="validate">
-                      <label for="homologation">Liberação para homologação</label>
+                      <label for="homologation">Homologação</label>
+                    </div>
+                    <div class="col input-field">
+                      <input id="delivery" name="delivery" type="date" value="{{ $developmentproposal->delivery }}" class="validate">
+                      <label for="delivery">Entrega do projeto</label>
+                    </div>
+                    <div class="col s12 input-field">
+                      <input id="requirements" name="requirements" type="text" value="{{ $developmentproposal->requirements }}" class="validate" value="http://">
+                      <label for="requirements">Levantamento de requisitos</label>
                     </div>
                     <div class="col s8 input-field">
                       <input id="first_payment" name="first_payment" type="text" value="{{ $developmentproposal->first_payment }}" class="validate">
@@ -123,16 +127,20 @@
               </div>
             </div>
 
-            <div class="col s12" id="business-solution">
+            <div class="col s12" id="business">
               <!-- users edit Info form start -->
                 <div class="row">
                   <div class="col s12">
                     <div class="col s12 input-field">
-                      <textarea id="business_solution_one" name="business_solution_one" rows="10" class="form-control">
-                          {{ $developmentproposal->business_solution_one }}
-                      </textarea>
+                      <textarea id="business_solution_one" name="business_solution_one" rows="30" class="form-control" style="height: 120px">{{ $developmentproposal->business_solution_one }}</textarea>
                       <label id="sl1" for="phone-demo">Solução de negócio</label>
-                    </div>             
+
+                      <textarea id="business_solution_two" name="business_solution_two" rows="30" class="form-control" style="height: 120px">{{ $developmentproposal->business_solution_two }}</textarea>
+                      <label id="sl1" for="phone-demo">Solução de negócio</label>
+
+                      <textarea id="business_solution_three" name="business_solution_three" rows="30" class="form-control" style="height: 120px">{{ $developmentproposal->business_solution_three }}</textarea>
+                      <label id="sl1" for="phone-demo">Solução de negócio</label>
+                    </div>
                   </div>
                 </div>
             </div>
