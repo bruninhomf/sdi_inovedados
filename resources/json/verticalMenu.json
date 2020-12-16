@@ -83,10 +83,10 @@
           "slug": "teste-crudes"
         },
         {
-          "url": "teste-cado-de-uso",
+          "url": "teste-caso-de-uso",
           "name": "Caso de uso",
           "i18n": "Caso de uso",
-          "slug": "teste-cado-de-uso"
+          "slug": "teste-caso-de-uso"
         },
         {
           "url": "testes-funcionais",
