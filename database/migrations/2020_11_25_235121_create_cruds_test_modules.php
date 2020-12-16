@@ -16,7 +16,7 @@ class CreateCrudsTestModules extends Migration
         Schema::create('cruds_test_modules', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('cruds_id');
-            $table->string('description');
+            $table->string('name');
             $table->timestamps();
             $table->foreign('cruds_id')->references('id')->on('cruds_test_systems')->onUpdate('cascade')->onDelete('cascade');
         });
