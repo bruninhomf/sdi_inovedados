@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\UsecaseTestSystem;
+use App\UsecaseTestModule;
+use App\UsecaseTestRequirement;
 use Illuminate\Http\Request;
 
 class UsecaseTestController extends Controller
@@ -26,7 +28,7 @@ class UsecaseTestController extends Controller
      */
     public function create()
     {
-        //
+        return view('/pages/usecase-test-add');
     }
 
     /**
@@ -37,7 +39,9 @@ class UsecaseTestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $usecasetestsystem = UsecaseTestSystem::create($request->except('modulos'));
+        $usecasetestsystem->insertModules($request->only('modulos'));
+        return redirect('teste-caso-de-uso');
     }
 
     /**
@@ -46,9 +50,11 @@ class UsecaseTestController extends Controller
      * @param  \App\UsecaseTest  $usecaseTest
      * @return \Illuminate\Http\Response
      */
-    public function show(UsecaseTest $usecaseTest)
+    public function show($id)
     {
-        //
+        return view('/pages/usecase-test-view', [
+            'usecasetestsystems' => UsecaseTestSystem::find($id),
+         ]);
     }
 
     /**
@@ -57,9 +63,14 @@ class UsecaseTestController extends Controller
      * @param  \App\UsecaseTest  $usecaseTest
      * @return \Illuminate\Http\Response
      */
-    public function edit(UsecaseTest $usecaseTest)
+    public function edit($id)
     {
-        //
+        return view('/pages/usecase-test-edit', [
+            'usecasetestsystems'        => UsecaseTestSystem::find($id), 
+            'usecasetestmodules'        => UsecaseTestModule::find($id), 
+            'usecasetestrequirements'   => UsecaseTestRequirement::find($id),
+        ]);
+        return redirect('teste-caso-de-uso');
     }
 
     /**
@@ -69,9 +80,24 @@ class UsecaseTestController extends Controller
      * @param  \App\UsecaseTest  $usecaseTest
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, UsecaseTest $usecaseTest)
+    public function update(Request $request, $id)
     {
-        //
+        $usecasetestsystem       =  UsecaseTestSystem::find($id);
+        $usecasetestmodule       =  UsecaseTestModule::find($id);
+        $usecasetestrequirement  =  UsecaseTestRequirement::find($id);
+        if(isset($usecasetestsystem)) {
+            $usecasetestsystem -> name_system  =  $request->input('project_name');
+        }
+        if(isset($usecasetestmodule)) {
+            $usecasetestsystem -> name         =  $request->input('name');
+        }
+        if(isset($usecasetestrequirement)) {
+            $usecasetestsystem -> test         =  $request->input('test');
+            $usecasetestsystem -> result       =  $request->input('result');
+            $usecasetestsystem -> status       =  $request->input('status');
+            $usecasetestsystem -> save();
+        }
+        return redirect('teste-caso-de-uso');
     }
 
     /**
@@ -80,8 +106,12 @@ class UsecaseTestController extends Controller
      * @param  \App\UsecaseTest  $usecaseTest
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UsecaseTest $usecaseTest)
+    public function destroy($id)
     {
-        //
+        $usecasetestsystem = UsecaseTestSystem::find($id);
+        if (isset($usecasetestsystem)) {
+            $usecasetestsystem->delete();
+        }
+        return redirect('teste-caso-de-uso');
     }
 }
