@@ -41,7 +41,7 @@
       </ul>
       <div class="divider mb-3"></div>
       <div class="row">
-        <form id="infotabForm" action="{{ url('/usuarios') }}" method="POST">
+        <form id="infotabForm" action="/usuarios" method="POST">
           @csrf
           <div class="col s12" id="account">
             <!-- users edit media object start -->
@@ -61,24 +61,24 @@
               <div class="col s12 m6">
                 <div class="row">
                   <div class="col s12 input-field">
-                    <input id="name" name="name" type="text" class="validate" data-error=".errorTxt2">
+                    <input id="name" name="name" type="text" class="validate">
                     <label for="name">Name</label>
                     <small class="errorTxt2"></small>
                   </div>
                   <div class="col s12 input-field">
-                    <input id="cpf-code" name="cpf" type="text" class="validate" data-error=".errorTxt1">
+                    <input id="cpf-code" name="cpf" type="text" class="validate">
                     <label for="cpf-code">CPF</label>
                     <small class="errorTxt1"></small>
                   </div>
                   <div class="col s12 input-field">
-                    <input id="email" name="email" type="email" value="{{ Arr::get(old(), 'email') }}" class="validate" data-error=".errorTxt3">
+                    <input id="email" name="email" type="email" value="{{ Arr::get(old(), 'email') }}" class="validate">
                     <label for="email">E-mail</label>
                     @error('email')
                       <small class="errorTxt3 text-danger">Insira um e-mail valido.</small>
                     @enderror
                   </div>
                   <div class="col s12 input-field">
-                    <input id="password" name="password" type="password" class="validate" data-error=".errorTxt2">
+                    <input id="password" name="password" type="password" class="validate">
                     <label for="password">Senha</label>
                     <small class="errorTxt2"></small>
                   </div>
@@ -104,8 +104,8 @@
                   <div class="col s12 input-field">
                     <select name="status" id="status">
                       <option value=""></option>
-                      <option value="ativo">Ativo</option>
-                      <option value="inativo">Inativo</option>
+                      <option value="Ativo">Ativo</option>
+                      <option value="Inativo">Inativo</option>
                     </select>
                     <label>Situação</label>
                   </div>
