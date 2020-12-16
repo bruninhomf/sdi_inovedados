@@ -44,7 +44,7 @@ class UserController extends Controller
         User::create($request->merge([
             'password' => bcrypt($request->password),
         ])->all());
-        return view('/pages/usuarios');
+        return redirect('usuarios');
     }
 
     /**
