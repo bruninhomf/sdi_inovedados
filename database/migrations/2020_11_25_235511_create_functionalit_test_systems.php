@@ -15,7 +15,7 @@ class CreateFunctionalitTestSystems extends Migration
     {
         Schema::create('functionalit_test_systems', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('project_name');
             $table->timestamps();
         });
     }
