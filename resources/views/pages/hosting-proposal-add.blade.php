@@ -39,51 +39,71 @@
                     <div class="col s12 m6">
                       <div class="row">
                         <div class="col s12 input-field">
-                          <input id="diskspace" name="diskspace" type="text" class="validate" data-error=".errorTxt2">
+                          <input id="diskspace" name="diskspace" type="text" class="validate" required>
                           <label for="diskspace">Espaço em disco</label>
-                          <small class="errorTxt2"></small>
+                          @error('diskspace')
+                          <small class="red-text">{{ $message }}</small>
+                          @enderror
                         </div>
                         <div class="col s12 input-field">
-                          <input id="traffic" name="traffic" type="text" class="validate" data-error=".errorTxt1">
+                          <input id="traffic" name="traffic" type="text" class="validate" required>
                           <label for="traffic">Tráfego de dados</label>
-                          <small class="errorTxt1"></small>
+                          @error('traffic')
+                          <small class="red-text">{{ $message }}</small>
+                          @enderror
                         </div>
                         <div class="col s12 input-field">
-                          <input id="domanins" name="domanins" type="text" class="validate" data-error=".errorTxt2">
+                          <input id="domanins" name="domanins" type="text" class="validate" required>
                           <label for="domanins">Domínios</label>
-                          <small class="errorTxt2"></small>
+                          @error('domanins')
+                          <small class="red-text">{{ $message }}</small>
+                          @enderror
                         </div>
                         <div class="col s12 input-field">
-                          <input id="subdomains" name="subdomains" type="text" class="validate" data-error=".errorTxt1">
+                          <input id="subdomains" name="subdomains" type="text" class="validate" required>
                           <label for="subdomains">Subdomínios</label>
-                          <small class="errorTxt1"></small>
+                          @error('subdomains')
+                          <small class="red-text">{{ $message }}</small>
+                          @enderror
                         </div>
                       </div>
                     </div>
                     <div class="col s12 m6">
                       <div class="row">
                         <div class="col s12 input-field">
-                          <input id="mailboxes" name="mailboxes" type="text" class="validate">
+                          <input id="mailboxes" name="mailboxes" type="text" required>
                           <label for="mailboxes">Caixas de correio</label>
+                          @error('mailboxes')
+                          <small class="red-text">{{ $message }}</small>
+                          @enderror
                         </div>
                         <div class="col s12 input-field">
-                            <input id="ftp_accounts" name="ftp_accounts" type="text" class="validate" data-error=".errorTxt3">
+                            <input id="ftp_accounts" name="ftp_accounts" type="text" class="validate" required>
                             <label for="ftp_accounts">Contas de FTP</label>
-                            <small class="errorTxt3"></small>
+                            @error('ftp_accounts')
+                            <small class="red-text">{{ $message }}</small>
+                            @enderror
                         </div>
                         <div class="col s12 input-field">
-                          <input id="database" name="database" type="text" class="validate">
+                          <input id="database" name="database" type="text" class="validate" required>
                           <label for="database">Banco de dados</label>
+                          @error('database')
+                          <small class="red-text">{{ $message }}</small>
+                          @enderror
                         </div>
                         <div class="col s12 input-field">
-                            <input id="php_processes" name="php_processes" type="text" class="validate" data-error=".errorTxt3">
+                            <input id="php_processes" name="php_processes" type="text" class="validate" required>
                             <label for="php_processes">Máximo de processos PHP</label>
-                            <small class="errorTxt3"></small>
+                            @error('php_processes')
+                            <small class="red-text">{{ $message }}</small>
+                            @enderror
                         </div>
                         <div class="col s12 input-field">
-                            <input id="value" name="value" type="text" class="validate" data-error=".errorTxt3">
+                            <input id="value" name="value" type="text" class="validate" required>
                             <label for="value">Valor</label>
-                            <small class="errorTxt3"></small>
+                            @error('value')
+                            <small class="red-text">{{ $message }}</small>
+                            @enderror
                         </div>
                       </div>
                     </div>
