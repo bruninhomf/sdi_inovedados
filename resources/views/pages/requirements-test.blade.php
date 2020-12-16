@@ -47,7 +47,8 @@
               @foreach($requirementtestsystems as $key => $requirementtestsystem)
                 <tr>
                   <td>{{ $requirementtestsystem->id }}</td>
-                  <td>{{ $requirementtestsystem->name_system }}</td>
+                  <td>{{ $requirementtestsystem->project_name }}</td>
+                  <td>{{ $requirementtestsystem->created_at }}</td>
                   <td>
                       <a href="teste-requisitos/visualizar/{{ $requirementtestsystem->id }}"><i class="material-icons">remove_red_eye</i></a>
                       <a href="teste-requisitos/editar/{{ $requirementtestsystem->id }}"><i class="material-icons">edit</i></a>
