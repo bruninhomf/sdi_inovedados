@@ -36,13 +36,13 @@
           </div>
           <div class="col s12" id="account">
               
-            <form action="{{ url('requisitos') }}" method="POST">
+            <form action="/requisitos" method="POST">
                 @csrf
                 <div class="row">
                   <div class="col s12">
                     <div class="row">
                       <div class="col s12 input-field">
-                        <input id="project_name" name="project_name" type="text" class="validate" data-error=".errorTxt1">
+                        <input id="project_name" name="project_name" type="text" class="validate">
                         <label for="project_name">Nome do Projeto</label>
                         <small class="errorTxt1"></small>
                         @error('project_name')
@@ -50,19 +50,16 @@
                         @enderror
                       </div>
                       <div class="col s4 input-field">
-                        <input id="lr_id" name="lr_id" type="text" class="validate" data-error=".errorTxt2">
+                        <input id="lr_id" name="modulos[1][lr_id]" type="text" class="validate">
                         <label for="lr_id">Nº LR</label>
-                        @error('lr_id')
-                        <small class="red-text">{{ $message }}</small>
-                        @enderror
                       </div>
                       <div class="col s4 input-field">
-                        <input id="version" name="version" type="text" class="validate" data-error=".errorTxt3">
+                        <input id="version" name="modulos[1][version]" type="text" class="validate">
                         <label for="version">Versão</label>
                         <small class="errorTxt3"></small>
                       </div>
                       <div class="col s4 input-field">
-                        <input id="date" name="date" type="date" class="validate">
+                        <input id="date" name="modulos[1][date]" type="date" class="validate">
                         <label for="date">Data</label>
                       </div>
                     </div>
@@ -71,7 +68,7 @@
 
                       <div class="row lvrec pl-1" id='lr_0'>
                         <div class="col s10 input-field">
-                          <input id="titles" name="titles" type="text" class="validate" data-error=".errorTxt3">
+                          <input id="titles" name="modulos[1][titles]" type="text" class="validate">
                           <label for="titles">Titulo</label>
                           <small class="errorTxt3"></small>
                         </div>
@@ -82,7 +79,7 @@
                         <div class="col s12 pl-3">
                           <div class="row " id='div'>
                             <div class="col s10 input-field">
-                              <input id="menu" name="menu" type="text" class="validate" data-error=".errorTxt3">
+                              <input id="menu" name="modulos[1][menu]" type="text" class="validate">
                               <label for="menu">Menu</label>
                               <small class="errorTxt3"></small>
                             </div>
@@ -97,7 +94,7 @@
                             <div class="col s12 pl-3">
                               <div class="row " id='div'>
                                 <div class="col s10 input-field">
-                                  <input id="description" name="description" type="text" class="validate" data-error=".errorTxt3">
+                                  <input id="description" name="modulos[1][description]" type="text" class="validate">
                                   <label for="description">Descrição</label>
                                   <small class="errorTxt3"></small>
                                 </div>
