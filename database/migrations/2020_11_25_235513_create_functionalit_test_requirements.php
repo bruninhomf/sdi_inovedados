@@ -15,12 +15,12 @@ class CreateFunctionalitTestRequirements extends Migration
     {
         Schema::create('functionalit_test_requirements', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('modules_id');
+            $table->unsignedBigInteger('module_id');
             $table->string('test');
             $table->string('result');
             $table->string('status');
             $table->timestamps();
-            $table->foreign('modules_id')->references('id')->on('functionalit_test_modules')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('module_id')->references('id')->on('functionalit_test_modules')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
