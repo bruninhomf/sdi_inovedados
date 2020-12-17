@@ -38,6 +38,14 @@ class StorageController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'diskspace'   => 'required', 
+            'traffic'     => 'required', 
+            'connections' => 'required', 
+            'accounts'    => 'required',
+            'value'      => 'required'
+            ]);
+
         StorageProposal::create($request->all());
         return redirect('armazenamento');
     }
