@@ -38,6 +38,30 @@ class DevelopmentController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'project'                  => 'required', 
+            'version'                  => 'required', 
+            'date'                     => 'required', 
+            'start_development'        => 'required',
+            'texting_release'          => 'required', 
+            'start_test'               => 'required', 
+            'homologation'             => 'required', 
+            'delivery'                 => 'required',
+            'requirements'             => 'required', 
+            'first_payment'            => 'required', 
+            'first_payment_date'       => 'required', 
+            'amount'                   => 'required',
+            'proposal_validity'        => 'required', 
+            'business_solution_one'    => 'required', 
+            'business_solution_two'    => 'required', 
+            'business_solution_three'  => 'required',
+            'client'                   => 'required',
+            'contact_name'             => 'required', 
+            'cnpj'                     => 'required', 
+            'phone'                    => 'required', 
+            'address'                  => 'required'
+            ]);
+
         DevelopmentProposal::create($request->all());
         return redirect('desenvolvimento');
     }
