@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\FunctionalitTestModule;
+use App\FunctionalitTestRequirement;
 use App\FunctionalitTestSystem;
 use Illuminate\Http\Request;
 
@@ -26,7 +28,7 @@ class FunctionalitTestController extends Controller
      */
     public function create()
     {
-        //
+        return view('/pages/functionalit-test-add');
     }
 
     /**
@@ -37,7 +39,9 @@ class FunctionalitTestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $functionalittestsystem = FunctionalitTestSystem::create($request->except('modulos'));
+        $functionalittestsystem->insertModules($request->only('modulos'));
+        return redirect('testes-funcionais');
     }
 
     /**
@@ -46,9 +50,11 @@ class FunctionalitTestController extends Controller
      * @param  \App\FuncionalitTest  $funcionalitTest
      * @return \Illuminate\Http\Response
      */
-    public function show(FuncionalitTest $funcionalitTest)
+    public function show($id)
     {
-        //
+        return view('/pages/functionalit-test-view', [
+            'functionalittestsystems' => FunctionalitTestSystem::find($id),
+         ]);
     }
 
     /**
@@ -57,9 +63,14 @@ class FunctionalitTestController extends Controller
      * @param  \App\FuncionalitTest  $funcionalitTest
      * @return \Illuminate\Http\Response
      */
-    public function edit(FuncionalitTest $funcionalitTest)
+    public function edit($id)
     {
-        //
+        return view('/pages/requirements-test-edit', [
+            'functionalittestsystems'        => FunctionalitTestSystem::find($id), 
+            'functionalittestmodules'        => FunctionalitTestModule::find($id), 
+            'functionalittestrequirements'   => FunctionalitTestRequirement::find($id),
+        ]);
+        return redirect('testes-funcionais');
     }
 
     /**
@@ -69,9 +80,24 @@ class FunctionalitTestController extends Controller
      * @param  \App\FuncionalitTest  $funcionalitTest
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, FuncionalitTest $funcionalitTest)
+    public function update(Request $request, $id)
     {
-        //
+        $functionalittestsystem       =  FunctionalitTestSystem::find($id);
+        $functionalittestmodule       =  FunctionalitTestModule::find($id);
+        $functionalittestrequirement  =  FunctionalitTestRequirement::find($id);
+        if(isset($functionalittestsystem)) {
+            $functionalittestsystem -> name_system  =  $request->input('project_name');
+        }
+        if(isset($functionalittestmodule)) {
+            $functionalittestsystem -> name         =  $request->input('name');
+        }
+        if(isset($functionalittestrequirement)) {
+            $functionalittestsystem -> test         =  $request->input('test');
+            $functionalittestsystem -> result       =  $request->input('result');
+            $functionalittestsystem -> status       =  $request->input('status');
+            $functionalittestsystem -> save();
+        }
+        return redirect('teste-requisitos');
     }
 
     /**
@@ -80,8 +106,12 @@ class FunctionalitTestController extends Controller
      * @param  \App\FuncionalitTest  $funcionalitTest
      * @return \Illuminate\Http\Response
      */
-    public function destroy(FuncionalitTest $funcionalitTest)
+    public function destroy($id)
     {
-        //
+        $functionalittestsystem = FunctionalitTestSystem::find($id);
+        if (isset($functionalittestsystem)) {
+            $functionalittestsystem->delete();
+        }
+        return redirect('testes-funcionais');
     }
 }
