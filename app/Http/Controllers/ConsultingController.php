@@ -38,6 +38,22 @@ class ConsultingController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'project'                  => 'required', 
+            'version'                  => 'required', 
+            'date'                     => 'required', 
+            'first_payment'            => 'required', 
+            'first_payment_date'       => 'required', 
+            'amount'                   => 'required',
+            'proposal_validity'        => 'required', 
+            'business_solution_one'    => 'required', 
+            'client'                   => 'required',
+            'contact_name'             => 'required', 
+            'cnpj'                     => 'required', 
+            'phone'                    => 'required', 
+            'address'                  => 'required'
+            ]);
+
         ConsultingProposal::create($request->all());
         return redirect('consultoria');
     }
