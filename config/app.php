@@ -179,6 +179,7 @@ return [
         Junges\ACL\ACLServiceProvider::class,
         Junges\ACL\ACLAuthServiceProvider::class,
         Junges\ACL\ACLEventsServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
     ],
 
     /*

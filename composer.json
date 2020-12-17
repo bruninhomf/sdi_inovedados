@@ -19,7 +19,8 @@
         "mateusjunges/laravel-acl": "^2.3",
         "mpdf/mpdf": "^8.0",
         "nesbot/carbon": "^2.28",
-        "phpoffice/phpspreadsheet": "^1.15"
+        "phpoffice/phpspreadsheet": "^1.15",
+        "spatie/laravel-permission": "^3.18"
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",
@@ -43,7 +44,7 @@
             "App\\": "app/"
         },
         "classmap": [
-            "database/seeds",
+            "database/seeders",
             "database/factories"
         ],
         "files": [

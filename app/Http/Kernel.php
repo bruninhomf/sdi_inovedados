@@ -66,6 +66,11 @@ class Kernel extends HttpKernel
         'groups' => \Junges\ACL\Middlewares\GroupMiddleware::class,
         'permissionOrGroup' => \Junges\ACL\Middlewares\PermissionOrGroupMiddleware::class,
         'hierarchical_permissions' => \Junges\ACL\Middlewares\HierarchicalPermissionsMiddleware::class,
+
+        //Spatie
+        'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
+        'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
+        'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
     ];
 
     /**
