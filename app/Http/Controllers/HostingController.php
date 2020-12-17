@@ -38,6 +38,18 @@ class HostingController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'diskspace'   => 'required', 
+            'traffic'     => 'required', 
+            'domanins'    => 'required', 
+            'subdomains'  => 'required',
+            'mailboxes'   => 'required', 
+            'ftp_accounts'     => 'required', 
+            'database'    => 'required', 
+            'php_processes'  => 'required',
+            'value'       => 'required'
+            ]);
+
         HostingProposal::create($request->all());
         return redirect('hospedagem');
     }
