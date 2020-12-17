@@ -10,7 +10,7 @@
   <div>
     <div>
       <div>
-        <div style="height: 50px; padding-top: 120px; padding-bottom: 180px; text-align: center">
+        <div style="height: 50px; padding-top: 120px; padding-bottom: 252px; text-align: center">
           <img src="images/logo/inovedados.jpg" alt="Inove Dados" width="250px">
         </div>
         <table style="border-spacing: 0; margin-top: 10px">
