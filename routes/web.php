@@ -13,132 +13,135 @@ use App\Http\Controllers\LanguageController;
     //SGDI
 // Route::get('/', 'AuthenticationController@userLogin');
 Route::get('/user-forgot-password', 'AuthenticationController@forgotPassword');
-Route::get('logout','AuthController@logout');
 
 
 // Routes Protected
-Route::get('/', ['middleware' => 'auth', 'uses' => 'DashboardController@dashboard']);
-Route::get('/historico', ['middleware' => 'auth', 'uses' => 'DashboardController@historico']);
-Route::get('/minhaconta', ['middleware' => 'auth', 'uses' => 'DashboardController@minhaconta']);
-
-//Users
-Route::get('/usuarios', ['middleware' => 'auth', 'uses' => 'UserController@index']);
-Route::post('/usuarios', ['middleware' => 'auth', 'uses' => 'UserController@store']);
-Route::get('/usuario/novo', ['middleware' => 'auth', 'uses' => 'UserController@create']);
-Route::get('/usuario/visualizar', ['middleware' => 'auth', 'uses' => 'DashboardController@usuariovisualizar']);
-Route::get('/usuario/editar/{id}', ['middleware' => 'auth', 'uses' => 'UserController@edit']);
-Route::post('usuario/{id}', ['middleware' => 'auth', 'uses' => 'UserController@update']);
-Route::get('usuario/apagar/{id}', ['middleware' => 'auth', 'uses' => 'UserController@destroy']);
+Route::group(['middleware' => 'auth', 'uses'], function () {
+    Route::get('/', 'DashboardController@dashboard');
+    Route::get('logout','AuthController@logout');
+    Route::get('/historico', 'DashboardController@historico');
+    Route::get('/minhaconta', 'DashboardController@minhaconta');
 
 
-//REQUIREMENTS
-//Requirements
-Route::get('requisitos', ['middleware' => 'auth', 'uses' => 'RequirementsGatheringsController@index']);
-Route::post('requisitos', ['middleware' => 'auth', 'uses' => 'RequirementsGatheringsController@store']);
-Route::get('requisitos/novo', ['middleware' => 'auth', 'uses' => 'RequirementsGatheringsController@create']);
-Route::get('requisitos/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementsGatheringsController@show']);
-Route::get('requisitos/editar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementsGatheringsController@edit']);
-Route::post('requisitos/{id}', ['middleware' => 'auth', 'uses' => 'RequirementsGatheringsController@update']);
-Route::get('requisitos/apagar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementsGatheringsController@destroy']);
-
-// PROPOSAL
-//Virtual
-Route::get('virtual', ['middleware' => 'auth', 'uses' => 'VirtualController@index']);
-Route::post('virtual', ['middleware' => 'auth', 'uses' => 'VirtualController@store']);
-Route::get('virtual/novo', ['middleware' => 'auth', 'uses' => 'VirtualController@create']);
-Route::get('virtual/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'VirtualController@show']);
-Route::get('virtual/pdf/{virtual}', ['middleware' => 'auth', 'uses' => 'VirtualController@pdf']);
-Route::get('virtual/editar/{id}', ['middleware' => 'auth', 'uses' => 'VirtualController@edit']);
-Route::post('virtual/{id}', ['middleware' => 'auth', 'uses' => 'VirtualController@update']);
-Route::get('virtual/apagar/{id}', ['middleware' => 'auth', 'uses' => 'VirtualController@destroy']);
-
-//Storage
-Route::get('/armazenamento', ['middleware' => 'auth', 'uses' => 'StorageController@index']);
-Route::post('/armazenamento', ['middleware' => 'auth', 'uses' => 'StorageController@store']);
-Route::get('/armazenamento/novo', ['middleware' => 'auth', 'uses' => 'StorageController@create']);
-Route::get('/armazenamento/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'StorageController@show']);
-Route::get('armazenamento/pdf/{armazenamento}', ['middleware' => 'auth', 'uses' => 'StorageController@pdf']);
-Route::get('/armazenamento/imprimir/{proposal}', ['middleware' => 'auth', 'uses' => 'StorageController@imprimir']);
-Route::get('/armazenamento/editar/{id}', ['middleware' => 'auth', 'uses' => 'StorageController@edit']);
-Route::post('/armazenamento/{id}', ['middleware' => 'auth', 'uses' => 'StorageController@update']);
-Route::get('/armazenamento/apagar/{id}', ['middleware' => 'auth', 'uses' => 'StorageController@destroy']);
-
-//Hosting
-Route::get('/hospedagem', ['middleware' => 'auth', 'uses' => 'HostingController@index']);
-Route::post('/hospedagem', ['middleware' => 'auth', 'uses' => 'HostingController@store']);
-Route::get('/hospedagem/novo', ['middleware' => 'auth', 'uses' => 'HostingController@create']);
-Route::get('/hospedagem/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'HostingController@show']);
-Route::get('hospedagem/pdf/{hospedagem}', ['middleware' => 'auth', 'uses' => 'HostingController@pdf']);
-Route::get('/hospedagem/editar/{id}', ['middleware' => 'auth', 'uses' => 'HostingController@edit']);
-Route::post('/hospedagem/{id}', ['middleware' => 'auth', 'uses' => 'HostingController@update']);
-Route::get('/hospedagem/apagar/{id}', ['middleware' => 'auth', 'uses' => 'HostingController@destroy']);
-
-//Development
-Route::get('/desenvolvimento', ['middleware' => 'auth', 'uses' => 'DevelopmentController@index']);
-Route::post('/desenvolvimento', ['middleware' => 'auth', 'uses' => 'DevelopmentController@store']);
-Route::get('/desenvolvimento/novo', ['middleware' => 'auth', 'uses' => 'DevelopmentController@create']);
-Route::get('/desenvolvimento/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'DevelopmentController@show']);
-Route::get('desenvolvimento/pdf/{desenvolvimento}', ['middleware' => 'auth', 'uses' => 'DevelopmentController@pdf']);
-Route::get('/desenvolvimento/editar/{id}', ['middleware' => 'auth', 'uses' => 'DevelopmentController@edit']);
-Route::post('/desenvolvimento/{id}', ['middleware' => 'auth', 'uses' => 'DevelopmentController@update']);
-Route::get('/desenvolvimento/apagar/{id}', ['middleware' => 'auth', 'uses' => 'DevelopmentController@destroy']);
-
-//Consulting
-Route::get('/consultoria', ['middleware' => 'auth', 'uses' => 'ConsultingController@index']);
-Route::post('/consultoria', ['middleware' => 'auth', 'uses' => 'ConsultingController@store']);
-Route::get('/consultoria/novo', ['middleware' => 'auth', 'uses' => 'ConsultingController@create']);
-Route::get('/consultoria/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'ConsultingController@show']);
-Route::get('consultoria/pdf/{consultoria}', ['middleware' => 'auth', 'uses' => 'ConsultingController@pdf']);
-Route::get('/consultoria/editar/{id}', ['middleware' => 'auth', 'uses' => 'ConsultingController@edit']);
-Route::post('/consultoria/{id}', ['middleware' => 'auth', 'uses' => 'ConsultingController@update']);
-Route::get('/consultoria/apagar/{id}', ['middleware' => 'auth', 'uses' => 'ConsultingController@destroy']);
+    //Users
+    Route::get('/usuarios', 'UserController@index');
+    Route::post('/usuarios', 'UserController@store');
+    Route::get('/usuario/novo', 'UserController@create');
+    Route::get('/usuario/visualizar', 'DashboardController@usuariovisualizar');
+    Route::get('/usuario/editar/{id}', 'UserController@edit');
+    Route::post('usuario/{id}', 'UserController@update');
+    Route::get('usuario/apagar/{id}', 'UserController@destroy');
 
 
-// TEST
-//Requirements - test
-Route::get('teste-requisitos', ['middleware' => 'auth', 'uses' => 'RequirementTestSystemController@index']);
-Route::post('teste-requisitos', ['middleware' => 'auth', 'uses' => 'RequirementTestSystemController@store']);
-Route::get('teste-requisitos/novo', ['middleware' => 'auth', 'uses' => 'RequirementTestSystemController@create']);
-Route::get('teste-requisitos/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementTestSystemController@show']);
-Route::get('teste-requisitos/excel/{id}', ['middleware' => 'auth', 'uses' => 'RequirementTestSystemController@excel']);
-Route::get('teste-requisitos/editar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementTestSystemController@edit']);
-Route::post('teste-requisitos/{id}', ['middleware' => 'auth', 'uses' => 'RequirementTestSystemController@update']);
-Route::get('teste-requisitos/apagar/{id}', ['middleware' => 'auth', 'uses' => 'RequirementTestSystemController@destroy']);
+    //REQUIREMENTS
+    //Requirements
+    Route::get('requisitos', 'RequirementsGatheringsController@index');
+    Route::post('requisitos', 'RequirementsGatheringsController@store');
+    Route::get('requisitos/novo', 'RequirementsGatheringsController@create');
+    Route::get('requisitos/visualizar/{id}', 'RequirementsGatheringsController@show');
+    Route::get('requisitos/editar/{id}', 'RequirementsGatheringsController@edit');
+    Route::post('requisitos/{id}', 'RequirementsGatheringsController@update');
+    Route::get('requisitos/apagar/{id}', 'RequirementsGatheringsController@destroy');
 
-//Crudes - test
-Route::get('teste-crudes', ['middleware' => 'auth', 'uses' => 'CrudsTestController@index']);
-Route::post('teste-crudes', ['middleware' => 'auth', 'uses' => 'CrudsTestController@store']);
-Route::get('teste-crudes/novo', ['middleware' => 'auth', 'uses' => 'CrudsTestController@create']);
-Route::get('teste-crudes/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'CrudsTestController@show']);
-Route::get('teste-crudes/editar/{id}', ['middleware' => 'auth', 'uses' => 'CrudsTestController@edit']);
-Route::post('teste-crudes/{id}', ['middleware' => 'auth', 'uses' => 'CrudsTestController@update']);
-Route::get('teste-crudes/apagar/{id}', ['middleware' => 'auth', 'uses' => 'CrudsTestController@destroy']);
+    // PROPOSAL
+    //Virtual
+    Route::get('virtual', 'VirtualController@index');
+    Route::post('virtual', 'VirtualController@store');
+    Route::get('virtual/novo', 'VirtualController@create');
+    Route::get('virtual/visualizar/{id}', 'VirtualController@show');
+    Route::get('virtual/pdf/{virtual}', 'VirtualController@pdf');
+    Route::get('virtual/editar/{id}', 'VirtualController@edit');
+    Route::post('virtual/{id}', 'VirtualController@update');
+    Route::get('virtual/apagar/{id}', 'VirtualController@destroy');
 
-//Use case - test
-Route::get('teste-caso-de-uso', ['middleware' => 'auth', 'uses' => 'UsecaseTestController@index']);
-Route::post('teste-caso-de-uso', ['middleware' => 'auth', 'uses' => 'UsecaseTestController@store']);
-Route::get('teste-caso-de-uso/novo', ['middleware' => 'auth', 'uses' => 'UsecaseTestController@create']);
-Route::get('teste-caso-de-uso/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'UsecaseTestController@show']);
-Route::get('teste-caso-de-uso/editar/{id}', ['middleware' => 'auth', 'uses' => 'UsecaseTestController@edit']);
-Route::post('teste-caso-de-uso/{id}', ['middleware' => 'auth', 'uses' => 'UsecaseTestController@update']);
-Route::get('teste-caso-de-uso/apagar/{id}', ['middleware' => 'auth', 'uses' => 'UsecaseTestController@destroy']);
+    //Storage
+    Route::get('/armazenamento', 'StorageController@index');
+    Route::post('/armazenamento', 'StorageController@store');
+    Route::get('/armazenamento/novo', 'StorageController@create');
+    Route::get('/armazenamento/visualizar/{id}', 'StorageController@show');
+    Route::get('armazenamento/pdf/{armazenamento}', 'StorageController@pdf');
+    Route::get('/armazenamento/imprimir/{proposal}', 'StorageController@imprimir');
+    Route::get('/armazenamento/editar/{id}', 'StorageController@edit');
+    Route::post('/armazenamento/{id}', 'StorageController@update');
+    Route::get('/armazenamento/apagar/{id}', 'StorageController@destroy');
 
-//Functional - test
-Route::get('testes-funcionais', ['middleware' => 'auth', 'uses' => 'FunctionalitTestController@index']);
-Route::post('testes-funcionais', ['middleware' => 'auth', 'uses' => 'FunctionalitTestController@store']);
-Route::get('testes-funcionais/novo', ['middleware' => 'auth', 'uses' => 'FunctionalitTestController@create']);
-Route::get('testes-funcionais/visualizar/{id}', ['middleware' => 'auth', 'uses' => 'FunctionalitTestController@show']);
-Route::get('testes-funcionais/editar/{id}', ['middleware' => 'auth', 'uses' => 'FunctionalitTestController@edit']);
-Route::post('testes-funcionais/{id}', ['middleware' => 'auth', 'uses' => 'FunctionalitTestController@update']);
-Route::get('testes-funcionais/apagar/{id}', ['middleware' => 'auth', 'uses' => 'FunctionalitTestController@destroy']);
+    //Hosting
+    Route::get('/hospedagem', 'HostingController@index');
+    Route::post('/hospedagem', 'HostingController@store');
+    Route::get('/hospedagem/novo', 'HostingController@create');
+    Route::get('/hospedagem/visualizar/{id}', 'HostingController@show');
+    Route::get('hospedagem/pdf/{hospedagem}', 'HostingController@pdf');
+    Route::get('/hospedagem/editar/{id}', 'HostingController@edit');
+    Route::post('/hospedagem/{id}', 'HostingController@update');
+    Route::get('/hospedagem/apagar/{id}', 'HostingController@destroy');
+
+    //Development
+    Route::get('/desenvolvimento', 'DevelopmentController@index');
+    Route::post('/desenvolvimento', 'DevelopmentController@store');
+    Route::get('/desenvolvimento/novo', 'DevelopmentController@create');
+    Route::get('/desenvolvimento/visualizar/{id}', 'DevelopmentController@show');
+    Route::get('desenvolvimento/pdf/{desenvolvimento}', 'DevelopmentController@pdf');
+    Route::get('/desenvolvimento/editar/{id}', 'DevelopmentController@edit');
+    Route::post('/desenvolvimento/{id}', 'DevelopmentController@update');
+    Route::get('/desenvolvimento/apagar/{id}', 'DevelopmentController@destroy');
+
+    //Consulting
+    Route::get('/consultoria', 'ConsultingController@index');
+    Route::post('/consultoria', 'ConsultingController@store');
+    Route::get('/consultoria/novo', 'ConsultingController@create');
+    Route::get('/consultoria/visualizar/{id}', 'ConsultingController@show');
+    Route::get('consultoria/pdf/{consultoria}', 'ConsultingController@pdf');
+    Route::get('/consultoria/editar/{id}', 'ConsultingController@edit');
+    Route::post('/consultoria/{id}', 'ConsultingController@update');
+    Route::get('/consultoria/apagar/{id}', 'ConsultingController@destroy');
+
+
+    // TEST
+    //Requirements - test
+    Route::get('teste-requisitos', 'RequirementTestSystemController@index');
+    Route::post('teste-requisitos', 'RequirementTestSystemController@store');
+    Route::get('teste-requisitos/novo', 'RequirementTestSystemController@create');
+    Route::get('teste-requisitos/visualizar/{id}', 'RequirementTestSystemController@show');
+    Route::get('teste-requisitos/excel/{id}', 'RequirementTestSystemController@excel');
+    Route::get('teste-requisitos/editar/{id}', 'RequirementTestSystemController@edit');
+    Route::post('teste-requisitos/{id}', 'RequirementTestSystemController@update');
+    Route::get('teste-requisitos/apagar/{id}', 'RequirementTestSystemController@destroy');
+
+    //Crudes - test
+    Route::get('teste-crudes', 'CrudsTestController@index');
+    Route::post('teste-crudes', 'CrudsTestController@store');
+    Route::get('teste-crudes/novo', 'CrudsTestController@create');
+    Route::get('teste-crudes/visualizar/{id}', 'CrudsTestController@show');
+    Route::get('teste-crudes/editar/{id}', 'CrudsTestController@edit');
+    Route::post('teste-crudes/{id}', 'CrudsTestController@update');
+    Route::get('teste-crudes/apagar/{id}', 'CrudsTestController@destroy');
+
+    //Use case - test
+    Route::get('teste-caso-de-uso', 'UsecaseTestController@index');
+    Route::post('teste-caso-de-uso', 'UsecaseTestController@store');
+    Route::get('teste-caso-de-uso/novo', 'UsecaseTestController@create');
+    Route::get('teste-caso-de-uso/visualizar/{id}', 'UsecaseTestController@show');
+    Route::get('teste-caso-de-uso/editar/{id}', 'UsecaseTestController@edit');
+    Route::post('teste-caso-de-uso/{id}', 'UsecaseTestController@update');
+    Route::get('teste-caso-de-uso/apagar/{id}', 'UsecaseTestController@destroy');
+
+    //Functional - test
+    Route::get('testes-funcionais', 'FunctionalitTestController@index');
+    Route::post('testes-funcionais', 'FunctionalitTestController@store');
+    Route::get('testes-funcionais/novo', 'FunctionalitTestController@create');
+    Route::get('testes-funcionais/visualizar/{id}', 'FunctionalitTestController@show');
+    Route::get('testes-funcionais/editar/{id}', 'FunctionalitTestController@edit');
+    Route::post('testes-funcionais/{id}', 'FunctionalitTestController@update');
+    Route::get('testes-funcionais/apagar/{id}', 'FunctionalitTestController@destroy');
+});
 
 
 
 // Authentication Route
-Route::get('/user-login', 'AuthenticationController@userLogin');
-Route::get('/user-register', 'AuthenticationController@userRegister');
-Route::get('/user-forgot-password', 'AuthenticationController@forgotPassword');
-Route::get('/user-lock-screen', 'AuthenticationController@lockScreen');
+// Route::get('/user-login', 'AuthenticationController@userLogin');
+// Route::get('/user-register', 'AuthenticationController@userRegister');
+// Route::get('/user-forgot-password', 'AuthenticationController@forgotPassword');
+// Route::get('/user-lock-screen', 'AuthenticationController@lockScreen');
 
 // Misc Route
 Route::get('/page-404', 'MiscController@page404');
@@ -146,8 +149,8 @@ Route::get('/page-500', 'MiscController@page500');
 
 
 // locale route
-Route::get('lang/{locale}',[LanguageController::class, 'swap']);
+// Route::get('lang/{locale}',[LanguageController::class, 'swap']);
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
