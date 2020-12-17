@@ -30,9 +30,7 @@ class RequirementsGatheringsController extends Controller
      */
     public function create()
     {
-        return view('/pages/requirements-gathering-add', [
-            'requirementsgatherings' => RequirementsGatherings::all(),
-        ]);
+        return view('/pages/requirements-gathering-add');
     }
 
     /**
@@ -43,13 +41,8 @@ class RequirementsGatheringsController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate(['project_name' => 'required']);
-        // $request->validate(['lr_id' => 'required']);
-        // dd($request->all());
-        $requirementsgatherings = RequirementsGatherings::create($request->all());
-        $requirementsgatheringstitles = RequirementsGatheringsTitles::create($request->all());
-        $requirementsgatheringsmenu = RequirementsGatheringsMenus::create($request->all());
-        $requirementsgatheringsdescriptions = RequirementsGatheringsDescriptions::create($request->all());
+        $requirementsgatherings = RequirementsGatherings::create($request->except('modulos'));
+        $requirementsgatherings->insertModules($request->only('modulos'));
         return redirect('requisitos');
     }
 
