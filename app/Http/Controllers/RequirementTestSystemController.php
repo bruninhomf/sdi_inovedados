@@ -154,13 +154,15 @@ class RequirementTestSystemController extends Controller
         foreach($requirementtestmodules as $key => $requirementtestmodule) {
             $row = $key === 0 ? $row : $row++;
 
-            $spreadsheet->getActiveSheet()->setCellValue("A{$row}", $requirementtestmodule->id);
             $spreadsheet->getActiveSheet()->setCellValue("B{$row}", $requirementtestmodule->name);
 
             $requirementTestRequirements = RequirementTestRequirement::where('module_id', $requirementtestmodule->id)->get();
             foreach($requirementTestRequirements as $requirementTestRequirement) {
-                $spreadsheet->getActiveSheet()->setCellValue("C{$row}",$requirementTestRequirement->description);
-                $spreadsheet->getActiveSheet()->setCellValue("D{$row}",$requirementTestRequirement->status);
+                $n = $row - 5;
+                
+                $spreadsheet->getActiveSheet()->setCellValue("A{$row}", $n);
+                $spreadsheet->getActiveSheet()->setCellValue("C{$row}", $requirementTestRequirement->description);
+                $spreadsheet->getActiveSheet()->setCellValue("D{$row}", $requirementTestRequirement->status);
                 $row = $row +1;
             }
         }
@@ -171,9 +173,9 @@ class RequirementTestSystemController extends Controller
         $spreadsheet->getActiveSheet()->mergeCells('A5:D5'); // Just to test...
 
         // Set alignments
+        $spreadsheet->getActiveSheet()->getStyle('A6:A500')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
         $spreadsheet->getActiveSheet()->getStyle('A1:D100')->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
         $spreadsheet->getActiveSheet()->getStyle('A1:D5')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $spreadsheet->getActiveSheet()->getStyle('D6:D100')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 
         // Set thin black border outline around column
         $styleThinBlackBorderOutline = [
@@ -196,7 +198,7 @@ class RequirementTestSystemController extends Controller
         $spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(6);
         $spreadsheet->getActiveSheet()->getColumnDimension('B')->setWidth(32);
         $spreadsheet->getActiveSheet()->getColumnDimension('C')->setWidth(62);
-        $spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth(11);
+        $spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth(12);
 
         // Set fonts
         $spreadsheet->getActiveSheet()->getStyle('A1')->getFont()->setSize(16);
