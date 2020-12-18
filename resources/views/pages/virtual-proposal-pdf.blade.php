@@ -1,16 +1,13 @@
 <html>
 <head>
 <title>Page Title</title>
-<style>
-  htmlpagefooter { display : none; }
-</style>
 </head>
 <body>
 <div>
   <div>
     <div>
       <div>
-        <div style="height: 50px; padding-top: 120px; padding-bottom: 252px; text-align: center">
+        <div style="height: 50px; padding-top: 160px; padding-bottom: 202px; text-align: center">
           <img src="images/logo/inovedados.jpg" alt="Inove Dados" width="250px">
         </div>
         <table style="border-spacing: 0; margin-top: 10px">
@@ -36,7 +33,7 @@
                 </tr>
                 <tr>
                   <td></td>
-                  <td style="color: white; padding-left: 90px; padding-top: 20px; text-align: right; white-space: nowrap;">
+                  <td style="color: white; padding-left: 145px; padding-top: 20px; text-align: right; white-space: nowrap;">
                     <div><h4>contato@inovedados.com.br</h4> <img src="images/icon/email_white.png" style="width: 12px; margin-left: 7px"></div>
                     <div><h4>+55 (31) 4042-2999 </h4> <img src="images/icon/phone_white.png" style="width: 7px; margin-left: 6px"></div>
                     <div style="border: 1px solid #891629"><h4>Rua dos Guajajaras, 910, Sala 1619 </h4> <img src="images/icon/address_white.png" style="margin-left: 4px"></div>
@@ -59,7 +56,7 @@
           </tr>
         </table>
         <div style="padding: 40px 70px 0px 70px">
-          <img width="100%" src="images/table_storage.png" alt=""> 
+          <img width="100%" src="images/table_storage.png"> 
           <table cellspacing="0" style="width: 100%; color: #595959; text-align: justify; line-height: 25px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
             <tbody>
               <tr style="background-color: #f6f6f6;">
@@ -90,7 +87,7 @@
           <p>Localização: Data Center Park Falkenstein, Alemanha.</p>
           <div>
             <h6>
-              Valor: R$ {{ $virtualproposal->value }}
+              Valor: R$ {{ $virtualproposal->value }} mensais
               <br>
               Validade da proposta: 15 (quinze) dias a contar de: {{ date('d/m/Y') }}.
             </h6>
@@ -111,7 +108,7 @@
               </li>
             </ul>
           </div>
-          <table style="padding: 345px 0px 0px 0px; color: #7f7f7f; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
+          <table style="padding: 400px 0px 0px 0px; color: #7f7f7f; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
             <tr>
               <td style="padding-left: -20px; text-align: left;">
                 <img src="images/logo/logo_inove.png" alt="Inove Dados" style="width: 120px">
