@@ -73,12 +73,19 @@ class ConsultingController extends Controller
 
     public function pdf(ConsultingProposal $consultoria)
     {
-        // $css = asset('css/pages/pdf.css');
         $html = view('pages/consulting-proposal-pdf', [
             'consultingproposal' => $consultoria
         ])->render();
-        $mpdf = new Mpdf();
-        // $mpdf->WriteHTML($css, 1);
+        $mpdf = new Mpdf([
+            'mode' => 'utf-8',
+            'format' => 'A4',
+            'margin_top' => 0,
+            'margin_left' => 0,
+            'margin_right' => 0,
+            'margin_bottom' => 0,
+            'margin_footer' => 0,
+            'mirrorMargins' => true,
+        ]);
         $mpdf->WriteHTML($html);
         $mpdf->Output();
     }
