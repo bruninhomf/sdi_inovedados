@@ -140,10 +140,10 @@ class CrudsTestController extends Controller
 
     public function excel($id)
     {
-        $crudstestmodule = CrudsTestModule::find();
-        $crudstestrequirement = CrudsTestRequirement::find();
-        $linhamodule = '6'; 
-        $requirementlinha = '6'; 
+        $crudstestsystem = CrudsTestSystem::find($id);
+        $crudstestmodules = CrudsTestModule::where('cruds_id', $crudstestsystem->id)->get();
+
+        $row = 6; 
 
         // Create new Spreadsheet object
         $spreadsheet = new Spreadsheet();
@@ -157,15 +157,20 @@ class CrudsTestController extends Controller
             ->setCellValue('D4', 'Situação')
             ->setCellValue('A5', 'INICIO');
 
-        foreach($crudstestmodule as $key => $crudstestmodule) {
-            $linhamodule = $key === 0 ? $linhamodule : $linhamodule+1;
-            $spreadsheet->getActiveSheet()->setCellValue("A{$linhamodule}", $crudstestmodule->id);
-            $spreadsheet->getActiveSheet()->setCellValue("B{$linhamodule}", $crudstestmodule->name);
-        }
-        foreach($crudstestrequirement as $key => $crudstestrequirement) {
-            $requirementlinha = $key === 0 ? $requirementlinha : $requirementlinha+1;
-            $spreadsheet->getActiveSheet()->setCellValue("C{$requirementlinha}", $crudstestrequirement->description);
-            $spreadsheet->getActiveSheet()->setCellValue("D{$requirementlinha}", $crudstestrequirement->status);
+        foreach($crudstestmodules as $key => $crudstestmodule) {
+            $row = $key === 0 ? $row : $row++;
+            
+            $spreadsheet->getActiveSheet()->setCellValue("B{$row}", $crudstestmodule->name);
+            
+            $crudstestrequirements = CrudsTestRequirement::where('module_id', $crudstestmodule->id)->get();
+            foreach($crudstestrequirements as $key => $crudstestrequirement) {
+                $n = $row - 5;
+
+                $spreadsheet->getActiveSheet()->setCellValue("A{$row}", $n);
+                $spreadsheet->getActiveSheet()->setCellValue("C{$row}", $crudstestrequirement->description);
+                $spreadsheet->getActiveSheet()->setCellValue("D{$row}", $crudstestrequirement->status);
+                $row = $row +1;
+            }
         }
 
 
