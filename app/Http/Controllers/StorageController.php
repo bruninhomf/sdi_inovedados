@@ -65,12 +65,19 @@ class StorageController extends Controller
 
     public function pdf(StorageProposal $armazenamento)
     {
-        // $css = asset('css/pages/pdf.css');
         $html = view('pages/storage-proposal-pdf', [
             'storageproposal' => $armazenamento
         ])->render();
-        $mpdf = new Mpdf();
-        // $mpdf->WriteHTML($css, 1);
+        $mpdf = new Mpdf([
+            'mode' => 'utf-8',
+            'format' => 'A4',
+            'margin_top' => 0,
+            'margin_left' => 0,
+            'margin_right' => 0,
+            'margin_bottom' => 0,
+            'margin_footer' => 0,
+            'mirrorMargins' => true,
+        ]);
         $mpdf->WriteHTML($html);
         $mpdf->Output();
     }
