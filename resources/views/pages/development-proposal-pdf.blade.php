@@ -2,23 +2,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Page Title</title>
+<title>Proposta de desenvolvimento</title>
 </head>
 <body>
 <div>
   <div>
     <div>
       <div>
-        <div style="height: 50px; padding-top: 120px; padding-bottom: 150px; text-align: center">
+        <div style="height: 50px; padding-top: 160px; padding-bottom: 170px; text-align: center">
           <img src="images/logo/inovedados.jpg" alt="Inove Dados" width="250px">
         </div>
-        <table style="border-spacing: 0; margin: 10px 0px">
+        <table style="border-spacing: 0; margin-top: 10px">
           <tr>
             <td colspan="2" style="background-color: #be575e; height: 57px;"></td>
           </tr>
           <tr>
             <td style="background-color: #be575e; height: 280px;"></td>
-            <td rowspan="2" style="background-color: #891629; color: white; width: 600px; padding: 40px;font-size: 50px; font-family: Calibri, 'Trebuchet MS', 'Gill Sans', sans-serif">
+            <td rowspan="2" style="background-color: #891629; color: white; width: 670px; padding: 40px; font-size: 50px; font-family: Calibri, 'Trebuchet MS', 'Gill Sans', sans-serif">
               PROPOSTA
               <h1 style="font-size: 80px; font-family: Arial, Helvetica, sans-serif;">COMERCIAL</h1>
               <table style="padding: 20px 0px 20px 0px; color: white;font-family: Arial, Helvetica, sans-serif; font-size: 26px;">
@@ -32,14 +32,14 @@
                   <td>Data: {{ $developmentproposal->date }}</td>
                 </tr>
               </table>
-              <table>
+              <table style="padding: 20px 0px 20px 0px; color: white; font-family: Arial, Helvetica, sans-serif">
                 <tr>
                   <td style="background-color: white; position:absolute; width: 130px; height: 10px;"></td>
                   <td></td>
                 </tr>
                 <tr>
                   <td></td>
-                  <td style="color: white; padding-left: 90px; padding-top: 20px; text-align: right; white-space: nowrap;">
+                  <td style="color: white; padding-left: 145px; padding-top: 20px; text-align: right; white-space: nowrap;">
                     <div><h4>contato@inovedados.com.br</h4> <img src="images/icon/email_white.png" style="width: 12px; margin-left: 7px"></div>
                     <div><h4>+55 (31) 4042-2999 </h4> <img src="images/icon/phone_white.png" style="width: 7px; margin-left: 6px"></div>
                     <div style="border: 1px solid #891629"><h4>Rua dos Guajajaras, 910, Sala 1619 </h4> <img src="images/icon/address_white.png" style="margin-left: 4px"></div>
@@ -50,12 +50,19 @@
             </td>
           </tr>
           <tr>
-            <td style="background-color: #262b2c; color: white; font-size: 50px; height: 230px; -webkit-transform: rotate(-90.0deg);font-family: Arial, Helvetica, sans-serif;">{{ date('Y') }}</td>
+            <td style="background-color: #262b2c;">
+              <svg height="200" width="120" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <g transform="scale(4)">
+                  <text x="58" y="-40" fill="white" transform="rotate(-90 80,20)" style="font-family: Arial, Helvetica, sans-serif">
+                    {{ date('Y') }}
+                  </text>
+                </g>
+              </svg>
+            </td>
           </tr>
         </table>
 
-        {{-- Pagina 2 --}}
-        <div style="height: 690px;">
+        <div style="height: 690px; padding: 40px 70px 0px 70px;">
           <table style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
             <tr>
               <td style="background-color: #ff002b; position:absolute; width: 8px; height: 80px;"></td>
@@ -89,25 +96,27 @@
         <div style="text-align: center">
           <img src="images/cards/business.png">
         </div>
-        <table>
-          <tr>
-            <td style="padding-left: -20px; text-align: left;">
-              <img src="images/logo/logo_inove.png" alt="Inove Dados" style="width: 120px">
-            </td>
-            <td style="padding-left: 280px; text-align: right; white-space: nowrap; border: 1px solid white">
-              <div>contato@inovedados.com.br <img src="images/icon/email.png" style="width: 10px; margin-left: 4px"></div>
-              <div>+55 (31) 4042-2999 <img src="images/icon/fone.png" style="width: 10px; margin-left: 4px"></div>
-              <div style="border: 1px solid white">Rua dos Guajajaras, 910, Sala 1619 <img src="images/icon/end.png" style="width: 10px; margin-left: 5px"></div>
-              <div>inovedados <img src="images/icon/skype.png" style="width: 11px; margin-left: 3px"></div>
-            </td>
-          </tr>
-        </table>          
-        <div >
-          <div style="background-color: #891629; width: 100%; height: 10px;"></div>
+        <div style="padding: 0px 75px 0px 75px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
+          <table style="padding: 43px 0px 0px 0px; color: #7f7f7f; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
+            <tr>
+              <td style="padding-left: -20px; text-align: left;">
+                <img src="images/logo/logo_inove.png" alt="Inove Dados" style="width: 120px">
+              </td>
+              <td style="padding-left: 280px; text-align: right; white-space: nowrap; border: 1px solid white">
+                <div>contato@inovedados.com.br <img src="images/icon/email.png" style="width: 10px; margin-left: 4px"></div>
+                <div>+55 (31) 4042-2999 <img src="images/icon/fone.png" style="width: 10px; margin-left: 4px"></div>
+                <div style="border: 1px solid white">Rua dos Guajajaras, 910, Sala 1619 <img src="images/icon/end.png" style="width: 10px; margin-left: 4px"></div>
+                <div>inovedados <img src="images/icon/skype.png" style="width: 10px; margin-left: 4px"></div>
+              </td>
+            </tr>
+          </table>          
+          <div style="padding-top: 15px">
+            <div style="background-color: #da0c1f; width: 100%; height: 6px;"></div>
+          </div>
         </div>
 
         {{-- Página 3 --}}
-        <div style="height: 900px;">
+        <div style="height: 900px; padding: 40px 70px 0px 70px;">
           <table style="margin-bottom: 80px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
             <tr>
               <td style="background-color: #ff002b; position:absolute; width: 8px; height: 80px;"></td>
@@ -122,7 +131,7 @@
               </td>
             </tr>
           </table>
-          <div style="border-radius: 30px; margin: 20px; padding: 12px; box-shadow:0 0px 20px 0 rgba(0,0,0,3.0)">
+          <div style="border-radius: 30px; padding: 12px; box-shadow:0 0px 20px 0 rgba(0,0,0,3.0)">
             <table style="margin: 30px 10px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
               <tr>
                 <td style="color: #5E5E5E">
@@ -147,25 +156,27 @@
             <img width="430px" src="images/cards/requirement.png">
           </div>
         </div>
-        <table>
-          <tr>
-            <td style="padding-left: -20px; text-align: left;">
-              <img src="images/logo/logo_inove.png" alt="Inove Dados" style="width: 120px">
-            </td>
-            <td style="padding-left: 280px; text-align: right; white-space: nowrap; border: 1px solid white">
-              <div>contato@inovedados.com.br <img src="images/icon/email.png" style="width: 10px; margin-left: 4px"></div>
-              <div>+55 (31) 4042-2999 <img src="images/icon/fone.png" style="width: 10px; margin-left: 4px"></div>
-              <div style="border: 1px solid white">Rua dos Guajajaras, 910, Sala 1619 <img src="images/icon/end.png" style="width: 10px; margin-left: 5px"></div>
-              <div>inovedados <img src="images/icon/skype.png" style="width: 11px; margin-left: 3px"></div>
-            </td>
-          </tr>
-        </table>          
-        <div >
-          <div style="background-color: #891629; width: 100%; height: 10px;"></div>
+        <div style="padding: 0px 75px 0px 75px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
+          <table style="padding: 43px 0px 0px 0px; color: #7f7f7f; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
+            <tr>
+              <td style="padding-left: -20px; text-align: left;">
+                <img src="images/logo/logo_inove.png" alt="Inove Dados" style="width: 120px">
+              </td>
+              <td style="padding-left: 280px; text-align: right; white-space: nowrap; border: 1px solid white">
+                <div>contato@inovedados.com.br <img src="images/icon/email.png" style="width: 10px; margin-left: 4px"></div>
+                <div>+55 (31) 4042-2999 <img src="images/icon/fone.png" style="width: 10px; margin-left: 4px"></div>
+                <div style="border: 1px solid white">Rua dos Guajajaras, 910, Sala 1619 <img src="images/icon/end.png" style="width: 10px; margin-left: 4px"></div>
+                <div>inovedados <img src="images/icon/skype.png" style="width: 10px; margin-left: 4px"></div>
+              </td>
+            </tr>
+          </table>          
+          <div style="padding-top: 15px">
+            <div style="background-color: #da0c1f; width: 100%; height: 6px;"></div>
+          </div>
         </div>
 
         {{-- Página 4 --}}
-        <div style="height: 900px;">
+        <div style="height: 900px; padding: 40px 70px 0px 70px;">
           <table style="padding-bottom: 50px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
             <tr>
               <td style="background-color: #ff002b; position:absolute; width: 8px; height: 80px;"></td>
@@ -180,9 +191,9 @@
               </td>
             </tr>
           </table>
-          <div style="border-radius: 30px; margin: 20px; padding: 12px; box-shadow:0 0px 20px 0 rgba(0,0,0,3.0)">
+          <div style="border-radius: 30px; box-shadow:0px 0px 20px 0px rgba(0,0,0,3.0); padding: 15px;">
             <div style="margin: 30px 10px;">
-              <table style="padding-bottom: 10px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
+              <table style="padding-bottom: 10px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
                 <tr>
                   <td>
                     <img src="images/cards/development.png">
@@ -238,7 +249,6 @@
                 </tr>
               </table>
               <div style="background-color: #ff002b; width: 100%; height: 8px; border-radius: 20px;"></div>
-              
             </div>
           </div>
           <div style="padding-left: 4px; padding-top: 40px; text-align: center;">
@@ -254,25 +264,27 @@
             </tr>
           </table>
         </div>
-        <table>
-          <tr>
-            <td style="padding-left: -20px; text-align: left;">
-              <img src="images/logo/logo_inove.png" alt="Inove Dados" style="width: 120px">
-            </td>
-            <td style="padding-left: 280px; text-align: right; white-space: nowrap; border: 1px solid white">
-              <div>contato@inovedados.com.br <img src="images/icon/email.png" style="width: 10px; margin-left: 4px"></div>
-              <div>+55 (31) 4042-2999 <img src="images/icon/fone.png" style="width: 10px; margin-left: 4px"></div>
-              <div style="border: 1px solid white">Rua dos Guajajaras, 910, Sala 1619 <img src="images/icon/end.png" style="width: 10px; margin-left: 5px"></div>
-              <div>inovedados <img src="images/icon/skype.png" style="width: 11px; margin-left: 3px"></div>
-            </td>
-          </tr>
-        </table>          
-        <div >
-          <div style="background-color: #891629; width: 100%; height: 10px;"></div>
+        <div style="padding: 0px 75px 0px 75px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
+          <table style="padding: 43px 0px 0px 0px; color: #7f7f7f; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
+            <tr>
+              <td style="padding-left: -20px; text-align: left;">
+                <img src="images/logo/logo_inove.png" alt="Inove Dados" style="width: 120px">
+              </td>
+              <td style="padding-left: 280px; text-align: right; white-space: nowrap; border: 1px solid white">
+                <div>contato@inovedados.com.br <img src="images/icon/email.png" style="width: 10px; margin-left: 4px"></div>
+                <div>+55 (31) 4042-2999 <img src="images/icon/fone.png" style="width: 10px; margin-left: 4px"></div>
+                <div style="border: 1px solid white">Rua dos Guajajaras, 910, Sala 1619 <img src="images/icon/end.png" style="width: 10px; margin-left: 4px"></div>
+                <div>inovedados <img src="images/icon/skype.png" style="width: 10px; margin-left: 4px"></div>
+              </td>
+            </tr>
+          </table>          
+          <div style="padding-top: 15px">
+            <div style="background-color: #da0c1f; width: 100%; height: 6px;"></div>
+          </div>
         </div>
 
         {{-- Página 5 --}}
-        <div style="height: 900px">
+        <div style="height: 900px; padding: 40px 70px 0px 70px;">
           <table style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
             <tr>
               <td style="background-color: #ff002b; position:absolute; width: 8px; height: 80px;"></td>
@@ -331,7 +343,7 @@
               </td>
             </tr>
           </table>
-          <div style="border: 2px solid #891629; border-radius: 50px; margin: 20px; padding: 12px;">
+          <div style="border: 2px solid #891629; border-radius: 50px; margin: 40px 20px 0px 20px; padding: 12px;">
             <table style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;line-height: 22px; margin: 25px 0px 25px 0px">
               <tr>
                 <td colspan="2" style="padding-bottom: 20px;">
@@ -367,21 +379,23 @@
             </table>
           </div>
         </div>
-        <table>
-          <tr>
-            <td style="padding-left: -20px; text-align: left;">
-              <img src="images/logo/logo_inove.png" alt="Inove Dados" style="width: 120px">
-            </td>
-            <td style="padding-left: 280px; text-align: right; white-space: nowrap; border: 1px solid white">
-              <div>contato@inovedados.com.br <img src="images/icon/email.png" style="width: 10px; margin-left: 4px"></div>
-              <div>+55 (31) 4042-2999 <img src="images/icon/fone.png" style="width: 10px; margin-left: 4px"></div>
-              <div style="border: 1px solid white">Rua dos Guajajaras, 910, Sala 1619 <img src="images/icon/end.png" style="width: 10px; margin-left: 5px"></div>
-              <div>inovedados <img src="images/icon/skype.png" style="width: 11px; margin-left: 3px"></div>
-            </td>
-          </tr>
-        </table>          
-        <div >
-          <div style="background-color: #891629; width: 100%; height: 10px;"></div>
+        <div style="padding: 0px 75px 0px 75px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
+          <table style="padding: 43px 0px 0px 0px; color: #7f7f7f; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
+            <tr>
+              <td style="padding-left: -20px; text-align: left;">
+                <img src="images/logo/logo_inove.png" alt="Inove Dados" style="width: 120px">
+              </td>
+              <td style="padding-left: 280px; text-align: right; white-space: nowrap; border: 1px solid white">
+                <div>contato@inovedados.com.br <img src="images/icon/email.png" style="width: 10px; margin-left: 4px"></div>
+                <div>+55 (31) 4042-2999 <img src="images/icon/fone.png" style="width: 10px; margin-left: 4px"></div>
+                <div style="border: 1px solid white">Rua dos Guajajaras, 910, Sala 1619 <img src="images/icon/end.png" style="width: 10px; margin-left: 4px"></div>
+                <div>inovedados <img src="images/icon/skype.png" style="width: 10px; margin-left: 4px"></div>
+              </td>
+            </tr>
+          </table>          
+          <div style="padding-top: 15px">
+            <div style="background-color: #da0c1f; width: 100%; height: 6px;"></div>
+          </div>
         </div>
       </div>
     </div>
