@@ -112,6 +112,7 @@ Route::group(['middleware' => 'auth', 'uses'], function () {
     Route::post('teste-crudes', 'CrudsTestController@store');
     Route::get('teste-crudes/novo', 'CrudsTestController@create');
     Route::get('teste-crudes/visualizar/{id}', 'CrudsTestController@show');
+    Route::get('teste-crudes/excel/{id}', 'CrudsTestController@excel');
     Route::get('teste-crudes/editar/{id}', 'CrudsTestController@edit');
     Route::post('teste-crudes/{id}', 'CrudsTestController@update');
     Route::get('teste-crudes/apagar/{id}', 'CrudsTestController@destroy');
