@@ -66,11 +66,9 @@ class VirtualController extends Controller
 
     public function pdf(virtualProposal $virtual)
     {
-        // $css = asset('css/pages/pdf.css');
         $html = view('pages/virtual-proposal-pdf', [
             'virtualproposal' => $virtual
         ])->render();
-        // return $html;
         $mpdf = new Mpdf([
             'mode' => 'utf-8',
             'format' => 'A4',
