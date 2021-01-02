@@ -20,17 +20,19 @@ Route::group(['middleware' => 'auth', 'uses'], function () {
     Route::get('/', 'DashboardController@dashboard');
     Route::get('logout','AuthController@logout');
     Route::get('/historico', 'DashboardController@historico');
-    Route::get('/minhaconta', 'DashboardController@minhaconta');
 
 
     //Users
     Route::get('/usuarios', 'UserController@index');
     Route::post('/usuarios', 'UserController@store');
     Route::get('/usuario/novo', 'UserController@create');
-    Route::get('/usuario/visualizar', 'DashboardController@usuariovisualizar');
+    Route::get('/usuario/visualizar/{id}', 'UserController@show');
     Route::get('/usuario/editar/{id}', 'UserController@edit');
     Route::post('usuario/{id}', 'UserController@update');
     Route::get('usuario/apagar/{id}', 'UserController@destroy');
+    
+    Route::get('/minhaconta/{id}', 'UserController@myaccount');
+    Route::post('/minhaconta/{id}', 'UserController@myaccountupdate');
 
 
     //REQUIREMENTS
@@ -39,6 +41,8 @@ Route::group(['middleware' => 'auth', 'uses'], function () {
     Route::post('requisitos', 'RequirementsGatheringsController@store');
     Route::get('requisitos/novo', 'RequirementsGatheringsController@create');
     Route::get('requisitos/visualizar/{id}', 'RequirementsGatheringsController@show');
+    Route::get('requisitos/pdf/{requirementsgathering}', 'RequirementsGatheringsController@pdf');
+    Route::get('requisitos/excel/{id}', 'RequirementsGatheringsController@excel');
     Route::get('requisitos/editar/{id}', 'RequirementsGatheringsController@edit');
     Route::post('requisitos/{id}', 'RequirementsGatheringsController@update');
     Route::get('requisitos/apagar/{id}', 'RequirementsGatheringsController@destroy');
@@ -122,6 +126,7 @@ Route::group(['middleware' => 'auth', 'uses'], function () {
     Route::post('teste-caso-de-uso', 'UsecaseTestController@store');
     Route::get('teste-caso-de-uso/novo', 'UsecaseTestController@create');
     Route::get('teste-caso-de-uso/visualizar/{id}', 'UsecaseTestController@show');
+    Route::get('teste-caso-de-uso/excel/{id}', 'UsecaseTestController@excel');
     Route::get('teste-caso-de-uso/editar/{id}', 'UsecaseTestController@edit');
     Route::post('teste-caso-de-uso/{id}', 'UsecaseTestController@update');
     Route::get('teste-caso-de-uso/apagar/{id}', 'UsecaseTestController@destroy');
@@ -131,6 +136,7 @@ Route::group(['middleware' => 'auth', 'uses'], function () {
     Route::post('testes-funcionais', 'FunctionalitTestController@store');
     Route::get('testes-funcionais/novo', 'FunctionalitTestController@create');
     Route::get('testes-funcionais/visualizar/{id}', 'FunctionalitTestController@show');
+    Route::get('testes-funcionais/excel/{id}', 'FunctionalitTestController@excel');
     Route::get('testes-funcionais/editar/{id}', 'FunctionalitTestController@edit');
     Route::post('testes-funcionais/{id}', 'FunctionalitTestController@update');
     Route::get('testes-funcionais/apagar/{id}', 'FunctionalitTestController@destroy');
