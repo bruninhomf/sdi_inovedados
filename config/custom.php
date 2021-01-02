@@ -18,8 +18,8 @@ return [
         'templateTitle' => '', //template Title can be changes default('Materialize)
         'isCustomizer' => true, //If True customizer available or false its not available
         'defaultLanguage'=>'pt', //set your default language Options: en(default),pt,fr,de
-        'largeScreenLogo' => 'images/logo/materialize-logo-color.png', //we used saparete log image for large screen and small
-        'smallScreenLogo' => 'images/logo/materialize-logo.png', // pass the image path here e.g:'images/logo/materialize-logo-color.png' note:(Vertical-menu-nav-dark and horizontal-menu template used a single logo in both small and large screen)
+        'largeScreenLogo' => null, //we used saparete log image for large screen and small
+        'smallScreenLogo' => 'images/logo/logo.png', // pass the image path here e.g:'images/logo/materialize-logo-color.png' note:(Vertical-menu-nav-dark and horizontal-menu template used a single logo in both small and large screen)
         'isFabButton'=> false,   //favorite button for shortcurt menu Option: True or False
         'direction' => env('MIX_CONTENT_DIRECTION', 'ltr'),
     ],
