@@ -48,7 +48,7 @@
                 <tr>
                   <td>{{ $usecasetestsystem->id }}</td>
                   <td>{{ $usecasetestsystem->project_name }}</td>
-                  <td>{{ $usecasetestsystem->created_at }}</td>
+                  <td>{{ date('d/m/Y', strtotime($usecasetestsystem->created_at)) }}</td>
                   <td>
                       <a href="teste-caso-de-uso/visualizar/{{ $usecasetestsystem->id }}"><i class="material-icons">remove_red_eye</i></a>
                       <a href="teste-caso-de-uso/editar/{{ $usecasetestsystem->id }}"><i class="material-icons">edit</i></a>
