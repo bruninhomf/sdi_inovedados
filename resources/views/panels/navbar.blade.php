@@ -27,7 +27,7 @@
       <!-- profile-dropdown-->
       <ul class="dropdown-content" id="profile-dropdown">
         <li>
-          <a class="grey-text text-darken-1" href="{{asset('minhaconta')}}">
+          <a class="grey-text text-darken-1" href="/minhaconta/{{ Auth::user()->id }}">
             <i class="material-icons">account_circle</i>
             Minha conta
           </a>
