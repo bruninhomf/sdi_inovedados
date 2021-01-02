@@ -47,12 +47,12 @@
           <table class="striped text-nowrap">
             <tbody>
               <tr>
-                <td>CPU:</td>
+                <td>Nome do projeto:</td>
                 <td>{{ $usecasetestsystems->project_name }}</td>
               </tr>
               <tr>
-                <td>Memoria:</td>
-                <td>{{ $usecasetestsystems->created_at }}</td>
+                <td>Data:</td>
+                <td>{{ date('d/m/Y', strtotime($usecasetestsystems->created_at)) }}</td>
               </tr>
             </tbody>
           </table>
