@@ -69,7 +69,7 @@
                         @enderror
                       </div>
                       <div class="col s12 input-field">
-                          <input id="ip" name="ip" type="text" class="validate" required>
+                          <input id="ip" name="ip" type="text" class="ip-code validate" required>
                           <label for="ip">IP</label>
                           @error('ip')
                           <small class="red-text">{{ $message }}</small>
@@ -108,9 +108,11 @@
 @section('vendor-script')
 <script src="{{asset('vendors/data-tables/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('vendors/data-tables/extensions/responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{asset('vendors/formatter/jquery.formatter.min.js')}}"></script>
 @endsection
 
 {{-- page script --}}
 @section('page-script')
 <script src="{{asset('js/scripts/page-users.js')}}"></script>
+<script src="{{asset('js/scripts/form-masks.js')}}"></script>
 @endsection
