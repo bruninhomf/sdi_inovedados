@@ -50,12 +50,12 @@
                   <td>{{ $user->id }}</td>
                   <td>{{ $user->name }}</td>
                   <td>{{ $user->email }}</td>
-                  <td><span class="chip green lighten-5">
-                      <span class="green-text">{{ $user->status }}</span>
+                  <td><span>
+                      <span>{{ $user->status }}</span>
                     </span>
                   </td>
                   <td>
-                      <a href="usuario/visualizar"><i class="material-icons">remove_red_eye</i></a>
+                      <a href="usuario/visualizar/{{ $user->id }}"><i class="material-icons">remove_red_eye</i></a>
                       <a href="usuario/editar/{{ $user->id }}"><i class="material-icons">edit</i></a>
                       <a href="usuario/apagar/{{ $user->id }}"><i class="material-icons">delete_forever</i></a>
                   </td>
@@ -64,7 +64,6 @@
             </tbody>
           </table>
         </div>
-        <!-- datatable ends -->
       </div>
     </div>
   </div>
