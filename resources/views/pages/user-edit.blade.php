@@ -46,19 +46,6 @@
       <form action="/usuario/{{$user->id}}" method="POST">
         @csrf
         <div class="col s12" id="account">
-          <!-- users edit media object start -->
-          <div class="media display-flex align-items-center mb-2">
-            <a class="mr-2" href="#">
-              <img src="{{asset('images/avatar/avatar-11.png')}}" alt="users avatar" class="z-depth-4 circle"
-                height="64" width="64">
-            </a>
-            <div class="media-body">
-              <h5 class="media-heading mt-0">Imagem de perfil</h5>
-              <div class="user-edit-btns display-flex">
-                <a href="#" class="btn-small indigo">Upload</a>
-              </div>
-            </div>
-          </div>
           <div class="row">
             <div class="col s12 m6">
               <div class="row">
@@ -68,8 +55,8 @@
                   <small class="errorTxt2"></small>
                 </div>
                 <div class="col s12 input-field">
-                  <input id="cpf-code" name="cpf" type="text" value="{{ $user->cpf }}" class="validate" data-error=".errorTxt1">
-                  <label for="cpf-code">CPF</label>
+                  <input id="cpf" name="cpf" type="text" value="{{ $user->cpf }}" class="cpf-code validate" data-error=".errorTxt1">
+                  <label for="cpf">CPF</label>
                   <small class="errorTxt1"></small>
                 </div>
                 <div class="col s12 input-field">
@@ -82,8 +69,8 @@
             <div class="col s12 m6">
               <div class="row">
                 <div class="col s12 input-field">
-                  <input id="phone-demo" name="tel" type="text" value="{{ $user->phone }}" class="validate">
-                  <label for="phone-demo">Telefone</label>
+                  <input id="tel" name="tel" type="text" value="{{ $user->phone }}" class="phone-demo validate">
+                  <label for="tel">Telefone</label>
                 </div>
                 <div class="col s12 input-field">
                   <select value="{{ $user->office }}">
