@@ -25,8 +25,8 @@ class Helper
             'templateTitle' => '',
             'isCustomizer' => true,
             'defaultLanguage'=>'en',
-            'largeScreenLogo' => 'images/logo/materialize-logo-color.png',
-            'smallScreenLogo' => 'images/logo/materialize-logo.png',
+            'largeScreenLogo' => null,
+            'smallScreenLogo' => 'images/logo/logo.png',
             'isFabButton'=>false, 
             'direction' => env('MIX_CONTENT_DIRECTION', 'ltr'),
         ];
