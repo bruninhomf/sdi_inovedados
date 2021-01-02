@@ -4,6 +4,7 @@ namespace App;
 use App\FunctionalitTestModule;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class FunctionalitTestSystem extends Model
 {
@@ -21,5 +22,25 @@ class FunctionalitTestSystem extends Model
                 $functionalittestmodule->insertRequeriments($modulo);
             }
         }
+    }
+
+    public function modules()
+    {
+        return $this->hasMany(FunctionalitTestModule::class, 'functionalit_id', 'id');
+    }
+
+
+    static function getMonthFunctionalit($month)
+    {
+        $startdate = Carbon::now();
+
+        $startdate->setDay(1)->setMonth($month);
+        $finishDate = $startdate->clone();
+        $finishDate->addMonth();
+
+        return 
+        FunctionalitTestSystem::where('created_at', '>=', $startdate)
+        ->where('created_at', '<', $finishDate)
+        ->count(); 
     }
 }

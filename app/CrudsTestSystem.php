@@ -4,6 +4,7 @@ namespace App;
 use App\CrudsTestModule;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class CrudsTestSystem extends Model
 {
@@ -22,5 +23,25 @@ class CrudsTestSystem extends Model
                 $crudstestmodule->insertRequeriments($modulo);
             }
         }
+    }
+    
+    public function modules()
+    {
+        return $this->hasMany(CrudsTestModule::class, 'cruds_id', 'id');
+    }
+
+
+    static function getMonthCruds($month)
+    {
+        $startdate = Carbon::now();
+
+        $startdate->setDay(1)->setMonth($month);
+        $finishDate = $startdate->clone();
+        $finishDate->addMonth();
+
+        return 
+        CrudsTestSystem::where('created_at', '>=', $startdate)
+        ->where('created_at', '<', $finishDate)
+        ->count(); 
     }
 }
