@@ -13,7 +13,6 @@ return[
         "Crudes"=> "Crudes",
         "Caso de uso"=> "Caso de uso",
         "Testes Funcionais"=> "Testes Funcionais",
-    "Usuarios"=> "Usuários",
-    "Historico"=> "Histórico"
+    "Usuarios"=> "Usuários"
 ];
 ?>

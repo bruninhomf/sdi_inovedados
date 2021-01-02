@@ -103,18 +103,6 @@
       "slug": "usuarios",
       "icon": "person_outline",
       "tagcustom": "badge pill orange float-right mr-10"
-    },
-    {
-      "navheader": "AUDITORIA",
-      "icon": "more_horiz"
-    },
-    {
-      "url": "historico",
-      "name": "Historico",
-      "i18n": "Historico",
-      "slug": "historico",
-      "icon": "history",
-      "tagcustom": "badge pill orange float-right mr-10"
     }
   ]
 }
