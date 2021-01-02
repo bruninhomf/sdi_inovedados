@@ -2,45 +2,94 @@
 
 namespace App\Http\Controllers;
 
+use App\ConsultingProposal;
+use App\CrudsTestSystem;
+use App\DevelopmentProposal;
+use App\FunctionalitTestSystem;
+use App\HostingProposal;
+use Illuminate\Support\Facades\Auth;
 use App\StorageProposal;
-
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
-use PhpOffice\PhpSpreadsheet\IOFactory;
-
-// Create new Spreadsheet object
-use PhpOffice\PhpSpreadsheet\RichText\RichText;
-use PhpOffice\PhpSpreadsheet\Shared\Date;
-use PhpOffice\PhpSpreadsheet\Style\Alignment;
-use PhpOffice\PhpSpreadsheet\Style\Border;
-use PhpOffice\PhpSpreadsheet\Style\Color;
-use PhpOffice\PhpSpreadsheet\Style\Fill;
-use PhpOffice\PhpSpreadsheet\Style\Font;
-use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
-use PhpOffice\PhpSpreadsheet\Style\Protection;
-use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
-use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
-
-
-use PhpOffice\PhpSpreadsheet\Cell\DataValidation;
-use PhpOffice\PhpSpreadsheet\NamedRange;
+use App\RequirementTestSystem;
+use App\RequirementsGatherings;
+use App\UsecaseTestSystem;
+use App\virtualProposal;
 
 class DashboardController extends Controller
 {
     public function dashboard()
     {
         // navbar large
+        $users = Auth::user();
+        $resultado = $users->can('users.read');
+
         $pageConfigs = ['navbarLarge' => false];
 
-        return view('/pages/dashboard', ['pageConfigs' => $pageConfigs]);
-    }
+        // Return annual report Requirements
+        $annualRequirementsGathering = [];
+        $annualVirtual = [];
+        $annualStorage = [];
+        $annualHosting = [];
+        $annualDevelopment = [];
+        $annualConsulting = [];
+        $annualRequirement = [];
+        $annualCruds = [];
+        $annualUsecase = [];
+        $annualFunctionalit = [];
+            $n = 1;
+            while($n <= 12) {
+                array_push($annualRequirementsGathering, RequirementsGatherings::getMonthRequirements($n));
+                array_push($annualVirtual, virtualProposal::getMonthVirtual($n));
+                array_push($annualStorage, StorageProposal::getMonthStorage($n));
+                array_push($annualHosting, HostingProposal::getMonthHosting($n));
+                array_push($annualDevelopment, DevelopmentProposal::getMonthDevelopment($n));
+                array_push($annualConsulting, ConsultingProposal::getMonthCosulting($n));
+                array_push($annualRequirement, RequirementTestSystem::getMonthRequirementsTest($n));
+                array_push($annualCruds, CrudsTestSystem::getMonthCruds($n));
+                array_push($annualUsecase, UsecaseTestSystem::getMonthUsecase($n));
+                array_push($annualFunctionalit, FunctionalitTestSystem::getMonthFunctionalit($n));
+                $n++;
+            }
+        $totalAnnualProposal = [];
+        $totalAnnualTestes = [];
+            $t = 0;
+            while($t <= 11) {
+                $totalAnnualProposal[] = ($annualVirtual[$t] + $annualStorage[$t] + $annualHosting[$t] + $annualDevelopment[$t] + $annualConsulting[$t]);
+                $totalAnnualTestes[] = ($annualRequirement[$t] + $annualCruds[$t] + $annualUsecase[$t] + $annualFunctionalit[$t]);
+                $t++;
+            }
 
-    public function minhaconta()
-    {
-        // navbar large
-        $pageConfigs = ['navbarLarge' => false];
+        // Return monthly report of total proposals
+        $virtualTotal     = virtualProposal::count();
+        $storageTotal     = StorageProposal::count();
+        $hostingTotal     = HostingProposal::count();
+        $developmentTotal = DevelopmentProposal::count();
+        $consultingTotal  = ConsultingProposal::count();
+        $monthProposals = [
+            $storageTotal, $consultingTotal, $developmentTotal, $hostingTotal, $virtualTotal
+        ];
+        $totalMonthlyProposal = array_sum($monthProposals);
 
-        return view('/pages/minhaconta', ['pageConfigs' => $pageConfigs]);
+        // Return monthly report of total testes
+        $UsecaseTestSystem      = UsecaseTestSystem::count();
+        $CrudsTestSystem        = CrudsTestSystem::count();
+        $RequirementTestSystem  = RequirementTestSystem::count();
+        $FunctionalitTestSystem = FunctionalitTestSystem::count();
+        $monthlyTestes = [
+            $UsecaseTestSystem, $CrudsTestSystem, $RequirementTestSystem, $FunctionalitTestSystem
+        ];
+        $totalMonthlyTestes = array_sum($monthlyTestes);
+
+        // Export data Json
+        $exportData = [$monthProposals, $monthlyTestes, $annualRequirementsGathering, $totalAnnualProposal, $totalAnnualTestes]; 
+
+        return view('/pages/dashboard', [
+            'pageConfigs' => $pageConfigs, 
+            'graficMonthlyProposalsTotal' => $totalMonthlyProposal, 
+            'graficMonthlyTestesTotal' => $totalMonthlyTestes, 
+            'exportData' => $exportData
+            ]);
+
+
     }
 
     public function historico()
@@ -49,74 +98,5 @@ class DashboardController extends Controller
         $pageConfigs = ['navbarLarge' => false];
 
         return view('/pages/historico', ['pageConfigs' => $pageConfigs]);
-    }
-
-    public function excel()
-    {
-        // Create new Spreadsheet object
-        $spreadsheet = new Spreadsheet();
-
-        // Add some data
-        $spreadsheet->setActiveSheetIndex(0)
-            ->setCellValue('A1', 'TESTES DE REQUISITOS')
-            ->setCellValue('A4', 'Nº')
-            ->setCellValue('B4', 'Módulos')
-            ->setCellValue('C4', 'Requisitos')
-            ->setCellValue('D4', 'Situação')
-            ->setCellValue('A5', 'INICIO');
-
-            
-        $spreadsheet->getActiveSheet()->setCellValue('A6', '1');
-        $spreadsheet->getActiveSheet()->setCellValue('B6', 'Gestão de clientes');
-        $spreadsheet->getActiveSheet()->setCellValue('C6', 'Deve conter formulário de cadastro de dados pessoais, deve ser possivel visualizar, editar e ativa/desativar o cliente.');
-        $spreadsheet->getActiveSheet()->setCellValue('D6', 'Online');
-
-
-        // Merge cells
-        $spreadsheet->getActiveSheet()->mergeCells('A1:D3');
-        $spreadsheet->getActiveSheet()->mergeCells('A5:D5'); // Just to test...
-
-        // Set alignments
-        $spreadsheet->getActiveSheet()->getStyle('A1:D100')->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-        $spreadsheet->getActiveSheet()->getStyle('A1:D5')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $spreadsheet->getActiveSheet()->getStyle('D6:D100')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-
-        // Set thin black border outline around column
-        $styleThinBlackBorderOutline = [
-            'borders' => [
-                'outline' => [
-                    'borderStyle' => Border::BORDER_THIN,
-                    'color' => ['argb' => 'FF000000'],
-                ],
-            ],
-        ];
-        $spreadsheet->getActiveSheet()->getStyle('A1:D3')->applyFromArray($styleThinBlackBorderOutline);
-        $spreadsheet->getActiveSheet()->getStyle('A4:D4')->applyFromArray($styleThinBlackBorderOutline);
-
-        // Set fills background collors
-        $spreadsheet->getActiveSheet()->getStyle('A1:D5')->getFill()->setFillType(Fill::FILL_SOLID);
-        $spreadsheet->getActiveSheet()->getStyle('A1:D4')->getFill()->getStartColor()->setARGB('404040');
-        $spreadsheet->getActiveSheet()->getStyle('A5:D5')->getFill()->getStartColor()->setARGB('757171');
-
-        // Set column widths
-        $spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(6);
-        $spreadsheet->getActiveSheet()->getColumnDimension('B')->setWidth(32);
-        $spreadsheet->getActiveSheet()->getColumnDimension('C')->setWidth(62);
-        $spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth(11);
-
-        // Set fonts
-        $spreadsheet->getActiveSheet()->getStyle('A1')->getFont()->setSize(16);
-        $spreadsheet->getActiveSheet()->getStyle('A4:D5')->getFont()->setSize(12);
-        $spreadsheet->getActiveSheet()->getStyle('A1:D5')->getFont()->setBold(true);
-        $spreadsheet->getActiveSheet()->getStyle('A1:D5')->getFont()->getColor()->setARGB(Color::COLOR_WHITE);
-
-        // Redirect output to a client’s web browser (Xlsx)
-        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment;filename="Levantamento de requisitos.xlsx"');
-        header('Cache-Control: max-age=0');
-
-        $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
-        $writer->save('php://output');
-        exit;
     }
 }
