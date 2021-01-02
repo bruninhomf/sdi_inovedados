@@ -18,13 +18,9 @@
     <div class="row">
       <div class="col s12 m7">
         <div class="display-flex media">
-          <a href="#" class="avatar">
-            <img src="{{asset('images/avatar/avatar-15.png')}}" alt="users view avatar" class="z-depth-4 circle"
-              height="64" width="64">
-          </a>
           <div class="media-body pl-2">
             <h5 class="media-heading pt-1">
-              <span class="users-view-">Dean Stanley</span>
+              <span class="users-view-">{{ $user->name }}</span>
             </h5>
           </div>
         </div>
@@ -32,7 +28,6 @@
       <div class="col s12 m5 quick-action-btns display-flex justify-content-end align-items-center pt-2" width="500">
         <a href="{{asset('usuarios')}}" class="btn-small btn-light-indigo">
           <i class="material-icons mb-5">arrow_back</i>
-          Voltar
         </a>
         <a href="{{asset('minhaconta')}}" class="btn-small btn-waves-light">
           <i class="material-icons mb-3">account_circle</i>
@@ -40,15 +35,10 @@
         </a>
         <a href="{{asset('usuarioeditar')}}" class="btn-small indigo">
           <i class="material-icons mb-5">edit</i>
-          Editar
         </a>
       </div>
     </div>
   </div>
-  <!-- users view media object ends -->
-
-
-  <!-- users view card details start -->
   <div class="card">
     <div class="card-content">
       <div class="row indigo lighten-5 border-radius-4 mb-2">
@@ -68,27 +58,27 @@
             <tbody>
               <tr>
                 <td>Name:</td>
-                <td>Dean Stanley</td>
+                <td>{{ $user->name }}</td>
               </tr>
               <tr>
                 <td>CPF:</td>
-                <td>554.835.280-69</td>
+                <td>{{ $user->cpf }}</td>
               </tr>
               <tr>
                 <td>E-mail:</td>
-                <td>deanstanley@gmail.com</td>
+                <td>{{ $user->email }}</td>
               </tr>
               <tr>
                 <td>Telefone:</td>
-                <td>(31) 9 9648-2673</td>
+                <td>{{ $user->phone }}</td>
               </tr>
               <tr>
                 <td>Cargo:</td>
-                <td>Tester</td>
+                <td>{{ $user->office }}</td>
               </tr>
               <tr>
                 <td>Situação:</td>
-                <td><span class="green-text">Ativo</td>
+                <td><span>{{ $user->status }}</td>
               </tr>
             </tbody>
           </table>
