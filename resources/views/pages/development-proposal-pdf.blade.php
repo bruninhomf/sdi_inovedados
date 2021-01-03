@@ -29,7 +29,7 @@
                   <td>Versão: {{ $developmentproposal->version }}</td>
                 </tr>
                 <tr>
-                  <td>Data: {{ $developmentproposal->date }}</td>
+                  <td>Data: {{ date('d/m/Y', strtotime($developmentproposal->date)) }}</td>
                 </tr>
               </table>
               <table style="padding: 20px 0px 20px 0px; color: white; font-family: Arial, Helvetica, sans-serif">
@@ -202,7 +202,7 @@
                     <h4>Início do desenvolvimento</h4>
                   </td>
                   <td style="color: #595959">
-                    <h4>de {{ $developmentproposal->start_development }} a {{ $developmentproposal->texting_release }}</h4>
+                    <h4>de {{ date('d/m', strtotime($developmentproposal->start_development)) }} a {{ date('d/m', strtotime($developmentproposal->texting_release)) }}</h4>
                   </td>
                 </tr>
               </table>
@@ -216,7 +216,7 @@
                     <h4>Liberação do ambiente de testes</h4>
                   </td>
                   <td style="color: #595959">
-                    <h4>de {{ $developmentproposal->texting_release }} a {{ $developmentproposal->start_test }}</h4>
+                    <h4>de {{ date('d/m', strtotime($developmentproposal->texting_release)) }} a {{ date('d/m', strtotime($developmentproposal->start_test)) }}</h4>
                   </td>
                 </tr>
               </table>
@@ -230,7 +230,7 @@
                     <h4>Início dos testes</h4>
                   </td>
                   <td style="color: #595959">
-                    <h4>de {{ $developmentproposal->start_test }} a {{ $developmentproposal->homologation }}</h4>
+                    <h4>de {{ date('d/m', strtotime($developmentproposal->start_test)) }} a {{ date('d/m', strtotime($developmentproposal->homologation)) }}</h4>
                   </td>
                 </tr>
               </table>
@@ -244,7 +244,7 @@
                     <h4>Liberação para homologação</h4>
                   </td>
                   <td style="color: #595959">
-                    <h4>de {{ $developmentproposal->homologation }} a 07/12</h4>
+                    <h4>de {{ date('d/m', strtotime($developmentproposal->homologation)) }} a 07/12</h4>
                   </td>
                 </tr>
               </table>
@@ -254,13 +254,13 @@
           <div style="padding-left: 4px; padding-top: 40px; text-align: center;">
             <img src="images/cards/timeline.png" style="width: 650px">
           </div>
-          <table style="padding-left: 18px">
+          <table style="padding-left: 5px">
             <tr>
-              <td style="width: 183px;">{{ $developmentproposal->start_development }}</td>
-              <td style="width: 86px;">{{ $developmentproposal->texting_release }}</td>
-              <td style="width: 170px;">{{ $developmentproposal->start_test }}</td>
-              <td style="width: 163px;">{{ $developmentproposal->homologation }}</td>
-              <td>{{ $developmentproposal->homologation }}</td>
+              <td style="width: 183px;">{{ date('d/m', strtotime($developmentproposal->start_development)) }}</td>
+              <td style="width: 86px;">{{ date('d/m', strtotime($developmentproposal->texting_release)) }}</td>
+              <td style="width: 170px;">{{ date('d/m', strtotime($developmentproposal->start_test)) }}</td>
+              <td style="width: 160px;">{{ date('d/m', strtotime($developmentproposal->homologation)) }}</td>
+              <td>{{ date('d/m', strtotime($developmentproposal->homologation)) }}</td>
             </tr>
           </table>
         </div>
@@ -371,7 +371,7 @@
                   <span style="color: #7f7f7f">
                     Proposta válida até: 
                     <span style="color: #404040;">
-                      {{ $developmentproposal->first_payment_date }}
+                      {{ date('d/m/Y', strtotime($developmentproposal->first_payment_date)) }}
                     </span>
                   </span>
                 </td>
