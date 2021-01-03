@@ -56,7 +56,7 @@
                 </tr>
                 <tr>
                   <td>Data da proposta:</td>
-                  <td>{{ $developmentproposal->date }}</td>
+                  <td>{{ date('d/m/Y', strtotime($developmentproposal->date)) }}</td>
                 </tr>
               </tbody>
             </table>
@@ -95,7 +95,7 @@
                 </tr>
                 <tr>
                   <td>Vencimento 1ª parcela:</td>
-                  <td>{{ $developmentproposal->first_payment_date }}</td>
+                  <td>{{ date('d/m/Y', strtotime($developmentproposal->first_payment_date)) }}</td>
                 </tr>
                 <tr>
                   <td>Valor 2ª parcela:</td>
@@ -103,7 +103,7 @@
                 </tr>
                 <tr>
                   <td>Vencimento 2ª parcela:</td>
-                  <td>{{ $developmentproposal->second_payment_date }}</td>
+                  <td>{{ date('d/m/Y', strtotime($developmentproposal->second_payment_date)) }}</td>
                 </tr>
                 <tr>
                   <td>Valor total:</td>
@@ -111,7 +111,7 @@
                 </tr>
                 <tr>
                   <td>Validade da Proposta:</td>
-                  <td>{{ $developmentproposal->proposal_validity }}</td>
+                  <td>{{ date('d/m/Y', strtotime($developmentproposal->proposal_validity)) }}</td>
                 </tr>
               </tbody>
             </table>
