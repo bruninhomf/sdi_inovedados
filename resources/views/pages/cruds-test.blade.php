@@ -46,7 +46,7 @@
                 <tr>
                   <td>{{ $crudstestsystem->id }}</td>
                   <td>{{ $crudstestsystem->project_name }}</td>
-                  <td>{{ $crudstestsystem->created_at }}</td>
+                  <td>{{ date('d/m/Y', strtotime($crudstestsystem->created_at)) }}</td>
                   <td>
                       <a href="teste-crudes/visualizar/{{ $crudstestsystem->id }}"><i class="material-icons">remove_red_eye</i></a>
                       <a href="teste-crudes/editar/{{ $crudstestsystem->id }}"><i class="material-icons">edit</i></a>
