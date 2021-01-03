@@ -48,7 +48,7 @@
                 <tr>
                   <td>{{ $functionalittestsystem->id }}</td>
                   <td>{{ $functionalittestsystem->project_name }}</td>
-                  <td>{{ $functionalittestsystem->created_at }}</td>
+                  <td>{{ date('d/m/Y', strtotime($functionalittestsystem->created_at)) }}</td>
                   <td>
                       <a href="testes-funcionais/visualizar/{{ $functionalittestsystem->id }}"><i class="material-icons">remove_red_eye</i></a>
                       <a href="testes-funcionais/editar/{{ $functionalittestsystem->id }}"><i class="material-icons">edit</i></a>
