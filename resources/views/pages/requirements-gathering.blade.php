@@ -29,7 +29,7 @@
                 <h4 h4 class="card-title indigo-text pb-5"><strong>Levantamento de Requisitos</strong></h4>
             </div>
             <div class="col s6 right-align">
-                <a href="requisitos/novo" class="waves-effect waves-light btn-small"><i class="material-icons left">receipt</i>Nova Proposta</a>
+                <a href="/requisitos/novo" class="waves-effect waves-light btn-small"><i class="material-icons left">receipt</i>Nova Proposta</a>
             </div>
         </div>
         <!-- datatable start -->
@@ -50,7 +50,7 @@
                   <td>{{ $requirementsgathering->id }}</td>
                   <td>{{ $requirementsgathering->project_name }}</td>
                   <td>{{ $requirementsgathering->version }}</td>
-                  <td>{{ $requirementsgathering->date }}</td>
+                  <td>{{ date('d/m/Y', strtotime($requirementsgathering->date)) }}</td>
                   <td>
                       <a href="requisitos/visualizar/{{ $requirementsgathering->id }}"><i class="material-icons">remove_red_eye</i></a>
                       <a href="requisitos/editar/{{ $requirementsgathering->id }}"><i class="material-icons">edit</i></a>
