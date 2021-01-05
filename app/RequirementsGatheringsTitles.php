@@ -17,4 +17,8 @@ class RequirementsGatheringsTitles extends Model
             'menu'      => $dados['menu']
         ]);
     }
+    public function menu()
+    {
+        return $this->hasMany(RequirementsGatheringsMenus::class, 'titles_id', 'id');
+    }
 }
