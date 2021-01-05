@@ -20,4 +20,9 @@ class UsecaseTestModule extends Model
             'status'    => $dados['status']
         ]);
     }
+
+    public function requirements()
+    {
+        return $this->hasMany(UsecaseTestRequirement::class, 'module_id', 'id');
+    }
 }
