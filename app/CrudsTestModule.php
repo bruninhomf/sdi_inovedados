@@ -22,4 +22,9 @@ class CrudsTestModule extends Model
             'delete'      => $dados['delete'] 
         ]);
     }
+    
+    public function requirements()
+    {
+        return $this->hasMany(CrudsTestRequirement::class, 'module_id', 'id');
+    }
 }
