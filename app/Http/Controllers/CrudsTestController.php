@@ -50,6 +50,7 @@ class CrudsTestController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
         $request->validate([
             'project_name'  => 'required', 
             'name'          => 'required', 
@@ -143,7 +144,8 @@ class CrudsTestController extends Controller
         $crudstestsystem = CrudsTestSystem::find($id);
         $crudstestmodules = CrudsTestModule::where('cruds_id', $crudstestsystem->id)->get();
 
-        $row = 6; 
+        $row = 5;
+        $n = $row -4;
 
         // Create new Spreadsheet object
         $spreadsheet = new Spreadsheet();
@@ -153,35 +155,46 @@ class CrudsTestController extends Controller
             ->setCellValue('A1', 'TESTES DE REQUISITOS')
             ->setCellValue('A4', 'Nº')
             ->setCellValue('B4', 'Módulos')
-            ->setCellValue('C4', 'Requisitos')
-            ->setCellValue('D4', 'Situação')
-            ->setCellValue('A5', 'INICIO');
+            ->setCellValue('C4', 'Cadastrar')
+            ->setCellValue('D4', 'Visualizar')
+            ->setCellValue('E4', 'Editar')
+            ->setCellValue('F4', 'Excluir');
 
         foreach($crudstestmodules as $key => $crudstestmodule) {
             $row = $key === 0 ? $row : $row++;
-            
-            $spreadsheet->getActiveSheet()->setCellValue("B{$row}", $crudstestmodule->name);
+
+            $spreadsheet->getActiveSheet()->setCellValue("A{$row}", $crudstestmodule->name)
+            ->mergeCells("A{$row}:F{$row}");
+            $spreadsheet->getActiveSheet()->getStyle("A{$row}:F{$row}")->getFill()->setFillType(Fill::FILL_SOLID)
+            ->getStartColor()->setARGB('808080');
+            $spreadsheet->getActiveSheet()->getStyle("A{$row}:F{$row}")->getFont()->setSize(12)
+            ->setBold(true)
+            ->getColor()->setARGB(Color::COLOR_WHITE);
+            $row = $row +1;
             
             $crudstestrequirements = CrudsTestRequirement::where('module_id', $crudstestmodule->id)->get();
             foreach($crudstestrequirements as $key => $crudstestrequirement) {
-                $n = $row - 5;
 
                 $spreadsheet->getActiveSheet()->setCellValue("A{$row}", $n);
-                $spreadsheet->getActiveSheet()->setCellValue("C{$row}", $crudstestrequirement->description);
-                $spreadsheet->getActiveSheet()->setCellValue("D{$row}", $crudstestrequirement->status);
+                $spreadsheet->getActiveSheet()->setCellValue("B{$row}", $crudstestrequirement->description);
+                $spreadsheet->getActiveSheet()->setCellValue("C{$row}", $crudstestrequirement->register);
+                $spreadsheet->getActiveSheet()->setCellValue("D{$row}", $crudstestrequirement->view);
+                $spreadsheet->getActiveSheet()->setCellValue("E{$row}", $crudstestrequirement->edit);
+                $spreadsheet->getActiveSheet()->setCellValue("F{$row}", $crudstestrequirement->delete);
                 $row = $row +1;
+                $n = $n +1;
             }
         }
 
 
         // Merge cells
-        $spreadsheet->getActiveSheet()->mergeCells('A1:D3');
-        $spreadsheet->getActiveSheet()->mergeCells('A5:D5'); // Just to test...
+        $spreadsheet->getActiveSheet()->mergeCells('A1:F3'); // Just to test...
 
         // Set alignments
-        $spreadsheet->getActiveSheet()->getStyle('A1:D100')->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-        $spreadsheet->getActiveSheet()->getStyle('A1:D5')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $spreadsheet->getActiveSheet()->getStyle('D6:D100')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $spreadsheet->getActiveSheet()->getStyle('A5:A500')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $spreadsheet->getActiveSheet()->getStyle('A1:F4')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $spreadsheet->getActiveSheet()->getStyle('A1:F1000')->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+        $spreadsheet->getActiveSheet()->getStyle('C5:F100')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 
         // Set thin black border outline around column
         $styleThinBlackBorderOutline = [
@@ -192,25 +205,26 @@ class CrudsTestController extends Controller
                 ],
             ],
         ];
-        $spreadsheet->getActiveSheet()->getStyle('A1:D3')->applyFromArray($styleThinBlackBorderOutline);
-        $spreadsheet->getActiveSheet()->getStyle('A4:D4')->applyFromArray($styleThinBlackBorderOutline);
+        $spreadsheet->getActiveSheet()->getStyle('A1:F3')->applyFromArray($styleThinBlackBorderOutline);
+        $spreadsheet->getActiveSheet()->getStyle('A4:F4')->applyFromArray($styleThinBlackBorderOutline);
 
         // Set fills background collors
-        $spreadsheet->getActiveSheet()->getStyle('A1:D5')->getFill()->setFillType(Fill::FILL_SOLID);
-        $spreadsheet->getActiveSheet()->getStyle('A1:D4')->getFill()->getStartColor()->setARGB('404040');
-        $spreadsheet->getActiveSheet()->getStyle('A5:D5')->getFill()->getStartColor()->setARGB('757171');
+        $spreadsheet->getActiveSheet()->getStyle('A1:F4')->getFill()->setFillType(Fill::FILL_SOLID);
+        $spreadsheet->getActiveSheet()->getStyle('A1:F4')->getFill()->getStartColor()->setARGB('404040');
 
         // Set column widths
         $spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(6);
-        $spreadsheet->getActiveSheet()->getColumnDimension('B')->setWidth(32);
-        $spreadsheet->getActiveSheet()->getColumnDimension('C')->setWidth(62);
-        $spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth(11);
+        $spreadsheet->getActiveSheet()->getColumnDimension('B')->setWidth(42);
+        $spreadsheet->getActiveSheet()->getColumnDimension('C')->setWidth(13);
+        $spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth(13);
+        $spreadsheet->getActiveSheet()->getColumnDimension('E')->setWidth(13);
+        $spreadsheet->getActiveSheet()->getColumnDimension('F')->setWidth(13);
 
         // Set fonts
         $spreadsheet->getActiveSheet()->getStyle('A1')->getFont()->setSize(16);
-        $spreadsheet->getActiveSheet()->getStyle('A4:D5')->getFont()->setSize(12);
-        $spreadsheet->getActiveSheet()->getStyle('A1:D5')->getFont()->setBold(true);
-        $spreadsheet->getActiveSheet()->getStyle('A1:D5')->getFont()->getColor()->setARGB(Color::COLOR_WHITE);
+        $spreadsheet->getActiveSheet()->getStyle('A4:F4')->getFont()->setSize(12);
+        $spreadsheet->getActiveSheet()->getStyle('A1:F4')->getFont()->setBold(true);
+        $spreadsheet->getActiveSheet()->getStyle('A1:F4')->getFont()->getColor()->setARGB(Color::COLOR_WHITE);
 
         // Redirect output to a client’s web browser (Xlsx)
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
