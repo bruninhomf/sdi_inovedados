@@ -50,15 +50,20 @@ class RequirementTestSystemController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'project_name'  => 'required', 
-            'name'          => 'required', 
-            'description'   => 'required', 
-            'status'        => 'required'
-            ]);
+        // $request->validate([
+        //     'project_name'  => 'required', 
+        //     'name'          => 'required', 
+        //     'description'   => 'required', 
+        //     'status'        => 'required',
+        //     'modulos.*'       => 'required'
+        //     ]);
+
+        foreach ($request->modulos as $key => $requirementTestSystem) {
 
         $requirementTestSystem = RequirementTestSystem::create($request->except('modulos'));
         $requirementTestSystem->insertModules($request->only('modulos'));
+    }
+        dd($key, $requirementTestSystem);
         return redirect('teste-requisitos');
     }
 
@@ -168,6 +173,7 @@ class RequirementTestSystemController extends Controller
         }
         
         
+        
         // Merge cells
         $spreadsheet->getActiveSheet()->mergeCells('A1:D3');
         $spreadsheet->getActiveSheet()->mergeCells('A5:D5'); // Just to test...
@@ -176,6 +182,9 @@ class RequirementTestSystemController extends Controller
         $spreadsheet->getActiveSheet()->getStyle('A6:A500')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
         $spreadsheet->getActiveSheet()->getStyle('A1:D100')->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
         $spreadsheet->getActiveSheet()->getStyle('A1:D5')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+
+        // wrap text
+        $spreadsheet->getActiveSheet()->getStyle('C6:C10')->getAlignment()->setWrapText(true);
 
         // Set thin black border outline around column
         $styleThinBlackBorderOutline = [
@@ -198,7 +207,7 @@ class RequirementTestSystemController extends Controller
         $spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(6);
         $spreadsheet->getActiveSheet()->getColumnDimension('B')->setWidth(32);
         $spreadsheet->getActiveSheet()->getColumnDimension('C')->setWidth(62);
-        $spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth(12);
+        $spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth(14);
 
         // Set fonts
         $spreadsheet->getActiveSheet()->getStyle('A1')->getFont()->setSize(16);
