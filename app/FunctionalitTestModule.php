@@ -20,4 +20,9 @@ class FunctionalitTestModule extends Model
             'status'    => $dados['status']
         ]);
     }
+    
+    public function requirements()
+    {
+        return $this->hasMany(FunctionalitTestRequirement::class, 'module_id', 'id');
+    }
 }
