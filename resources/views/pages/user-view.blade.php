@@ -26,32 +26,19 @@
         </div>
       </div>
       <div class="col s12 m5 quick-action-btns display-flex justify-content-end align-items-center pt-2" width="500">
-        <a href="{{asset('usuarios')}}" class="btn-small btn-light-indigo">
+        <a href="/usuarios" class="btn-small btn-light-indigo">
           <i class="material-icons mb-5">arrow_back</i>
         </a>
-        <a href="{{asset('minhaconta')}}" class="btn-small btn-waves-light">
-          <i class="material-icons mb-3">account_circle</i>
-          Minha conta
-        </a>
-        <a href="{{asset('usuarioeditar')}}" class="btn-small indigo">
+        @role('edit|admin')
+        <a href="/usuario/editar/{{ $user->id }}" class="btn-small indigo">
           <i class="material-icons mb-5">edit</i>
         </a>
+        @endrole
       </div>
     </div>
   </div>
   <div class="card">
     <div class="card-content">
-      <div class="row indigo lighten-5 border-radius-4 mb-2">
-        <div class="col s12 m4 users-view-timeline">
-          <h6 class="indigo-text m-0">Requisitos: <span>125</span></h6>
-        </div>
-        <div class="col s12 m4 users-view-timeline">
-          <h6 class="indigo-text m-0">Propostas: <span>534</span></h6>
-        </div>
-        <div class="col s12 m4 users-view-timeline">
-          <h6 class="indigo-text m-0">Testes: <span>256</span></h6>
-        </div>
-      </div>
       <div class="row">
         <div class="col s12">
           <table class="striped">
@@ -120,7 +107,7 @@
                       <td></td>
                   </tr>
                   <tr>
-                      <td>Requisitos</td>
+                      <td>Lev. de Requisitos</td>
                       <td>
                           <label>
                           <input type="checkbox" checked disabled/>
@@ -148,7 +135,7 @@
                       <td>
                           <label>
                           <input type="checkbox" checked disabled/>
-                          <span>Gerar planilha</span>
+                          <span>Imprimir / Gerar planilha</span>
                           </label>
                       </td>
                   </tr>
@@ -244,29 +231,9 @@
                           <span></span>
                           </label>
                       </td>
-                      <td>
-                          <label>
-                          <input type="checkbox" checked disabled/>
-                          <span>Permissões</span>
-                          </label>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>Histórico</td>
-                      <td>
-                          <label>
-                          <input type="checkbox" checked disabled/>
-                          <span></span>
-                          </label>
-                      </td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
                   </tr>
               </tbody>
           </table>
-          <!-- </div> -->
         </div>
       </div>
     </div>
