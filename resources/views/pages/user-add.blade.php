@@ -44,19 +44,6 @@
         <form id="infotabForm" action="/usuarios" method="POST">
           @csrf
           <div class="col s12" id="account">
-            <!-- users edit media object start -->
-            <div class="media display-flex align-items-center mb-2">
-              <a class="mr-2" href="#">
-                <img src="{{asset('images/avatar/avatar-11.png')}}" alt="users avatar" class="z-depth-4 circle"
-                  height="64" width="64">
-              </a>
-              <div class="media-body">
-                <h5 class="media-heading mt-0">Imagem de perfil</h5>
-                <div class="user-edit-btns display-flex">
-                  <a href="#" class="btn-small indigo">Upload</a>
-                </div>
-              </div>
-            </div>
             <div class="row">
               <div class="col s12 m6">
                 <div class="row">
@@ -66,7 +53,7 @@
                     <small class="errorTxt2"></small>
                   </div>
                   <div class="col s12 input-field">
-                    <input id="cpf-code" name="cpf" type="text" class="validate">
+                    <input id="cpf-code" name="cpf" type="text" class="cpf-code validate">
                     <label for="cpf-code">CPF</label>
                     <small class="errorTxt1"></small>
                   </div>
@@ -87,12 +74,12 @@
               <div class="col s12 m6">
                 <div class="row">
                   <div class="col s12 input-field">
-                    <input id="phone" name="phone" type="text" class="validate">
-                    <label for="phone-demo">Telefone</label>
+                    <input id="phone" name="phone" type="text" class="phone-demo validate">
+                    <label for="phone">Telefone</label>
                   </div>
                   <div class="col s12 input-field">
                     <select name="office" id="office">
-                      <option value=""></option>
+                      <option value="" ></option>
                       <option value="ads">Analista de Sistemas</option>
                       <option value="sup">Suporte Tecnico</option>
                       <option value="aux">Auxiliar Administrativo</option>
@@ -119,7 +106,10 @@
                 <div class="col s12">
                   <div class="row">
                       <div class="col s12 right-align">
-                          <a href="#" class="waves-effect waves-light btn-small"><i class="material-icons left">check</i>Marcar Todos</a>
+                          <a name="selectAll" id="selectAll" class="waves-effect waves-light btn-small hide"><i class="material-icons left">check</i>Marcar Todos</a>
+                      </div>
+                      <div class="col s12 right-align">
+                        <a name="deselectAll" id="deselectAll" class="waves-effect red btn-small "><i class="material-icons left">check</i>Desmarcar Todos</a>
                       </div>
                   </div>
                   <div class="col s12">
@@ -127,7 +117,7 @@
                           <thead>
                               <tr>
                                   <th>Área</th>
-                                  <th>Listar</th>
+                                  <th>Visualizar</th>
                                   <th>Cadastrar</th>
                                   <th>Editar</th>
                                   <th>Excluir</th>
@@ -139,7 +129,7 @@
                                   <td>Dashboard</td>
                                   <td>
                                       <label>
-                                      <input type="checkbox" checked />
+                                      <input type="checkbox" class="checkbox" name="dashboard-view" value="" checked />
                                       <span></span>
                                       </label>
                                   </td>
@@ -149,35 +139,35 @@
                                   <td></td>
                               </tr>
                               <tr>
-                                  <td>Requisitos</td>
+                                  <td>Lev. de Requisitos</td>
                                   <td>
                                       <label>
-                                      <input type="checkbox" checked/>
+                                      <input type="checkbox" class="checkbox" name="requirement-view" value="" checked/>
                                       <span></span>
                                       </label>
                                   </td>
                                   <td>
                                       <label>
-                                      <input type="checkbox" checked />
+                                      <input type="checkbox" class="checkbox" name="requirement-create" value="" checked />
                                       <span></span>
                                       </label>
                                   </td>
                                   <td>
                                       <label>
-                                      <input type="checkbox" checked/>
+                                      <input type="checkbox" class="checkbox" name="requirement-edit" value="" checked/>
                                       <span></span>
                                       </label>
                                   </td>
                                   <td>
                                       <label>
-                                      <input type="checkbox" checked />
+                                      <input type="checkbox" class="checkbox" name="requirement-delete" value="" checked />
                                       <span></span>
                                       </label>
                                   </td>
                                   <td>
                                       <label>
-                                      <input type="checkbox" checked/>
-                                      <span>Gerar planilha</span>
+                                      <input type="checkbox" class="checkbox" name="requirement-print" value="" checked/>
+                                      <span>Imprimir / Gerar planilha</span>
                                       </label>
                                   </td>
                               </tr>
@@ -185,31 +175,31 @@
                                   <td>Propostas</td>
                                   <td>
                                       <label>
-                                      <input type="checkbox" checked />
+                                      <input type="checkbox" class="checkbox" name="proposal-view" value="" checked />
                                       <span></span>
                                       </label>
                                   </td>
                                   <td>
                                       <label>
-                                      <input type="checkbox" checked />
+                                      <input type="checkbox" class="checkbox" name="proposal-create" value="" checked />
                                       <span></span>
                                       </label>
                                   </td>
                                   <td>
                                       <label>
-                                      <input type="checkbox" checked/>
+                                      <input type="checkbox" class="checkbox" name="proposal-edit" value="" checked/>
                                       <span></span>
                                       </label>
                                   </td>
                                   <td>
                                       <label>
-                                      <input type="checkbox" checked/>
+                                      <input type="checkbox" class="checkbox" name="proposal-delete" value="" checked/>
                                       <span></span>
                                       </label>
                                   </td>
                                   <td>
                                       <label>
-                                      <input type="checkbox" checked/>
+                                      <input type="checkbox" class="checkbox" name="proposal-print" value="" checked/>
                                       <span>Imprimir</span>
                                       </label>
                                   </td>
@@ -218,31 +208,31 @@
                                   <td>Testes</td>
                                   <td>
                                       <label>
-                                      <input type="checkbox" checked />
+                                      <input type="checkbox" class="checkbox" name="test-view" value="" checked />
                                       <span></span>
                                       </label>
                                   </td>
                                   <td>
                                       <label>
-                                      <input type="checkbox" checked />
+                                      <input type="checkbox" class="checkbox" name="test-create" value="" checked />
                                       <span></span>
                                       </label>
                                   </td>
                                   <td>
                                       <label>
-                                      <input type="checkbox" checked/>
+                                      <input type="checkbox" class="checkbox" name="test-edit" value="" checked/>
                                       <span></span>
                                       </label>
                                   </td>
                                   <td>
                                       <label>
-                                      <input type="checkbox" checked/>
+                                      <input type="checkbox" class="checkbox" name="test-delete" value="" checked/>
                                       <span></span>
                                       </label>
                                   </td>
                                   <td>
                                       <label>
-                                      <input type="checkbox" checked/>
+                                      <input type="checkbox" class="checkbox" name="test-print" value="" checked/>
                                       <span>Gerar planilha</span>
                                       </label>
                                   </td>
@@ -251,55 +241,34 @@
                                   <td>Usuários</td>
                                   <td>
                                       <label>
-                                      <input type="checkbox" checked />
+                                      <input type="checkbox" class="checkbox" name="user-view" value="" checked />
                                       <span></span>
                                       </label>
                                   </td>
                                   <td>
                                       <label>
-                                      <input type="checkbox" checked />
+                                      <input type="checkbox" class="checkbox" name="user-create" value="" checked />
                                       <span></span>
                                       </label>
                                   </td>
                                   <td>
                                       <label>
-                                      <input type="checkbox" checked/>
+                                      <input type="checkbox" class="checkbox" name="requirement-edit" value="" checked/>
                                       <span></span>
                                       </label>
                                   </td>
                                   <td>
                                       <label>
-                                      <input type="checkbox" checked/>
+                                      <input type="checkbox" class="checkbox" name="requirement-delete" value="" checked/>
                                       <span></span>
                                       </label>
                                   </td>
-                                  <td>
-                                      <label>
-                                      <input type="checkbox" checked/>
-                                      <span>Permissões</span>
-                                      </label>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>Histórico</td>
-                                  <td>
-                                      <label>
-                                      <input type="checkbox" checked/>
-                                      <span></span>
-                                      </label>
-                                  </td>
-                                  <td></td>
-                                  <td></td>
-                                  <td></td>
-                                  <td></td>
                               </tr>
                           </tbody>
                       </table>
-                      <!-- </div> -->
                   </div>
                 </div>
               </div>
-            <!-- users edit Info form ends -->
           </div>
           <div class="col s12 display-flex justify-content-end mt-1">
               <button type="submit" class="btn indigo mr-1">Salvar</button>
@@ -310,11 +279,13 @@
     </div>
   </div>
 </div>
-<!-- users edit ends -->
 @endsection
 
 {{-- vendor scripts --}}
 @section('vendor-script')
+<script>
+
+</script>
 <script src="{{asset('vendors/select2/select2.full.min.js')}}"></script>
 <script src="{{asset('vendors/jquery-validation/jquery.validate.min.js')}}"></script>
 <script src="{{asset('vendors/formatter/jquery.formatter.min.js')}}"></script>
@@ -322,6 +293,6 @@
 
 {{-- page scripts --}}
 @section('page-script')
-<script src="{{asset('js/scripts/page-users.js')}}"></script>
+<script src="{{asset('js/scripts/users.js')}}"></script>
 <script src="{{asset('js/scripts/form-masks.js')}}"></script>
 @endsection
