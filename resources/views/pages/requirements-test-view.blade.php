@@ -29,14 +29,18 @@
         <a href="/teste-requisitos" class="btn-small btn-light-indigo">
           <i class="material-icons mb-5">arrow_back</i>
         </a>
+        @role('print|admin')
         <a href="/teste-requisitos/excel/{{ $requirementtestsystems->id }}" class="btn-small btn-waves-light">
           <i class="material-icons mb-3">file_download</i>
           Excel
         </a>
+        @endrole
+        @role('edit|admin')
         <a href="/teste-requisitos/editar/{{ $requirementtestsystems->id }}" class="btn-small indigo">
           <i class="material-icons mb-5">edit</i>
           Editar
         </a>
+        @endrole
       </div>
     </div>
   </div>
@@ -47,13 +51,13 @@
           <table class="striped text-nowrap">
             <tbody>
               <tr>
-                <td>CPU:</td>
+                <td>Nome do projeto:</td>
                 <td>{{ $requirementtestsystems->project_name }}</td>
               </tr>
               <tr>
-                <td>Memoria:</td>
-                <td>{{ $requirementtestsystems->created_at }}</td>
-              </tr>
+                <td>Data:</td>
+                <td>{{ date('d/m/Y', strtotime($requirementtestsystems->created_at)) }}</td>
+              </tr>            
             </tbody>
           </table>
         </div>
