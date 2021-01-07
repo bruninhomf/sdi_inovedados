@@ -24,42 +24,56 @@
   <div class="users-list-table">
     <div class="card">
       <div class="card-content">
-        <div class="row">
+        <div class="row pt-2">
             <div class="col s6">
                 <h4 h4 class="card-title indigo-text pb-5"><strong>Proposta - Servidor de Armazenamento</strong></h4>
             </div>
-            <div class="col s6 right-align">
-                <a href="{{asset('armazenamento/novo')}}" class="waves-effect waves-light btn-small"><i class="material-icons left">receipt</i>Nova Proposta</a>
-            </div>
+            @role('create|admin')
+              <div class="col s6 right-align">
+                  <a href="{{asset('armazenamento/novo')}}" class="waves-effect waves-light btn-small"><i class="material-icons left">receipt</i>Nova Proposta</a>
+              </div>
+            @endrole
         </div>
         <!-- datatable start -->
-        <div class="responsive-table">
+        <div class="responsive-table pt-3">
           <table id="users-list-datatable" class="table">
             <thead>
               <tr>
+                <th></th>
                 <th>ID</th>
                 <th>Espaço em Disco</th>
                 <th>Trafego</th>
                 <th>Conexões</th>
                 <th>Contas</th>
                 <th>Valor</th>
-                <th>Ações</th>
+                @role('read|edit|delete|admin')
+                  <th>Ações</th>
+                @endrole
               </tr>
             </thead>
             <tbody>
               @foreach ($storageproposals as $key => $storageproposal)
                 <tr>
+                  <td></td>
                   <td>{{ $storageproposal->id }}</td>
                   <td>{{ $storageproposal->diskspace }}</td>
                   <td>{{ $storageproposal->traffic }}</td>
                   <td>{{ $storageproposal->connections }}</td>
                   <td>{{ $storageproposal->accounts }}</td>
                   <td>{{ $storageproposal->value }}</td>
-                  <td>
-                      <a href="armazenamento/visualizar/{{ $storageproposal->id }}"><i class="material-icons">remove_red_eye</i></a>
-                      <a href="armazenamento/editar/{{ $storageproposal->id }}"><i class="material-icons">edit</i></a>
-                      <a href="armazenamento/apagar/{{ $storageproposal->id }}"><i class="material-icons">delete_forever</i></a>
-                  </td>
+                  @role('read|edit|delete|admin')
+                    <td>
+                      @role('read|admin')
+                        <a href="armazenamento/visualizar/{{ $storageproposal->id }}"><i class="material-icons">remove_red_eye</i></a>
+                      @endrole
+                      @role('edit|admin')
+                        <a href="armazenamento/editar/{{ $storageproposal->id }}"><i class="material-icons">edit</i></a>
+                      @endrole
+                      @role('delete|admin')
+                        <a href="armazenamento/apagar/{{ $storageproposal->id }}"><i class="material-icons">delete_forever</i></a>
+                      @endrole
+                    </td>
+                  @endrole
                 </tr>
               @endforeach
             </tbody>
@@ -81,5 +95,5 @@
 
 {{-- page script --}}
 @section('page-script')
-<script src="{{asset('js/scripts/page-users.js')}}"></script>
+<script src="{{asset('js/scripts/storage-proposal.js')}}"></script>
 @endsection
