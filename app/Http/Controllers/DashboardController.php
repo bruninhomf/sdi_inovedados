@@ -12,15 +12,23 @@ use App\StorageProposal;
 use App\RequirementTestSystem;
 use App\RequirementsGatherings;
 use App\UsecaseTestSystem;
+use App\User;
 use App\virtualProposal;
+use Spatie\Permission\Models\Role;
+// use Spatie\Permission\Contracts\Role;
+use Spatie\Permission\Models\Permission;
 
 class DashboardController extends Controller
 {
     public function dashboard()
     {
+        // Role::create(['name'=>'user.read']);
+        // return User::permission('users.read')->get();
+
+
         // navbar large
         $users = Auth::user();
-        $resultado = $users->can('users.read');
+        // $resultado = $users->can('users.read');
 
         $pageConfigs = ['navbarLarge' => false];
 
