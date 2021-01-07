@@ -7,6 +7,7 @@ use App\RequirementsGatheringsDescriptions;
 use App\RequirementsGatheringsMenus;
 use App\RequirementsGatheringsTitles;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Mpdf\Mpdf;
 
 // PHP Office
@@ -61,15 +62,64 @@ class RequirementsGatheringsController extends Controller
         
         $requirementsGatherings = RequirementsGatherings::create($request->all());
         return redirect('requisitos');
+        
+    }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function title(Request $request, $id)
+    {
+        $request->validate([
+            'requirements_id'  => 'required', 
+            'titles'           => 'required'
+        ]);
+        
+        $results = RequirementsGatheringsTitles::where('requirements_id', 23)->get('id');
+        $user = RequirementsGatheringsTitles::where('titles', 'Site web')->first();
 
-        // foreach ($request->requirements as $key => $requirementsgathering) {
-            
-        // dd($key, $requirementsgathering);
-        //     $requirementsgatherings = RequirementsGatherings::create($request->except('requirements'));
-        //     $requirementsgatherings->insertModules($request->only('requirements'));
-        // }
-        // return redirect('requisitos');
+        // dd($user);
+        $requirementsGatheringsTitles = RequirementsGatheringsTitles::create($request->all());
+        return back()->withInput();
+        
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function menu(Request $request, $id)
+    {
+        $request->validate([
+            'titles_id'  => 'required', 
+            'menu'       => 'required'
+        ]);
+
+        $requirementsGatheringsMenus = RequirementsGatheringsMenus::create($request->all());
+        return back()->withInput();
+        
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function description(Request $request, $id)
+    {
+        $request->validate([
+            'menu_id'       => 'required', 
+            'description'   => 'required'
+        ]);
+        
+        $requirementsGatheringsDescriptions = RequirementsGatheringsDescriptions::create($request->all());
+        return back()->withInput();
     }
 
     /**
@@ -82,7 +132,7 @@ class RequirementsGatheringsController extends Controller
     {
         return view('/pages/requirements-gathering-view', [
             'requirementsgathering'             => RequirementsGatherings::find($id),
-            'requirementsgatheringtitles'      => RequirementsGatheringsTitles::find($id),
+            'requirementsgatheringtitles'       => RequirementsGatheringsTitles::find($id),
             'requirementsgatheringmenus'        => RequirementsGatheringsMenus::find($id),
             'requirementsgatheringdescriptions' => RequirementsGatheringsDescriptions::find($id) 
          ]);
@@ -140,7 +190,27 @@ class RequirementsGatheringsController extends Controller
             $requirementsgathering->date = $request->input('date');
             $requirementsgathering->save();
         }
-        return redirect('requisitos');
+        
+        $requirementsgatheringstitles = RequirementsGatheringsTitles::find($id);
+        if(isset($requirementsgatheringstitles)) {
+            $requirementsgatheringstitles->titles = $request->input('titles');
+            $requirementsgatheringstitles->save();
+        }
+        
+        $requirementsgatheringsmenus = RequirementsGatheringsMenus::find($id);
+        if(isset($requirementsgatheringsmenus)) {
+            $requirementsgatheringsmenus->menu = $request->input('menu');
+            $requirementsgatheringsmenus->save();
+        }
+        
+        $requirementsgatheringsdescription = RequirementsGatheringsDescriptions::find($id);
+        if(isset($requirementsgatheringsdescription)) {
+            $requirementsgatheringsdescription->description = $request->input('description');
+            $requirementsgatheringsdescription->save();
+        }
+
+        return back()->withInput();
+        // return redirect('requisitos');
     }
 
     /**
@@ -155,7 +225,23 @@ class RequirementsGatheringsController extends Controller
         if (isset($requirementsgathering)) {
             $requirementsgathering->delete();
         }
-        return redirect('requisitos');
+
+        $requirementsgatheringstitles = RequirementsGatheringsTitles::find($id);
+        if (isset($requirementsgatheringstitles)) {
+            $requirementsgatheringstitles->delete();
+        }
+
+        $requirementsgatheringsmenus = RequirementsGatheringsMenus::find($id);
+        if (isset($requirementsgatheringsmenus)) {
+            $requirementsgatheringsmenus->delete();
+        }
+        
+        $requirementsgatheringsdescriptions = RequirementsGatheringsDescriptions::find($id);
+        if (isset($requirementsgatheringsdescriptions)) {
+            $requirementsgatheringsdescriptions->delete();
+        }
+
+        return back()->withInput();
     }
 
     public function excel($id)
