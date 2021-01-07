@@ -23,7 +23,9 @@ Route::group(['middleware' => 'auth', 'uses'], function () {
 
 
     //Users
-    Route::get('/usuarios', 'UserController@index');
+    Route::group(['middleware' => ['role_or_permission:admin|read']], function () {
+        Route::get('/usuarios', 'UserController@index');
+    });
     Route::post('/usuarios', 'UserController@store');
     Route::get('/usuario/novo', 'UserController@create');
     Route::get('/usuario/visualizar/{id}', 'UserController@show');
@@ -39,6 +41,9 @@ Route::group(['middleware' => 'auth', 'uses'], function () {
     //Requirements
     Route::get('requisitos', 'RequirementsGatheringsController@index');
     Route::post('requisitos', 'RequirementsGatheringsController@store');
+    Route::post('{id}/titulo/', 'RequirementsGatheringsController@title');
+    Route::post('{id}/menu/', 'RequirementsGatheringsController@menu');
+    Route::post('{id}/descricao/', 'RequirementsGatheringsController@description');
     Route::get('requisitos/novo', 'RequirementsGatheringsController@create');
     Route::get('requisitos/visualizar/{id}', 'RequirementsGatheringsController@show');
     Route::get('requisitos/pdf/{requirementsgathering}', 'RequirementsGatheringsController@pdf');
