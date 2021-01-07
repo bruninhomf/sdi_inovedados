@@ -18,4 +18,9 @@ class RequirementTestModule extends Model
             'status' => $dados['status']
         ]);
     }
+
+    public function requirements()
+    {
+        return $this->hasMany(RequirementTestRequirement::class, 'module_id', 'id');
+    }
 }
