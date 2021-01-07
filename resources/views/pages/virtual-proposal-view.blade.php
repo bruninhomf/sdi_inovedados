@@ -29,14 +29,18 @@
         <a href="/virtual" class="btn-small btn-light-indigo">
           <i class="material-icons mb-5">arrow_back</i>
         </a>
+        @role('print|admin')
         <a href="/virtual/pdf/{{ $virtualproposal->id }}" class="btn-small btn-waves-light">
           <i class="material-icons mb-3">print</i>
           PDF
         </a>
+        @endrole
+        @role('edit|admin')
         <a href="/virtual/editar/{{ $virtualproposal->id }}" class="btn-small indigo">
           <i class="material-icons mb-5">edit</i>
           Editar
         </a>
+        @endrole
       </div>
     </div>
   </div>
