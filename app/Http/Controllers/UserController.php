@@ -55,7 +55,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('/pages/user-view', [
+            'user' => User::find($id)
+         ]);
     }
 
     /**
@@ -108,5 +110,40 @@ class UserController extends Controller
             $user->delete();
         }
         return redirect('usuarios');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function myaccount($id)
+    {
+        return view('/pages/myaccount', [
+            'user' => User::find($id),
+        ]);
+        return redirect('minhaconta');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function myaccountupdate(Request $request, $id)
+    {
+        $user = User::find($id);
+        if(isset($user)) {
+            $user -> name   = $request->input('name');
+            $user -> phone  = $request->input('phone');
+            $user -> cpf    = $request->input('cpf');
+            $user -> office = $request->input('office');
+            $user -> status = $request->input('status');
+            $user -> email  = $request->input('email');
+            $user -> save();
+        }
+        return redirect('minhaconta');
     }
 }
