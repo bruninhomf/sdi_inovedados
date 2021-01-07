@@ -29,14 +29,18 @@
         <a href="/teste-caso-de-uso" class="btn-small btn-light-indigo">
           <i class="material-icons mb-5">arrow_back</i>
         </a>
+        @role('print|admin')
         <a href="/teste-caso-de-uso/excel/{{ $usecasetestsystems->id }}" class="btn-small btn-waves-light">
           <i class="material-icons mb-3">file_download</i>
           Excel
         </a>
+        @endrole
+        @role('edit|admin')
         <a href="/teste-caso-de-uso/editar/{{ $usecasetestsystems->id }}" class="btn-small indigo">
           <i class="material-icons mb-5">edit</i>
           Editar
         </a>
+        @endrole
       </div>
     </div>
   </div>
