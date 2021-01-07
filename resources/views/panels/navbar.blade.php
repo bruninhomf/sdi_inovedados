@@ -16,9 +16,9 @@
             data-target="profile-dropdown">
             @if(Auth::user())
               <span class="mr-5" style="font-size: 20px !important"><strong>{{ Auth::user()->name }}</strong></span>
-              <span class="avatar-status avatar-online mb-2">
-                <img src="{{asset('images/avatar/avatar-7.png')}}" alt="avatar"><i></i>
-              </span>
+              {{--  <span>
+                <i class="material-icons dp48">account_circle</i>
+              </span>  --}}
             @endif
           </a>
         </li>
