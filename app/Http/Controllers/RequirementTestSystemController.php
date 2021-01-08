@@ -77,6 +77,8 @@ class RequirementTestSystemController extends Controller
     {
         return view('/pages/requirements-test-view', [
            'requirementtestsystems' => RequirementTestSystem::find($id),
+           'requirementtestmodules' => RequirementTestModule::find($id),
+           'requirementtestrequirements' => RequirementTestRequirement::find($id),
         ]);
     }
 
