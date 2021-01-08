@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\PermissionGroup;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,10 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('/pages/user-add');
+        
+        return view('/pages/user-add', [
+            'groups' => PermissionGroup::all()
+        ]);
     }
 
     /**
@@ -41,9 +45,12 @@ class UserController extends Controller
             'email' => ['required', 'email', 'unique:users',],
         ]);
 
-        User::create($request->merge([
+        $user = User::create($request->merge([
             'password' => bcrypt($request->password),
         ])->all());
+
+        $user->syncPermissions($request->get('permissions'));
+
         return redirect('usuarios');
     }
 
@@ -56,7 +63,9 @@ class UserController extends Controller
     public function show($id)
     {
         return view('/pages/user-view', [
-            'user' => User::find($id)
+            'user' => User::find($id),
+            'groups' => PermissionGroup::all(),
+            'groups' => PermissionGroup::orderBy('name')->get()
          ]);
     }
 
@@ -70,6 +79,7 @@ class UserController extends Controller
     {
         return view('/pages/user-edit', [
             'user' => User::find($id),
+            'groups' => PermissionGroup::orderBy('name')->get()
         ]);
         return redirect('usuarios');
     }
@@ -93,6 +103,7 @@ class UserController extends Controller
             $user -> email  = $request->input('email');
             $user -> image  = $request->input('image');
             $user -> save();
+            $user->syncPermissions($request->get('permissions'));
         }
         return redirect('usuarios');
     }
